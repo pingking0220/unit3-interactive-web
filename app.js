@@ -983,14 +983,6 @@ els.toggleHotspots.addEventListener("click", () => {
   renderHotspots();
 });
 
-document.querySelector("#fullscreenButton").addEventListener("click", async () => {
-  if (!document.fullscreenElement) {
-    await document.documentElement.requestFullscreen();
-  } else {
-    await document.exitFullscreen();
-  }
-});
-
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") goToSlide(state.current - 1);
   if (event.key === "ArrowRight") goToSlide(state.current + 1);
