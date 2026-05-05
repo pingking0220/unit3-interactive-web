@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 3 單元｜我們只有一個地球互動全景圖</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="unit-pill">第 3 單元</span>
+        <div>
+          <h1>我們只有一個地球｜互動知識全景圖</h1>
+          <p>點選全景圖熱點、完成小測驗，逐步整理環境議題的因果關係。</p>
+        </div>
+      </div>
+      <div class="top-actions" aria-label="全域工具">
+        <button class="tool-button active" id="toggleHotspots" type="button">熱點</button>
+        <button class="tool-button" id="toggleZoom" type="button">放大</button>
+        <button class="tool-button" id="fullscreenButton" type="button">全螢幕</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="rail" aria-label="全景圖清單">
+        <div class="rail-head">
+          <span class="leaf-mark"></span>
+          <div>
+            <h2>學習路徑</h2>
+            <p id="progressText">已完成 0 / 5</p>
+          </div>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progressBar"></span>
+        </div>
+        <nav class="slide-nav" id="slideNav"></nav>
+        <button class="ghost-button" id="resetProgress" type="button">重置學習進度</button>
+      </aside>
+
+      <section class="viewer-panel" aria-label="全景圖播放器">
+        <div class="viewer-toolbar">
+          <button class="circle-button" id="prevSlide" type="button" aria-label="上一張">‹</button>
+          <div class="slide-heading">
+            <span id="slideNumber"></span>
+            <h2 id="slideTitle"></h2>
+            <p id="slideSubtitle"></p>
+          </div>
+          <button class="circle-button" id="nextSlide" type="button" aria-label="下一張">›</button>
+        </div>
+
+        <div class="panorama-shell" id="panoramaShell">
+          <figure class="panorama-frame" id="panoramaFrame">
+            <img id="panoramaImage" src="" alt="">
+            <div class="hotspot-layer" id="hotspotLayer"></div>
+          </figure>
+        </div>
+
+        <div class="quick-strip" id="quickStrip" aria-label="本張重點"></div>
+      </section>
+
+      <aside class="study-panel" aria-label="學習面板">
+        <div class="tabs" role="tablist" aria-label="學習面板分頁">
+          <button class="tab active" data-tab="focus" type="button">重點</button>
+          <button class="tab" data-tab="hotspot" type="button">熱點</button>
+          <button class="tab" data-tab="quiz" type="button">小測驗</button>
+        </div>
+
+        <section class="tab-page active" id="focusPage">
+          <div class="panel-title">
+            <span class="round-badge">讀</span>
+            <h2>本張導讀</h2>
+          </div>
+          <p class="lead" id="focusLead"></p>
+          <div class="key-list" id="keyList"></div>
+          <button class="primary-button" id="completeSlide" type="button">開始本張精熟測驗</button>
+        </section>
+
+        <section class="tab-page" id="hotspotPage">
+          <div class="panel-title">
+            <span class="round-badge">點</span>
+            <h2 id="hotspotTitle">請點選全景圖上的熱點</h2>
+          </div>
+          <p class="lead" id="hotspotBody">每個熱點會補充概念、案例或課堂提問。</p>
+          <div class="key-list" id="hotspotPoints"></div>
+        </section>
+
+        <section class="tab-page" id="quizPage">
+          <div class="panel-title">
+            <span class="round-badge">測</span>
+            <h2>精熟測驗</h2>
+          </div>
+          <p class="lead" id="quizQuestion"></p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <button class="primary-button" id="submitQuiz" type="button">送出本輪答案</button>
+          <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
