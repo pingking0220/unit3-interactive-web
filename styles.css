@@ -370,10 +370,6 @@ button {
   overflow: auto;
 }
 
-.panorama-shell.zoomed .panorama-frame {
-  width: min(1500px, 150vw);
-}
-
 .panorama-frame {
   width: 100%;
   max-width: 100%;

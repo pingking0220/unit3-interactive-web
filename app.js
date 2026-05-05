@@ -640,7 +640,6 @@ const state = {
   selectedHotspot: 0,
   activeTab: "focus",
   hotspotsVisible: true,
-  zoomed: false,
   completed: new Set(JSON.parse(localStorage.getItem("unit3-panorama-completed") || "[]")),
   quizSessions: {}
 };
@@ -667,8 +666,7 @@ const els = {
   quizOptions: document.querySelector("#quizOptions"),
   submitQuiz: document.querySelector("#submitQuiz"),
   quizFeedback: document.querySelector("#quizFeedback"),
-  toggleHotspots: document.querySelector("#toggleHotspots"),
-  toggleZoom: document.querySelector("#toggleZoom")
+  toggleHotspots: document.querySelector("#toggleHotspots")
 };
 
 function currentSlide() {
@@ -983,12 +981,6 @@ els.toggleHotspots.addEventListener("click", () => {
   state.hotspotsVisible = !state.hotspotsVisible;
   els.toggleHotspots.classList.toggle("active", state.hotspotsVisible);
   renderHotspots();
-});
-
-els.toggleZoom.addEventListener("click", () => {
-  state.zoomed = !state.zoomed;
-  els.panoramaShell.classList.toggle("zoomed", state.zoomed);
-  els.toggleZoom.classList.toggle("active", state.zoomed);
 });
 
 document.querySelector("#fullscreenButton").addEventListener("click", async () => {
