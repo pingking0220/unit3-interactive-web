@@ -977,8 +977,8 @@ button {
   font-weight: 750;
 }
 
-.choice-panel,
-.game-quiz-panel {
+.case-file-panel,
+.investigation-panel {
   padding: 16px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.7);
@@ -1009,57 +1009,110 @@ button {
   font-size: 22px;
 }
 
-#gameChoicePrompt,
-#gameQuizIntro {
+#gameInquiryPrompt {
   margin: 0 0 12px;
   color: #2c4433;
   font-weight: 800;
   line-height: 1.55;
 }
 
-.game-choices {
+.case-file {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
-.choice-button {
-  width: 100%;
-  padding: 13px 14px;
-  border-radius: 16px;
-  border: 1px solid rgba(70, 111, 58, 0.18);
-  color: var(--ink);
+.case-file p {
+  margin: 0;
+  padding: 14px 15px;
+  border-radius: 18px;
+  color: #263b2d;
   background: rgba(255, 255, 255, 0.78);
-  cursor: pointer;
-  text-align: left;
-  font-weight: 850;
-  line-height: 1.45;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, white);
+  font-size: 16px;
+  font-weight: 760;
+  line-height: 1.65;
 }
 
-.choice-button:hover,
-.choice-button.selected {
-  border-color: color-mix(in srgb, var(--accent) 40%, white);
-  background: color-mix(in srgb, var(--accent) 10%, white);
+.case-file p span {
+  display: inline-flex;
+  margin-right: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
 }
 
-.choice-button.good {
-  background: #e6f4df;
+.inquiry-trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.choice-button.needs-review {
-  background: #fff0df;
+.inquiry-trail span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--muted);
+  background: rgba(86, 122, 70, 0.12);
+  border: 1px solid rgba(74, 112, 60, 0.14);
+  font-weight: 900;
 }
 
-.choice-feedback {
-  min-height: 44px;
+.inquiry-trail span.current {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.inquiry-trail span.solved {
+  color: var(--accent-deep);
+  background: color-mix(in srgb, var(--accent) 14%, white);
+  border-color: color-mix(in srgb, var(--accent) 32%, white);
+}
+
+#gameAnswer {
+  width: 100%;
+  resize: vertical;
+  min-height: 118px;
+  padding: 14px 15px;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, white);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.86);
+  font: inherit;
+  font-weight: 760;
+  line-height: 1.55;
+  outline: none;
+}
+
+#gameAnswer:focus {
+  border-color: color-mix(in srgb, var(--accent) 54%, white);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent);
+}
+
+.answer-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 0.42fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.answer-actions .primary-button,
+.answer-actions .ghost-button {
+  margin-top: 0;
+}
+
+.inquiry-feedback {
+  min-height: 48px;
   margin: 12px 0 0;
   color: var(--accent-deep);
   font-weight: 900;
   line-height: 1.5;
-}
-
-.game-quiz-list {
-  display: grid;
-  gap: 12px;
 }
 
 .badge-panel {
@@ -1252,6 +1305,10 @@ button {
 
   .game-layout,
   .clue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .answer-actions {
     grid-template-columns: 1fr;
   }
 

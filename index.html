@@ -105,12 +105,12 @@
       <section class="game-hero">
         <div>
           <span class="game-eyebrow">文字闖關模式</span>
-          <h2>地球守護者：五大環境任務</h2>
-          <p>閱讀任務、蒐集線索、做出選擇，再通過每關 5 題精熟挑戰。全部完成後，學生可以產生自己的永續行動宣言。</p>
+          <h2>地球守護者：解謎探究任務</h2>
+          <p>閱讀案件文本、蒐集線索、回答追問。每次回答都要從文章中找證據，逐步解鎖下一個問題，直到能用自己的話說明核心概念。</p>
         </div>
         <div class="game-progress-card">
           <strong id="gameProgressText">已取得 0 / 5 枚徽章</strong>
-          <span id="gameProgressHint">完成每關測驗即可取得徽章。</span>
+          <span id="gameProgressHint">完成每關全部追問即可取得徽章。</span>
           <button class="ghost-button" id="resetGame" type="button">重置闖關進度</button>
         </div>
       </section>
@@ -135,25 +135,27 @@
 
           <div class="clue-grid" id="gameClues"></div>
 
-          <section class="choice-panel">
+          <section class="case-file-panel">
             <div class="mini-title">
-              <span>選</span>
-              <h3>任務判斷</h3>
+              <span>讀</span>
+              <h3>案件文本</h3>
             </div>
-            <p id="gameChoicePrompt"></p>
-            <div class="game-choices" id="gameChoices"></div>
-            <p class="choice-feedback" id="gameChoiceFeedback" aria-live="polite"></p>
+            <div class="case-file" id="gameArticle"></div>
           </section>
 
-          <section class="game-quiz-panel">
+          <section class="investigation-panel">
             <div class="mini-title">
-              <span>測</span>
-              <h3>精熟挑戰</h3>
+              <span>問</span>
+              <h3>探究追問</h3>
             </div>
-            <p id="gameQuizIntro"></p>
-            <div class="game-quiz-list" id="gameQuizOptions"></div>
-            <button class="primary-button" id="gameSubmitQuiz" type="button">送出闖關答案</button>
-            <p class="quiz-feedback" id="gameQuizFeedback" aria-live="polite"></p>
+            <div class="inquiry-trail" id="gameInquiryTrail"></div>
+            <p id="gameInquiryPrompt"></p>
+            <textarea id="gameAnswer" rows="4" placeholder="請用自己的話輸入推理。可以引用案件文本或線索卡中的關鍵詞。"></textarea>
+            <div class="answer-actions">
+              <button class="primary-button" id="gameCheckAnswer" type="button">提交推理</button>
+              <button class="ghost-button" id="gameShowHint" type="button">需要一點提示</button>
+            </div>
+            <p class="inquiry-feedback" id="gameInquiryFeedback" aria-live="polite"></p>
           </section>
         </section>
 

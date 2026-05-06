@@ -505,6 +505,37 @@ const gameLevels = [
       ["三層多樣性", "同種內差異、不同物種種類，以及森林、溪流、濕地、海岸等環境，都是生物多樣性。"],
       ["保育警訊", "棲地破壞、外來種競爭、獵捕與氣候變遷，都可能讓族群數量下降。"]
     ],
+    article: [
+      "臺灣面積不大，卻同時有海岸、平原、丘陵、森林、高山溪流等環境。海拔高度改變時，溫度、雨量與植被也會改變，於是不同生物能找到適合自己的棲地。",
+      "有些山椒魚生活在不同山區與溪流源頭，族群之間不容易交流。長時間隔離後，外形或基因可能逐漸累積差異，這能用來理解遺傳多樣性。",
+      "生物多樣性不只是在數有幾種動物，也包含同種生物的差異、不同物種的豐富程度，以及森林、溪流、濕地、海岸等不同生態系。保育工作除了保護動物本身，也要保護牠的棲地。"
+    ],
+    inquiries: [
+      {
+        prompt: "第一個線索藏在環境變化裡。請找出至少兩個讓臺灣形成多樣棲地的因素。",
+        groups: [["海拔", "高度", "地形"], ["氣候", "雨量", "溫度", "植被"]],
+        hint: "回到第一段，找找「海拔高度改變時，哪些條件也會改變？」",
+        success: "你抓到環境梯度的核心：海拔、地形、氣候、雨量或溫度改變，會形成不同棲地。"
+      },
+      {
+        prompt: "山椒魚為什麼可能逐漸形成不同形態或基因差異？請從「隔離」與「交流」的角度回答。",
+        groups: [["隔離", "分隔", "不同山區", "溪流源頭"], ["交流少", "不容易交流", "族群交流", "繁殖交流"], ["差異", "分化", "遺傳", "形態", "基因"]],
+        hint: "第二段提到山椒魚生活在不同山區與溪流源頭，想想這會讓族群之間發生什麼事。",
+        success: "很好。長期隔離讓族群交流變少，差異就可能慢慢累積。"
+      },
+      {
+        prompt: "請把生物多樣性的三個層次寫出來，並盡量用文章裡的詞。",
+        groups: [["遺傳"], ["物種"], ["生態系"]],
+        hint: "第三段有一句話直接整理了三個層次：同種差異、不同物種、不同生態系。",
+        success: "三層都找到了：遺傳多樣性、物種多樣性與生態系多樣性。"
+      },
+      {
+        prompt: "最後解謎：為什麼保育不能只保護某一隻動物，也要保護牠生活的地方？",
+        groups: [["棲地", "環境", "生活的地方"], ["覓食", "繁殖", "躲避", "移動", "生存"]],
+        hint: "想想動物需要在哪裡吃東西、繁殖、躲藏或移動。",
+        success: "答得好。保護棲地，才是在保護生物能持續生存的條件。"
+      }
+    ],
     choices: [
       ["臺灣因海拔、氣候與棲地差異大，所以能支持多樣生物。", true, "判斷很好。你抓到核心因果：環境多樣，棲地多樣，生物也更可能多樣。"],
       ["臺灣只有一種氣候，所以所有生物都集中在同一種環境。", false, "這個說法需要修正。臺灣的重點不是單一氣候，而是海拔與環境變化很大。"],
@@ -526,6 +557,37 @@ const gameLevels = [
       ["成群繁殖", "若外來生物在新環境大量繁殖，並搶奪食物、棲地或陽光，就可能變成入侵種。"],
       ["人類途徑", "貨運、觀賞、寵物、產業材料、棄養與逃逸，都可能讓外來生物進入野外。"],
       ["預防優先", "不非法引入、不任意棄養、不購買來源不明的動植物，是最有效的防線。"]
+    ],
+    article: [
+      "外來物種是因人類活動從其他地區進入新環境的生物，例如作物、觀賞植物或寵物。外來物種不一定有害，重點是牠進入野外後是否大量繁殖並造成影響。",
+      "如果外來生物在新環境缺少天敵、適應力強，可能快速擴散，搶奪原生生物的食物、棲地、陽光或繁殖位置。這時就可能成為外來入侵種。",
+      "防治入侵種最有效的是源頭管理：不非法引入、不任意棄養、不購買來源不明的動植物，也要清楚記錄發現地點、時間與物種身分。"
+    ],
+    inquiries: [
+      {
+        prompt: "先解開名詞謎題：外來物種為什麼不一定等於外來入侵種？",
+        groups: [["不一定", "不等於", "不一定有害"], ["大量繁殖", "造成影響", "破壞", "衝擊", "排擠"]],
+        hint: "第一段說外來物種不一定有害，重點是進入野外後是否發生什麼事。",
+        success: "概念修正成功。外來物種只有在大量繁殖並造成衝擊時，才可能成為入侵種。"
+      },
+      {
+        prompt: "文章提到外來生物快速擴散可能和哪些條件有關？請至少寫出兩個。",
+        groups: [["缺少天敵", "天敵少", "沒有天敵"], ["適應力強", "快速擴散", "大量繁殖"]],
+        hint: "第二段前半部直接說明牠們為什麼可能快速擴散。",
+        success: "你找到擴散關鍵：缺少天敵、適應力強與大量繁殖。"
+      },
+      {
+        prompt: "如果一種外來鳥類造成問題，牠可能和原生鳥類競爭哪些資源？",
+        groups: [["食物", "棲地", "陽光", "繁殖位置", "築巢"], ["搶", "競爭", "排擠", "奪"]],
+        hint: "第二段列出可能被搶奪的資源。鳥類案例可特別想繁殖或築巢位置。",
+        success: "推理到位。入侵種可能搶食物、棲地或繁殖位置，造成原生種壓力。"
+      },
+      {
+        prompt: "最後解謎：如果你是校園守門員，要防止外來種問題，最重要的源頭行動是什麼？",
+        groups: [["不非法引入", "不任意棄養", "不購買來源不明", "源頭管理"], ["動植物", "寵物", "植物", "物種"]],
+        hint: "第三段列出三個「不要」。選其中兩個寫入答案也可以。",
+        success: "守門成功。源頭管理比事後清除更有效，也更省成本。"
+      }
     ],
     choices: [
       ["先確認是否由人類引入、是否大量繁殖、是否影響原生生態。", true, "判斷很完整。這三個問題能幫你從外來物種進一步判斷是否成為入侵種。"],
@@ -549,6 +611,39 @@ const gameLevels = [
       ["棲地切割", "道路、開墾與工程可能把完整棲地切成小塊，增加動物移動與路殺風險。"],
       ["生物價值", "糧食、醫藥、建材、衣物原料與清潔材料，都與生物多樣性有關。"]
     ],
+    article: [
+      "一條河川出現魚類死亡，不一定只有單一原因。可能的線索包含工廠廢水、家庭污水、畜牧污水、廢油、垃圾，也需要記錄地點、時間、受影響生物與水質變化。",
+      "空氣污染可能來自工廠、汽機車、燃燒行為等。污染物會影響人體健康，也可能形成酸雨，進一步影響水域、農作物與建築物。",
+      "道路與山坡地開發讓生活便利，但也可能切割棲地，使動物移動更危險，甚至增加路殺。評估開發時，要同時思考便利、污染、棲地與生物多樣性的代價。"
+    ],
+    inquiries: [
+      {
+        prompt: "河川魚類死亡時，為什麼不能只憑第一眼就下結論？請寫出需要蒐集的資料。",
+        groups: [["地點", "時間", "水質", "受影響生物", "來源"], ["記錄", "蒐集", "調查", "比較"]],
+        hint: "第一段提醒我們要記錄哪些資料，再比較可能原因。",
+        success: "很像環境偵探了。先記錄地點、時間、污染來源與受影響生物，才有證據判斷。"
+      },
+      {
+        prompt: "請從文章找出兩種可能造成水污染的來源。",
+        groups: [["工廠廢水", "家庭污水", "畜牧污水", "廢油", "垃圾"], ["工廠廢水", "家庭污水", "畜牧污水", "廢油", "垃圾"]],
+        keywords: ["工廠廢水", "家庭污水", "畜牧污水", "廢油", "垃圾"],
+        minMatches: 2,
+        hint: "第一段列出五種可能來源，任選兩種寫出來。",
+        success: "你找到了水污染來源。接著要思考污染如何影響生物與人類。"
+      },
+      {
+        prompt: "空氣污染除了影響呼吸健康，還可能透過什麼方式影響水域、農作物或建築物？",
+        groups: [["酸雨"], ["水域", "農作物", "建築", "土壤"]],
+        hint: "第二段提到污染物可能形成某種雨。",
+        success: "沒錯，酸雨能把空氣污染的影響帶到水域、農作物與建築物。"
+      },
+      {
+        prompt: "最後解謎：道路與山坡地開發為什麼需要評估生態代價？",
+        groups: [["棲地", "切割", "破碎", "路殺"], ["便利", "開發", "道路", "生活"]],
+        hint: "第三段把人類便利和棲地切割放在一起比較。",
+        success: "你抓到平衡觀點：開發帶來便利，也可能造成棲地切割與路殺風險。"
+      }
+    ],
     choices: [
       ["記錄污染來源、地點、時間與受影響生物，再比較可能原因。", true, "這是可靠的偵探做法。先蒐證，再根據證據判斷原因。"],
       ["只要看到工廠，就直接判定所有問題都是工廠造成。", false, "還需要證據。環境問題可能有多種來源，調查要記錄資料並比較可能性。"],
@@ -571,6 +666,37 @@ const gameLevels = [
       ["異常加劇", "化石燃料燃燒、森林砍伐與甲烷排放，會讓溫室氣體過多並提高平均溫度。"],
       ["影響擴散", "海平面、冰雪、農作物、水資源、健康與生物棲地都可能受到影響。"]
     ],
+    article: [
+      "天氣是短時間的狀態，例如今天下雨、明天變冷；氣候則是長時間統計出的溫度、雨量與季節型態。全球暖化討論的是長期平均趨勢，不能只用某一天的冷熱判斷。",
+      "正常溫室效應能維持地球適合生命的溫度。但人類大量燃燒化石燃料、砍伐森林，或增加甲烷等溫室氣體排放，會使溫室效應異常加劇，讓全球平均溫度上升。",
+      "暖化可能造成熱浪、洪水、乾旱、森林大火，也可能讓冰雪融化、海平面上升、珊瑚白化、農作物受影響，進一步影響人類的食物、健康與居住安全。"
+    ],
+    inquiries: [
+      {
+        prompt: "先破解常見迷思：為什麼不能用「今天很冷」來否定全球暖化？",
+        groups: [["天氣"], ["氣候", "長期", "平均", "趨勢"]],
+        hint: "第一段把天氣和氣候分開定義。你的答案要同時提到短期與長期。",
+        success: "迷思破解。單日天氣不能代表長期氣候趨勢。"
+      },
+      {
+        prompt: "正常溫室效應和異常溫室效應差在哪裡？",
+        groups: [["正常", "適量", "維持"], ["異常", "過多", "加劇", "上升"]],
+        hint: "第二段前後各有一句：正常能維持溫度，異常會讓平均溫度上升。",
+        success: "你抓到差異：適量有助生命，過量加劇會造成暖化。"
+      },
+      {
+        prompt: "文章列出哪些人類活動會增加溫室氣體？請至少寫出兩個。",
+        groups: [["燃燒化石燃料", "化石燃料", "煤", "石油", "天然氣"], ["砍伐森林", "森林砍伐", "甲烷", "排放"]],
+        hint: "第二段中間列出三個來源：化石燃料、森林、甲烷。",
+        success: "找到了。化石燃料、森林砍伐與甲烷排放都會加劇問題。"
+      },
+      {
+        prompt: "最後解謎：全球暖化為什麼不只是北極熊的問題，也和人類生活有關？",
+        groups: [["食物", "健康", "居住", "水資源", "農作物"], ["影響", "安全", "生活", "人類"]],
+        hint: "第三段最後一句提到人類的三種安全。",
+        success: "很完整。氣候變遷會回到食物、健康、水資源與居住安全。"
+      }
+    ],
     choices: [
       ["用長期資料判斷氣候趨勢，不能只用某一天的天氣下結論。", true, "回應精準。全球暖化討論的是長期平均趨勢，不是單一天氣。"],
       ["只要有一天很冷，就能證明全球暖化不存在。", false, "這是常見誤解。單日天氣不能代表長期氣候趨勢。"],
@@ -592,6 +718,39 @@ const gameLevels = [
       ["能源選擇", "風力、太陽能與水力較低污染，但仍有地點、設備、天候與生態影響限制。"],
       ["足跡思考", "碳足跡看溫室氣體排放，水足跡看直接與間接耗用的水資源。"],
       ["日常行動", "源頭減量、重複使用、節約能源、低碳交通、在地蔬食與資源回收都能累積效果。"]
+    ],
+    article: [
+      "永續行動不是只靠一次大型活動，而是把日常選擇變成能持續的習慣。淨零排放的想法是先降低排放，再用森林碳匯或負碳技術抵消難以避免的排放。",
+      "風力、太陽能與水力發電污染較低，但不代表完全沒有代價。它們仍可能受到地點、設備、天候、土地與生態影響限制，因此需要評估。",
+      "碳足跡是活動或產品生命週期中的溫室氣體排放；水足跡則是直接與間接消耗的水資源。源頭減量、重複使用、節能、低碳交通、在地蔬食與資源回收，都能累積成永續行動。"
+    ],
+    inquiries: [
+      {
+        prompt: "從第一段找答案：為什麼永續行動不能只靠一次大型活動？",
+        groups: [["日常", "習慣", "持續"], ["選擇", "行動", "生活"]],
+        hint: "第一段說永續行動是把日常選擇變成什麼？",
+        success: "方向對了。永續需要日常持續，而不是只靠一次活動。"
+      },
+      {
+        prompt: "淨零排放的順序是什麼？請寫出「先做什麼，再做什麼」。",
+        groups: [["降低排放", "減少排放", "先降低"], ["抵消", "碳匯", "負碳"]],
+        hint: "第一段第二句有明確順序：先降低，再抵消。",
+        success: "你掌握淨零核心：先減量，再處理難以避免的排放。"
+      },
+      {
+        prompt: "為什麼友善能源仍然需要評估，而不是直接說完全沒有影響？",
+        groups: [["地點", "設備", "天候", "土地", "生態"], ["限制", "代價", "影響", "評估"]],
+        hint: "第二段列出友善能源可能受到哪些限制。",
+        success: "評估觀念很好。低污染不等於零影響，仍要看地點與生態代價。"
+      },
+      {
+        prompt: "最後解謎：如果你要寫班級行動宣言，至少提出兩個能持續的日常行動。",
+        groups: [["源頭減量", "重複使用", "節能", "低碳交通", "在地蔬食", "資源回收", "減塑"], ["持續", "日常", "每天", "習慣", "一週"]],
+        keywords: ["源頭減量", "重複使用", "節能", "低碳交通", "在地蔬食", "資源回收", "減塑"],
+        minMatches: 2,
+        hint: "第三段最後一句列出多個行動，請挑兩個，並說明它們要持續做。",
+        success: "很棒。能持續的日常行動，才有機會累積成真正的改變。"
+      }
     ],
     choices: [
       ["選擇能持續執行的小行動，例如減塑、節能、低碳交通與資源回收。", true, "很適合班級推動。永續行動重點是可實踐、可持續、可觀察改變。"],
@@ -766,9 +925,8 @@ const state = {
   completed: new Set(JSON.parse(localStorage.getItem("unit3-panorama-completed") || "[]")),
   quizSessions: {},
   gameLevel: 0,
-  gameChoice: null,
   gameCompleted: new Set(JSON.parse(localStorage.getItem("unit3-game-completed") || "[]")),
-  gameSessions: {},
+  gameInvestigations: JSON.parse(localStorage.getItem("unit3-game-investigations") || "{}"),
   pledges: new Set(JSON.parse(localStorage.getItem("unit3-game-pledges") || "[]"))
 };
 
@@ -808,13 +966,13 @@ const els = {
   gameRole: document.querySelector("#gameRole"),
   gameMission: document.querySelector("#gameMission"),
   gameClues: document.querySelector("#gameClues"),
-  gameChoicePrompt: document.querySelector("#gameChoicePrompt"),
-  gameChoices: document.querySelector("#gameChoices"),
-  gameChoiceFeedback: document.querySelector("#gameChoiceFeedback"),
-  gameQuizIntro: document.querySelector("#gameQuizIntro"),
-  gameQuizOptions: document.querySelector("#gameQuizOptions"),
-  gameSubmitQuiz: document.querySelector("#gameSubmitQuiz"),
-  gameQuizFeedback: document.querySelector("#gameQuizFeedback"),
+  gameArticle: document.querySelector("#gameArticle"),
+  gameInquiryTrail: document.querySelector("#gameInquiryTrail"),
+  gameInquiryPrompt: document.querySelector("#gameInquiryPrompt"),
+  gameAnswer: document.querySelector("#gameAnswer"),
+  gameCheckAnswer: document.querySelector("#gameCheckAnswer"),
+  gameShowHint: document.querySelector("#gameShowHint"),
+  gameInquiryFeedback: document.querySelector("#gameInquiryFeedback"),
   badgeList: document.querySelector("#badgeList"),
   pledgePanel: document.querySelector("#pledgePanel"),
   pledgeActions: document.querySelector("#pledgeActions"),
@@ -1095,29 +1253,38 @@ function currentGameLevel() {
 
 function saveGameProgress() {
   localStorage.setItem("unit3-game-completed", JSON.stringify([...state.gameCompleted]));
+  localStorage.setItem("unit3-game-investigations", JSON.stringify(state.gameInvestigations));
   localStorage.setItem("unit3-game-pledges", JSON.stringify([...state.pledges]));
 }
 
-function createGameSession(level) {
-  const previousAttempt = state.gameSessions[level.id]?.attempt || 0;
+function createInvestigationState() {
   return {
-    attempt: previousAttempt + 1,
-    submitted: false,
-    passed: false,
+    step: 0,
+    solved: [],
+    hints: [],
     feedback: "",
-    questions: shuffle(quizBanks[level.id]).slice(0, 5).map((question) => ({
-      ...question,
-      selected: null,
-      choices: shuffle(question.options.map((text, optionIndex) => ({ text, optionIndex })))
-    }))
+    draft: ""
   };
 }
 
-function getGameSession(level, forceNew = false) {
-  if (forceNew || !state.gameSessions[level.id]) {
-    state.gameSessions[level.id] = createGameSession(level);
+function getInvestigation(level) {
+  if (!state.gameInvestigations[level.id]) {
+    state.gameInvestigations[level.id] = createInvestigationState();
   }
-  return state.gameSessions[level.id];
+  return state.gameInvestigations[level.id];
+}
+
+function normalizeText(text) {
+  return text.toLowerCase().replace(/\s+/g, "");
+}
+
+function answerMatches(answer, step) {
+  const normalized = normalizeText(answer);
+  if (step.keywords && step.minMatches) {
+    const matchedCount = step.keywords.filter((keyword) => normalized.includes(normalizeText(keyword))).length;
+    if (matchedCount < step.minMatches) return false;
+  }
+  return step.groups.every((group) => group.some((keyword) => normalized.includes(normalizeText(keyword))));
 }
 
 function switchMode(mode) {
@@ -1137,7 +1304,6 @@ function switchMode(mode) {
 
 function goToGameLevel(index) {
   state.gameLevel = (index + gameLevels.length) % gameLevels.length;
-  state.gameChoice = null;
   renderGame();
 }
 
@@ -1151,39 +1317,23 @@ function renderGame() {
   els.gameProgressText.textContent = `已取得 ${completedCount} / ${gameLevels.length} 枚徽章`;
   els.gameProgressHint.textContent = completedCount === gameLevels.length
     ? "五大任務完成。可以產生永續行動宣言。"
-    : "完成每關測驗即可取得徽章。";
+    : "解開每關全部追問即可取得徽章。";
 
   els.gameKicker.textContent = `第 ${state.gameLevel + 1} 關｜${level.location}`;
   els.gameTitle.textContent = level.title;
   els.gameScene.textContent = level.scene;
   els.gameRole.textContent = level.role;
   els.gameMission.textContent = level.mission;
-  els.gameChoicePrompt.textContent = level.prompt;
   els.gameClues.innerHTML = level.clues
     .map(([title, text]) => `<article class="clue-card"><strong>${title}</strong><span>${text}</span></article>`)
     .join("");
-
-  els.gameChoices.innerHTML = level.choices
-    .map(([text, good], index) => {
-      const selected = state.gameChoice === index;
-      const classes = ["choice-button", selected ? "selected" : "", selected && good ? "good" : "", selected && !good ? "needs-review" : ""]
-        .filter(Boolean)
-        .join(" ");
-      return `<button class="${classes}" type="button" data-choice-index="${index}">${text}</button>`;
-    })
+  els.gameArticle.innerHTML = level.article
+    .map((paragraph, index) => `<p><span>文本 ${index + 1}</span>${paragraph}</p>`)
     .join("");
-
-  if (state.gameChoice === null) {
-    els.gameChoiceFeedback.textContent = mastered
-      ? `你已取得「${level.badge}」徽章，也可以重新閱讀任務並再練習。`
-      : "先做出任務判斷，再進入下方精熟挑戰。選錯也不會扣分，重點是修正想法。";
-  } else {
-    els.gameChoiceFeedback.textContent = level.choices[state.gameChoice][2];
-  }
 
   renderGameMap();
   renderBadges();
-  renderGameQuiz();
+  renderInquiry();
   renderPledges();
 }
 
@@ -1196,7 +1346,7 @@ function renderGameMap() {
         <button class="game-map-button${active}${completed}" type="button" data-game-level="${index}">
           <span>第 ${index + 1} 關</span>
           <strong>${level.shortTitle}</strong>
-          <i>${state.gameCompleted.has(level.id) ? "已取徽章" : "待挑戰"}</i>
+          <i>${state.gameCompleted.has(level.id) ? "已解謎" : "待探究"}</i>
         </button>
       `;
     })
@@ -1211,124 +1361,102 @@ function renderBadges() {
         <article class="badge-card${earned ? " earned" : ""}">
           <span>${earned ? "✓" : index + 1}</span>
           <strong>${level.badge}</strong>
-          <small>${earned ? "已取得" : "完成本關取得"}</small>
+          <small>${earned ? "已取得" : "解開本關取得"}</small>
         </article>
       `;
     })
     .join("");
 }
 
-function renderGameQuiz() {
+function renderInquiry() {
   const level = currentGameLevel();
-  const session = getGameSession(level);
-  const masteredText = state.gameCompleted.has(level.id)
-    ? "本關已取得徽章，仍可再練習一次。"
-    : "每次隨機抽 5 題，必須 5 題全對才取得徽章。";
+  const investigation = getInvestigation(level);
+  const currentStep = level.inquiries[investigation.step];
+  const solvedCount = Math.min(investigation.solved.length, level.inquiries.length);
+  const completed = solvedCount === level.inquiries.length;
 
-  els.gameQuizIntro.textContent = `題庫 15 題｜本輪 5 題｜第 ${session.attempt} 次挑戰。${masteredText}`;
-  els.gameQuizFeedback.textContent = session.feedback || "";
+  els.gameInquiryTrail.innerHTML = level.inquiries
+    .map((step, index) => {
+      const stateClass = index < solvedCount ? " solved" : index === solvedCount ? " current" : "";
+      return `<span class="${stateClass}">${index + 1}</span>`;
+    })
+    .join("");
 
-  if (session.submitted && session.passed && state.gameLevel < gameLevels.length - 1) {
-    els.gameSubmitQuiz.textContent = "前往下一關";
-  } else if (session.submitted && session.passed) {
-    els.gameSubmitQuiz.textContent = "再練習一次";
-  } else if (session.submitted) {
-    els.gameSubmitQuiz.textContent = "重新洗題再挑戰";
-  } else {
-    els.gameSubmitQuiz.textContent = "送出闖關答案";
+  if (completed) {
+    els.gameInquiryPrompt.textContent = `本關解謎完成。你已經能說明「${level.shortTitle}」的核心概念。`;
+    els.gameAnswer.value = "";
+    els.gameAnswer.disabled = true;
+    els.gameCheckAnswer.textContent = state.gameLevel < gameLevels.length - 1 ? "前往下一關" : "重新探究本關";
+    els.gameShowHint.disabled = true;
+    els.gameInquiryFeedback.textContent = investigation.feedback || `取得「${level.badge}」徽章。`;
+    return;
   }
 
-  els.gameQuizOptions.innerHTML = session.questions
-    .map((question, questionIndex) => {
-      const choices = question.choices
-        .map((choice) => {
-          const selected = question.selected === choice.optionIndex;
-          const isCorrect = choice.optionIndex === question.answer;
-          const classes = [
-            "quiz-option",
-            selected ? "selected" : "",
-            session.submitted && isCorrect ? "correct" : "",
-            session.submitted && selected && !isCorrect ? "incorrect" : ""
-          ].filter(Boolean).join(" ");
-          return `
-            <button
-              class="${classes}"
-              type="button"
-              data-game-question="${questionIndex}"
-              data-game-answer="${choice.optionIndex}"
-              ${session.submitted ? "disabled" : ""}
-            >${choice.text}</button>
-          `;
-        })
-        .join("");
-      return `
-        <article class="quiz-card">
-          <div class="quiz-card-head">
-            <span>第 ${questionIndex + 1} 題</span>
-            <strong>${question.question}</strong>
-          </div>
-          <div class="quiz-choice-list">${choices}</div>
-        </article>
-      `;
-    })
-    .join("");
+  els.gameInquiryPrompt.textContent = `追問 ${investigation.step + 1} / ${level.inquiries.length}：${currentStep.prompt}`;
+  els.gameAnswer.disabled = false;
+  els.gameAnswer.value = investigation.draft || "";
+  els.gameCheckAnswer.textContent = "提交推理";
+  els.gameShowHint.disabled = false;
+  els.gameInquiryFeedback.textContent = investigation.feedback || "請回到案件文本與線索卡找證據，再用自己的話回答。";
 }
 
-function selectGameChoice(index) {
-  state.gameChoice = index;
-  renderGame();
-}
-
-function selectGameQuizOption(button) {
+function checkInquiryAnswer() {
   const level = currentGameLevel();
-  const session = getGameSession(level);
-  if (session.submitted) return;
-  const questionIndex = Number(button.dataset.gameQuestion);
-  const answerIndex = Number(button.dataset.gameAnswer);
-  session.questions[questionIndex].selected = answerIndex;
-  session.feedback = "";
-  renderGameQuiz();
-}
+  const investigation = getInvestigation(level);
 
-function submitGameQuizRound() {
-  const level = currentGameLevel();
-  const session = getGameSession(level);
-
-  if (session.submitted) {
-    if (session.passed && state.gameLevel < gameLevels.length - 1) {
+  if (investigation.solved.length === level.inquiries.length) {
+    if (state.gameLevel < gameLevels.length - 1) {
       goToGameLevel(state.gameLevel + 1);
       return;
     }
-    state.gameSessions[level.id] = createGameSession(level);
-    renderGameQuiz();
-    return;
-  }
-
-  const unanswered = session.questions.filter((question) => question.selected === null).length;
-  if (unanswered > 0) {
-    session.feedback = `還有 ${unanswered} 題尚未作答。先完成五題，再送出答案。`;
-    els.gameQuizFeedback.textContent = session.feedback;
-    return;
-  }
-
-  const correctCount = session.questions.filter((question) => question.selected === question.answer).length;
-  session.submitted = true;
-  session.passed = correctCount === session.questions.length;
-
-  if (session.passed) {
-    state.gameCompleted.add(level.id);
+    state.gameInvestigations[level.id] = createInvestigationState();
     saveGameProgress();
-    session.feedback = `闖關成功。5 題全對，取得「${level.badge}」徽章。`;
-  } else {
-    const explanations = session.questions
-      .filter((question) => question.selected !== question.answer)
-      .slice(0, 2)
-      .map((question) => `「${question.question}」${question.explain}`)
-      .join(" ");
-    session.feedback = `本輪答對 ${correctCount} / 5，尚未取得徽章。閱讀解析後按「重新洗題再挑戰」。${explanations}`;
+    renderGame();
+    return;
   }
 
-  renderGame();
+  const answer = els.gameAnswer.value.trim();
+  investigation.draft = answer;
+  if (answer.length < 4) {
+    investigation.feedback = "再多寫一點點。請用一句完整的推理，把你找到的證據放進答案。";
+    renderInquiry();
+    return;
+  }
+
+  const step = level.inquiries[investigation.step];
+  if (answerMatches(answer, step)) {
+    investigation.solved.push({
+      prompt: step.prompt,
+      answer,
+      success: step.success
+    });
+    investigation.step += 1;
+    investigation.draft = "";
+    investigation.hints = [];
+    investigation.feedback = step.success;
+
+    if (investigation.step === level.inquiries.length) {
+      state.gameCompleted.add(level.id);
+      investigation.feedback = `本關解謎成功。你完成全部追問，取得「${level.badge}」徽章。`;
+    }
+    saveGameProgress();
+    renderGame();
+    return;
+  }
+
+  investigation.feedback = `還差一點。你的答案還沒有包含這題需要的關鍵概念。${step.hint}`;
+  saveGameProgress();
+  renderInquiry();
+}
+
+function showInquiryHint() {
+  const level = currentGameLevel();
+  const investigation = getInvestigation(level);
+  const step = level.inquiries[investigation.step];
+  if (!step) return;
+  investigation.feedback = `提示：${step.hint}`;
+  saveGameProgress();
+  renderInquiry();
 }
 
 function renderPledges() {
@@ -1399,8 +1527,7 @@ document.querySelector("#resetProgress").addEventListener("click", () => {
 
 document.querySelector("#resetGame").addEventListener("click", () => {
   state.gameCompleted.clear();
-  state.gameSessions = {};
-  state.gameChoice = null;
+  state.gameInvestigations = {};
   state.pledges.clear();
   saveGameProgress();
   renderGame();
@@ -1433,19 +1560,14 @@ els.gameMap.addEventListener("click", (event) => {
   goToGameLevel(Number(button.dataset.gameLevel));
 });
 
-els.gameChoices.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-choice-index]");
-  if (!button) return;
-  selectGameChoice(Number(button.dataset.choiceIndex));
+els.gameAnswer.addEventListener("input", () => {
+  const investigation = getInvestigation(currentGameLevel());
+  investigation.draft = els.gameAnswer.value;
+  saveGameProgress();
 });
 
-els.gameQuizOptions.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-game-question][data-game-answer]");
-  if (!button) return;
-  selectGameQuizOption(button);
-});
-
-els.gameSubmitQuiz.addEventListener("click", submitGameQuizRound);
+els.gameCheckAnswer.addEventListener("click", checkInquiryAnswer);
+els.gameShowHint.addEventListener("click", showInquiryHint);
 
 els.pledgeActions.addEventListener("click", (event) => {
   const button = event.target.closest("[data-pledge]");
