@@ -17,11 +17,15 @@
         </div>
       </div>
       <div class="top-actions" aria-label="全域工具">
+        <div class="mode-switch" aria-label="模式切換">
+          <button class="mode-button active" id="showPanorama" type="button">知識全景</button>
+          <button class="mode-button" id="showGame" type="button">文字闖關</button>
+        </div>
         <button class="tool-button active" id="toggleHotspots" type="button">熱點</button>
       </div>
     </header>
 
-    <main class="workspace">
+    <main class="workspace" id="panoramaWorkspace">
       <aside class="rail" aria-label="全景圖清單">
         <div class="rail-head">
           <span class="leaf-mark"></span>
@@ -95,6 +99,76 @@
           <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
         </section>
       </aside>
+    </main>
+
+    <main class="game-screen is-hidden" id="gameScreen" aria-label="文字闖關遊戲">
+      <section class="game-hero">
+        <div>
+          <span class="game-eyebrow">文字闖關模式</span>
+          <h2>地球守護者：五大環境任務</h2>
+          <p>閱讀任務、蒐集線索、做出選擇，再通過每關 5 題精熟挑戰。全部完成後，學生可以產生自己的永續行動宣言。</p>
+        </div>
+        <div class="game-progress-card">
+          <strong id="gameProgressText">已取得 0 / 5 枚徽章</strong>
+          <span id="gameProgressHint">完成每關測驗即可取得徽章。</span>
+          <button class="ghost-button" id="resetGame" type="button">重置闖關進度</button>
+        </div>
+      </section>
+
+      <section class="game-layout">
+        <aside class="game-map" aria-label="關卡地圖">
+          <h2>任務地圖</h2>
+          <nav id="gameMap"></nav>
+        </aside>
+
+        <section class="game-card" aria-label="目前關卡">
+          <div class="game-level-head">
+            <span id="gameKicker">第 1 關</span>
+            <h2 id="gameTitle"></h2>
+            <p id="gameScene"></p>
+          </div>
+
+          <div class="game-mission">
+            <strong id="gameRole"></strong>
+            <span id="gameMission"></span>
+          </div>
+
+          <div class="clue-grid" id="gameClues"></div>
+
+          <section class="choice-panel">
+            <div class="mini-title">
+              <span>選</span>
+              <h3>任務判斷</h3>
+            </div>
+            <p id="gameChoicePrompt"></p>
+            <div class="game-choices" id="gameChoices"></div>
+            <p class="choice-feedback" id="gameChoiceFeedback" aria-live="polite"></p>
+          </section>
+
+          <section class="game-quiz-panel">
+            <div class="mini-title">
+              <span>測</span>
+              <h3>精熟挑戰</h3>
+            </div>
+            <p id="gameQuizIntro"></p>
+            <div class="game-quiz-list" id="gameQuizOptions"></div>
+            <button class="primary-button" id="gameSubmitQuiz" type="button">送出闖關答案</button>
+            <p class="quiz-feedback" id="gameQuizFeedback" aria-live="polite"></p>
+          </section>
+        </section>
+
+        <aside class="badge-panel" aria-label="徽章與宣言">
+          <h2>守護者徽章</h2>
+          <div class="badge-list" id="badgeList"></div>
+
+          <section class="pledge-panel" id="pledgePanel">
+            <h3>我的永續行動宣言</h3>
+            <p>完成五關後，選擇三項自己願意實踐的行動。</p>
+            <div class="pledge-actions" id="pledgeActions"></div>
+            <div class="pledge-result" id="pledgeResult"></div>
+          </section>
+        </aside>
+      </section>
     </main>
   </div>
 

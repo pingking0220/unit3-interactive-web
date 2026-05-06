@@ -488,6 +488,128 @@ slides.forEach((slide) => {
   slide.quizBank = quizBanks[slide.id];
 });
 
+const gameLevels = [
+  {
+    id: "bio",
+    badge: "臺灣生態觀察員",
+    shortTitle: "生物多樣性",
+    location: "中央山脈到西部海岸",
+    role: "你的身分：小小生態調查員",
+    title: "臺灣生物多樣性調查",
+    scene: "你收到一份調查任務：為什麼臺灣面積不大，卻有山椒魚、臺灣黑熊、候鳥、臺灣百合與許多特有種？請從地形、氣候與棲地線索找出答案。",
+    mission: "判斷臺灣生物多樣性高的原因，並能分辨遺傳多樣性、物種多樣性與生態系多樣性。",
+    prompt: "你要向同學解釋「臺灣生物多樣性高」的主因，最適合先使用哪個說法？",
+    clues: [
+      ["立體氣候帶", "臺灣從海岸、平原、丘陵到 3000 公尺以上高山，短距離內就能出現不同溫度與植被。"],
+      ["島嶼與隔離", "不同山區、溪流源頭與島嶼位置，讓族群交流變少，可能逐漸形成差異。"],
+      ["三層多樣性", "同種內差異、不同物種種類，以及森林、溪流、濕地、海岸等環境，都是生物多樣性。"],
+      ["保育警訊", "棲地破壞、外來種競爭、獵捕與氣候變遷，都可能讓族群數量下降。"]
+    ],
+    choices: [
+      ["臺灣因海拔、氣候與棲地差異大，所以能支持多樣生物。", true, "判斷很好。你抓到核心因果：環境多樣，棲地多樣，生物也更可能多樣。"],
+      ["臺灣只有一種氣候，所以所有生物都集中在同一種環境。", false, "這個說法需要修正。臺灣的重點不是單一氣候，而是海拔與環境變化很大。"],
+      ["只要把動物都放進保護區，就不需要保護棲地。", false, "這樣還不夠。保育要保護生物，也要保護牠覓食、繁殖與移動所需的棲地。"]
+    ]
+  },
+  {
+    id: "invasive",
+    badge: "入侵種防線守衛",
+    shortTitle: "外來入侵種",
+    location: "濕地邊緣與農田水路",
+    role: "你的身分：入侵種調查員",
+    title: "外來入侵種危機",
+    scene: "濕地突然出現大量陌生植物，水面被蓋住，附近農田也傳出福壽螺啃食作物。你要判斷這些外來物種是否已經造成生態衝擊。",
+    mission: "分辨外來物種與外來入侵種，理解引進、逃逸、棄養與快速擴散的風險。",
+    prompt: "你會如何向同學說明「外來種」與「外來入侵種」的差別？",
+    clues: [
+      ["不一定有害", "番茄、番薯等也來自其他地區，但外來物種不一定都會破壞生態。"],
+      ["成群繁殖", "若外來生物在新環境大量繁殖，並搶奪食物、棲地或陽光，就可能變成入侵種。"],
+      ["人類途徑", "貨運、觀賞、寵物、產業材料、棄養與逃逸，都可能讓外來生物進入野外。"],
+      ["預防優先", "不非法引入、不任意棄養、不購買來源不明的動植物，是最有效的防線。"]
+    ],
+    choices: [
+      ["先確認是否由人類引入、是否大量繁殖、是否影響原生生態。", true, "判斷很完整。這三個問題能幫你從外來物種進一步判斷是否成為入侵種。"],
+      ["只要不是臺灣原本就有的生物，就一定要稱為入侵種。", false, "需要再精準一點。外來物種不一定造成危害，造成衝擊才是入侵種。"],
+      ["看到不想養的動植物，可以放到野外讓牠自由生活。", false, "這是高風險做法。棄養可能讓外來生物進入自然環境並造成生態問題。"]
+    ]
+  },
+  {
+    id: "impact",
+    badge: "環境偵探",
+    shortTitle: "環境衝擊",
+    location: "河川、城市道路與淺山棲地",
+    role: "你的身分：環境問題偵探",
+    title: "人類活動與環境衝擊",
+    scene: "你來到一條河川，發現魚類死亡、附近道路車流量大，山坡地也正在開發。你要找出水污染、空氣污染與棲地破壞的因果關係。",
+    mission: "辨認污染來源與棲地破碎化，思考人類便利、健康安全與生物多樣性的平衡。",
+    prompt: "如果一條河川出現魚類死亡，你第一步最適合怎麼調查？",
+    clues: [
+      ["水污染來源", "工廠廢水、家庭污水、畜牧污水、廢油與垃圾，都可能污染河川。"],
+      ["空氣污染", "工廠、汽機車與燃燒行為可能產生臭氧、二氧化硫、懸浮微粒等污染物。"],
+      ["棲地切割", "道路、開墾與工程可能把完整棲地切成小塊，增加動物移動與路殺風險。"],
+      ["生物價值", "糧食、醫藥、建材、衣物原料與清潔材料，都與生物多樣性有關。"]
+    ],
+    choices: [
+      ["記錄污染來源、地點、時間與受影響生物，再比較可能原因。", true, "這是可靠的偵探做法。先蒐證，再根據證據判斷原因。"],
+      ["只要看到工廠，就直接判定所有問題都是工廠造成。", false, "還需要證據。環境問題可能有多種來源，調查要記錄資料並比較可能性。"],
+      ["道路讓人類方便，所以不需要評估對生物的影響。", false, "便利很重要，但道路可能切割棲地。好的決策要同時看人類需求與生態代價。"]
+    ]
+  },
+  {
+    id: "climate",
+    badge: "氣候變遷解謎者",
+    shortTitle: "全球暖化",
+    location: "未來氣候觀測站",
+    role: "你的身分：氣候資料解謎者",
+    title: "全球暖化與氣候變遷",
+    scene: "未來觀測站傳來警訊：熱浪、洪水、乾旱、森林大火增加，珊瑚白化與寒帶棲地縮小也更常被討論。你要破解溫室效應與暖化的關係。",
+    mission: "理解正常與異常溫室效應，辨認溫室氣體來源，推論氣候變遷對生物與人類生活的影響。",
+    prompt: "面對同學說「今天很冷，所以沒有全球暖化」，你會怎麼回應？",
+    clues: [
+      ["天氣與氣候", "今天冷或明天下雨是天氣；長時間統計出的溫度、雨量與季節型態才是氣候。"],
+      ["正常溫室效應", "適量溫室氣體能維持地球適合生命的溫度。"],
+      ["異常加劇", "化石燃料燃燒、森林砍伐與甲烷排放，會讓溫室氣體過多並提高平均溫度。"],
+      ["影響擴散", "海平面、冰雪、農作物、水資源、健康與生物棲地都可能受到影響。"]
+    ],
+    choices: [
+      ["用長期資料判斷氣候趨勢，不能只用某一天的天氣下結論。", true, "回應精準。全球暖化討論的是長期平均趨勢，不是單一天氣。"],
+      ["只要有一天很冷，就能證明全球暖化不存在。", false, "這是常見誤解。單日天氣不能代表長期氣候趨勢。"],
+      ["溫室效應完全有害，地球最好沒有任何溫室氣體。", false, "需要修正。正常溫室效應讓地球適合生命，問題是人為排放使它異常加劇。"]
+    ]
+  },
+  {
+    id: "action",
+    badge: "永續家園設計師",
+    shortTitle: "永續行動",
+    location: "2050 永續校園工作坊",
+    role: "你的身分：永續行動設計師",
+    title: "打造永續家園行動圖",
+    scene: "校園準備提出 2050 永續行動方案。你要把前四關學到的知識轉成可實踐的行動，從能源、碳足跡、水足跡與日常習慣開始。",
+    mission: "比較友善能源的優缺點，理解碳足跡與水足跡，設計能持續執行的綠色行動。",
+    prompt: "如果要設計班級永續行動，你會優先採取哪一種策略？",
+    clues: [
+      ["淨零觀念", "先降低排放，再用森林碳匯或負碳技術抵消難以避免的排放。"],
+      ["能源選擇", "風力、太陽能與水力較低污染，但仍有地點、設備、天候與生態影響限制。"],
+      ["足跡思考", "碳足跡看溫室氣體排放，水足跡看直接與間接耗用的水資源。"],
+      ["日常行動", "源頭減量、重複使用、節約能源、低碳交通、在地蔬食與資源回收都能累積效果。"]
+    ],
+    choices: [
+      ["選擇能持續執行的小行動，例如減塑、節能、低碳交通與資源回收。", true, "很適合班級推動。永續行動重點是可實踐、可持續、可觀察改變。"],
+      ["只要偶爾做一次大型活動，平常就不需要改變習慣。", false, "大型活動有宣傳效果，但日常持續行動更能累積環境效益。"],
+      ["友善能源完全沒有任何限制，所以不需要評估地點與生態影響。", false, "仍要評估。友善能源較低污染，但也需要考量設備、天候、土地與生態。"]
+    ]
+  }
+];
+
+const pledgeChoices = [
+  "自備水壺與餐具，減少一次性用品",
+  "離開教室隨手關燈與電扇",
+  "短距離步行或騎腳踏車",
+  "每週至少一天選擇低碳蔬食",
+  "購買前先想是否真的需要",
+  "正確分類回收並減少過度包裝"
+];
+
 const hotspotReadings = {
   bio: {
     "環境梯度": [
@@ -636,16 +758,26 @@ function getHotspotReadings(slide, hotspot) {
 }
 
 const state = {
+  mode: "panorama",
   current: 0,
   selectedHotspot: 0,
   activeTab: "focus",
   hotspotsVisible: true,
   completed: new Set(JSON.parse(localStorage.getItem("unit3-panorama-completed") || "[]")),
-  quizSessions: {}
+  quizSessions: {},
+  gameLevel: 0,
+  gameChoice: null,
+  gameCompleted: new Set(JSON.parse(localStorage.getItem("unit3-game-completed") || "[]")),
+  gameSessions: {},
+  pledges: new Set(JSON.parse(localStorage.getItem("unit3-game-pledges") || "[]"))
 };
 
 const els = {
   app: document.querySelector(".app"),
+  panoramaWorkspace: document.querySelector("#panoramaWorkspace"),
+  gameScreen: document.querySelector("#gameScreen"),
+  showPanorama: document.querySelector("#showPanorama"),
+  showGame: document.querySelector("#showGame"),
   slideNav: document.querySelector("#slideNav"),
   progressText: document.querySelector("#progressText"),
   progressBar: document.querySelector("#progressBar"),
@@ -666,7 +798,27 @@ const els = {
   quizOptions: document.querySelector("#quizOptions"),
   submitQuiz: document.querySelector("#submitQuiz"),
   quizFeedback: document.querySelector("#quizFeedback"),
-  toggleHotspots: document.querySelector("#toggleHotspots")
+  toggleHotspots: document.querySelector("#toggleHotspots"),
+  gameProgressText: document.querySelector("#gameProgressText"),
+  gameProgressHint: document.querySelector("#gameProgressHint"),
+  gameMap: document.querySelector("#gameMap"),
+  gameKicker: document.querySelector("#gameKicker"),
+  gameTitle: document.querySelector("#gameTitle"),
+  gameScene: document.querySelector("#gameScene"),
+  gameRole: document.querySelector("#gameRole"),
+  gameMission: document.querySelector("#gameMission"),
+  gameClues: document.querySelector("#gameClues"),
+  gameChoicePrompt: document.querySelector("#gameChoicePrompt"),
+  gameChoices: document.querySelector("#gameChoices"),
+  gameChoiceFeedback: document.querySelector("#gameChoiceFeedback"),
+  gameQuizIntro: document.querySelector("#gameQuizIntro"),
+  gameQuizOptions: document.querySelector("#gameQuizOptions"),
+  gameSubmitQuiz: document.querySelector("#gameSubmitQuiz"),
+  gameQuizFeedback: document.querySelector("#gameQuizFeedback"),
+  badgeList: document.querySelector("#badgeList"),
+  pledgePanel: document.querySelector("#pledgePanel"),
+  pledgeActions: document.querySelector("#pledgeActions"),
+  pledgeResult: document.querySelector("#pledgeResult")
 };
 
 function currentSlide() {
@@ -937,6 +1089,286 @@ function submitQuizRound() {
   renderQuiz();
 }
 
+function currentGameLevel() {
+  return gameLevels[state.gameLevel];
+}
+
+function saveGameProgress() {
+  localStorage.setItem("unit3-game-completed", JSON.stringify([...state.gameCompleted]));
+  localStorage.setItem("unit3-game-pledges", JSON.stringify([...state.pledges]));
+}
+
+function createGameSession(level) {
+  const previousAttempt = state.gameSessions[level.id]?.attempt || 0;
+  return {
+    attempt: previousAttempt + 1,
+    submitted: false,
+    passed: false,
+    feedback: "",
+    questions: shuffle(quizBanks[level.id]).slice(0, 5).map((question) => ({
+      ...question,
+      selected: null,
+      choices: shuffle(question.options.map((text, optionIndex) => ({ text, optionIndex })))
+    }))
+  };
+}
+
+function getGameSession(level, forceNew = false) {
+  if (forceNew || !state.gameSessions[level.id]) {
+    state.gameSessions[level.id] = createGameSession(level);
+  }
+  return state.gameSessions[level.id];
+}
+
+function switchMode(mode) {
+  state.mode = mode;
+  els.panoramaWorkspace.classList.toggle("is-hidden", mode !== "panorama");
+  els.gameScreen.classList.toggle("is-hidden", mode !== "game");
+  els.showPanorama.classList.toggle("active", mode === "panorama");
+  els.showGame.classList.toggle("active", mode === "game");
+  els.toggleHotspots.classList.toggle("is-hidden", mode !== "panorama");
+  if (mode === "panorama") {
+    setTheme(currentSlide());
+  }
+  if (mode === "game") {
+    renderGame();
+  }
+}
+
+function goToGameLevel(index) {
+  state.gameLevel = (index + gameLevels.length) % gameLevels.length;
+  state.gameChoice = null;
+  renderGame();
+}
+
+function renderGame() {
+  const level = currentGameLevel();
+  const completedCount = state.gameCompleted.size;
+  const mastered = state.gameCompleted.has(level.id);
+  const themeSlide = slides.find((slide) => slide.id === level.id);
+
+  setTheme(themeSlide);
+  els.gameProgressText.textContent = `已取得 ${completedCount} / ${gameLevels.length} 枚徽章`;
+  els.gameProgressHint.textContent = completedCount === gameLevels.length
+    ? "五大任務完成。可以產生永續行動宣言。"
+    : "完成每關測驗即可取得徽章。";
+
+  els.gameKicker.textContent = `第 ${state.gameLevel + 1} 關｜${level.location}`;
+  els.gameTitle.textContent = level.title;
+  els.gameScene.textContent = level.scene;
+  els.gameRole.textContent = level.role;
+  els.gameMission.textContent = level.mission;
+  els.gameChoicePrompt.textContent = level.prompt;
+  els.gameClues.innerHTML = level.clues
+    .map(([title, text]) => `<article class="clue-card"><strong>${title}</strong><span>${text}</span></article>`)
+    .join("");
+
+  els.gameChoices.innerHTML = level.choices
+    .map(([text, good], index) => {
+      const selected = state.gameChoice === index;
+      const classes = ["choice-button", selected ? "selected" : "", selected && good ? "good" : "", selected && !good ? "needs-review" : ""]
+        .filter(Boolean)
+        .join(" ");
+      return `<button class="${classes}" type="button" data-choice-index="${index}">${text}</button>`;
+    })
+    .join("");
+
+  if (state.gameChoice === null) {
+    els.gameChoiceFeedback.textContent = mastered
+      ? `你已取得「${level.badge}」徽章，也可以重新閱讀任務並再練習。`
+      : "先做出任務判斷，再進入下方精熟挑戰。選錯也不會扣分，重點是修正想法。";
+  } else {
+    els.gameChoiceFeedback.textContent = level.choices[state.gameChoice][2];
+  }
+
+  renderGameMap();
+  renderBadges();
+  renderGameQuiz();
+  renderPledges();
+}
+
+function renderGameMap() {
+  els.gameMap.innerHTML = gameLevels
+    .map((level, index) => {
+      const active = index === state.gameLevel ? " active" : "";
+      const completed = state.gameCompleted.has(level.id) ? " completed" : "";
+      return `
+        <button class="game-map-button${active}${completed}" type="button" data-game-level="${index}">
+          <span>第 ${index + 1} 關</span>
+          <strong>${level.shortTitle}</strong>
+          <i>${state.gameCompleted.has(level.id) ? "已取徽章" : "待挑戰"}</i>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderBadges() {
+  els.badgeList.innerHTML = gameLevels
+    .map((level, index) => {
+      const earned = state.gameCompleted.has(level.id);
+      return `
+        <article class="badge-card${earned ? " earned" : ""}">
+          <span>${earned ? "✓" : index + 1}</span>
+          <strong>${level.badge}</strong>
+          <small>${earned ? "已取得" : "完成本關取得"}</small>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderGameQuiz() {
+  const level = currentGameLevel();
+  const session = getGameSession(level);
+  const masteredText = state.gameCompleted.has(level.id)
+    ? "本關已取得徽章，仍可再練習一次。"
+    : "每次隨機抽 5 題，必須 5 題全對才取得徽章。";
+
+  els.gameQuizIntro.textContent = `題庫 15 題｜本輪 5 題｜第 ${session.attempt} 次挑戰。${masteredText}`;
+  els.gameQuizFeedback.textContent = session.feedback || "";
+
+  if (session.submitted && session.passed && state.gameLevel < gameLevels.length - 1) {
+    els.gameSubmitQuiz.textContent = "前往下一關";
+  } else if (session.submitted && session.passed) {
+    els.gameSubmitQuiz.textContent = "再練習一次";
+  } else if (session.submitted) {
+    els.gameSubmitQuiz.textContent = "重新洗題再挑戰";
+  } else {
+    els.gameSubmitQuiz.textContent = "送出闖關答案";
+  }
+
+  els.gameQuizOptions.innerHTML = session.questions
+    .map((question, questionIndex) => {
+      const choices = question.choices
+        .map((choice) => {
+          const selected = question.selected === choice.optionIndex;
+          const isCorrect = choice.optionIndex === question.answer;
+          const classes = [
+            "quiz-option",
+            selected ? "selected" : "",
+            session.submitted && isCorrect ? "correct" : "",
+            session.submitted && selected && !isCorrect ? "incorrect" : ""
+          ].filter(Boolean).join(" ");
+          return `
+            <button
+              class="${classes}"
+              type="button"
+              data-game-question="${questionIndex}"
+              data-game-answer="${choice.optionIndex}"
+              ${session.submitted ? "disabled" : ""}
+            >${choice.text}</button>
+          `;
+        })
+        .join("");
+      return `
+        <article class="quiz-card">
+          <div class="quiz-card-head">
+            <span>第 ${questionIndex + 1} 題</span>
+            <strong>${question.question}</strong>
+          </div>
+          <div class="quiz-choice-list">${choices}</div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function selectGameChoice(index) {
+  state.gameChoice = index;
+  renderGame();
+}
+
+function selectGameQuizOption(button) {
+  const level = currentGameLevel();
+  const session = getGameSession(level);
+  if (session.submitted) return;
+  const questionIndex = Number(button.dataset.gameQuestion);
+  const answerIndex = Number(button.dataset.gameAnswer);
+  session.questions[questionIndex].selected = answerIndex;
+  session.feedback = "";
+  renderGameQuiz();
+}
+
+function submitGameQuizRound() {
+  const level = currentGameLevel();
+  const session = getGameSession(level);
+
+  if (session.submitted) {
+    if (session.passed && state.gameLevel < gameLevels.length - 1) {
+      goToGameLevel(state.gameLevel + 1);
+      return;
+    }
+    state.gameSessions[level.id] = createGameSession(level);
+    renderGameQuiz();
+    return;
+  }
+
+  const unanswered = session.questions.filter((question) => question.selected === null).length;
+  if (unanswered > 0) {
+    session.feedback = `還有 ${unanswered} 題尚未作答。先完成五題，再送出答案。`;
+    els.gameQuizFeedback.textContent = session.feedback;
+    return;
+  }
+
+  const correctCount = session.questions.filter((question) => question.selected === question.answer).length;
+  session.submitted = true;
+  session.passed = correctCount === session.questions.length;
+
+  if (session.passed) {
+    state.gameCompleted.add(level.id);
+    saveGameProgress();
+    session.feedback = `闖關成功。5 題全對，取得「${level.badge}」徽章。`;
+  } else {
+    const explanations = session.questions
+      .filter((question) => question.selected !== question.answer)
+      .slice(0, 2)
+      .map((question) => `「${question.question}」${question.explain}`)
+      .join(" ");
+    session.feedback = `本輪答對 ${correctCount} / 5，尚未取得徽章。閱讀解析後按「重新洗題再挑戰」。${explanations}`;
+  }
+
+  renderGame();
+}
+
+function renderPledges() {
+  const allCompleted = state.gameCompleted.size === gameLevels.length;
+  els.pledgePanel.classList.toggle("locked", !allCompleted);
+  els.pledgeActions.innerHTML = pledgeChoices
+    .map((choice) => {
+      const selected = state.pledges.has(choice);
+      return `<button class="pledge-button${selected ? " selected" : ""}" type="button" data-pledge="${choice}" ${!allCompleted ? "disabled" : ""}>${choice}</button>`;
+    })
+    .join("");
+
+  if (!allCompleted) {
+    els.pledgeResult.textContent = "完成五關後，這裡會解鎖行動宣言。";
+    return;
+  }
+
+  const selected = [...state.pledges];
+  if (selected.length < 3) {
+    els.pledgeResult.textContent = `已選 ${selected.length} / 3。請選擇三項可以持續做到的行動。`;
+    return;
+  }
+
+  els.pledgeResult.innerHTML = `
+    <strong>我的永續行動宣言</strong>
+    <span>我願意從今天開始：${selected.slice(0, 3).join("、")}。讓地球守護從日常開始。</span>
+  `;
+}
+
+function togglePledge(choice) {
+  if (state.gameCompleted.size !== gameLevels.length) return;
+  if (state.pledges.has(choice)) {
+    state.pledges.delete(choice);
+  } else if (state.pledges.size < 3) {
+    state.pledges.add(choice);
+  }
+  saveGameProgress();
+  renderPledges();
+}
+
 els.slideNav.addEventListener("click", (event) => {
   const button = event.target.closest("[data-slide]");
   if (!button) return;
@@ -965,6 +1397,15 @@ document.querySelector("#resetProgress").addEventListener("click", () => {
   renderProgress();
 });
 
+document.querySelector("#resetGame").addEventListener("click", () => {
+  state.gameCompleted.clear();
+  state.gameSessions = {};
+  state.gameChoice = null;
+  state.pledges.clear();
+  saveGameProgress();
+  renderGame();
+});
+
 document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", () => switchTab(tab.dataset.tab));
 });
@@ -983,7 +1424,43 @@ els.toggleHotspots.addEventListener("click", () => {
   renderHotspots();
 });
 
+els.showPanorama.addEventListener("click", () => switchMode("panorama"));
+els.showGame.addEventListener("click", () => switchMode("game"));
+
+els.gameMap.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-game-level]");
+  if (!button) return;
+  goToGameLevel(Number(button.dataset.gameLevel));
+});
+
+els.gameChoices.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-choice-index]");
+  if (!button) return;
+  selectGameChoice(Number(button.dataset.choiceIndex));
+});
+
+els.gameQuizOptions.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-game-question][data-game-answer]");
+  if (!button) return;
+  selectGameQuizOption(button);
+});
+
+els.gameSubmitQuiz.addEventListener("click", submitGameQuizRound);
+
+els.pledgeActions.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-pledge]");
+  if (!button) return;
+  togglePledge(button.dataset.pledge);
+});
+
 document.addEventListener("keydown", (event) => {
+  if (state.mode === "game") {
+    if (event.key === "ArrowLeft") goToGameLevel(state.gameLevel - 1);
+    if (event.key === "ArrowRight") goToGameLevel(state.gameLevel + 1);
+    const gameNumber = Number(event.key);
+    if (gameNumber >= 1 && gameNumber <= gameLevels.length) goToGameLevel(gameNumber - 1);
+    return;
+  }
   if (event.key === "ArrowLeft") goToSlide(state.current - 1);
   if (event.key === "ArrowRight") goToSlide(state.current + 1);
   const number = Number(event.key);
@@ -991,9 +1468,14 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderSlide();
+renderGame();
 const initialHash = window.location.hash;
 const slideHash = initialHash.match(/^#slide-(\d)(?:-(focus|hotspot|quiz))?$/);
-if (slideHash) {
+const gameHash = initialHash.match(/^#game(?:-(\d))?$/);
+if (gameHash) {
+  switchMode("game");
+  if (gameHash[1]) goToGameLevel(Number(gameHash[1]) - 1);
+} else if (slideHash) {
   goToSlide(Number(slideHash[1]) - 1);
   if (slideHash[2]) switchTab(slideHash[2]);
 } else if (initialHash === "#quiz") {
