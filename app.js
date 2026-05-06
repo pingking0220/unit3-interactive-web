@@ -760,6 +760,58 @@ const gameLevels = [
   }
 ];
 
+const escapeStories = {
+  bio: {
+    room: "霧鎖標本室",
+    alarm: "高山棲地圖層破碎，山椒魚標本櫃進入封鎖。",
+    lock: "環境梯度鎖",
+    code: "ALT-3500",
+    role: "你的身分：被困在標本室的小小生態調查員",
+    scene: "深夜的自然史標本室突然停電，牆上的臺灣立體地圖亮起紅光。山椒魚標本櫃開始倒數封鎖，出口門禁要求你重建「臺灣為何孕育多樣生命」的證據鏈。",
+    mission: "解除條件：找出地形、氣候、隔離與棲地之間的關係，恢復標本室的生物多樣性檔案。"
+  },
+  invasive: {
+    room: "貨櫃溫室",
+    alarm: "未知生物訊號快速增加，濕地艙水位異常。",
+    lock: "入侵判別鎖",
+    code: "ALIEN-RISK",
+    role: "你的身分：被派往貨櫃溫室的入侵種調查員",
+    scene: "港口旁的貨櫃溫室自動上鎖，水面被陌生植物覆蓋，監視器拍到不明動物逃入濕地。你必須判斷哪些只是外來物種，哪些已經觸發入侵警報。",
+    mission: "解除條件：分辨外來物種與外來入侵種，找出擴散原因與源頭防線。"
+  },
+  impact: {
+    room: "污染迴廊",
+    alarm: "河川氧氣值下降，淺山通道被工程閘門切斷。",
+    lock: "證據追蹤鎖",
+    code: "TRACE-03",
+    role: "你的身分：困在污染迴廊的環境偵探",
+    scene: "你走進河川監測站後，防火門突然落下。螢幕顯示魚群死亡、煙霧擴散、道路切割棲地三組警報。門禁只接受有證據的推理，猜測會讓警報升高。",
+    mission: "解除條件：從污染來源、影響路徑與棲地破碎化中建立因果證據。"
+  },
+  climate: {
+    room: "升溫控制室",
+    alarm: "紅外線熱能回流過高，極端氣候模擬器失控。",
+    lock: "溫室效應鎖",
+    code: "1.5C-GATE",
+    role: "你的身分：被困在未來觀測站的氣候資料解謎者",
+    scene: "未來觀測站傳來尖銳警報，熱浪、洪水、乾旱與珊瑚白化影像快速閃爍。控制室要求你分辨天氣與氣候，否則升溫模擬器不會停下。",
+    mission: "解除條件：釐清正常與異常溫室效應，找出人為排放與生活衝擊。"
+  },
+  action: {
+    room: "永續核心艙",
+    alarm: "城市能源系統過載，水資源與碳排指標同步亮紅燈。",
+    lock: "2050 淨零鎖",
+    code: "NETZERO-2050",
+    role: "你的身分：進入核心艙的永續行動設計師",
+    scene: "最後一道門後是城市核心艙。螢幕顯示能源、碳足跡、水足跡全部超標。你必須把前面取得的知識轉化為可持續的行動，才能讓城市系統重新啟動。",
+    mission: "解除條件：說明淨零順序、能源限制與可持續日常行動，建立班級永續宣言。"
+  }
+};
+
+gameLevels.forEach((level) => {
+  level.escape = escapeStories[level.id];
+});
+
 const pledgeChoices = [
   "自備水壺與餐具，減少一次性用品",
   "離開教室隨手關燈與電扇",
@@ -965,6 +1017,9 @@ const els = {
   gameScene: document.querySelector("#gameScene"),
   gameRole: document.querySelector("#gameRole"),
   gameMission: document.querySelector("#gameMission"),
+  escapeAlarm: document.querySelector("#escapeAlarm"),
+  escapeLock: document.querySelector("#escapeLock"),
+  escapeCode: document.querySelector("#escapeCode"),
   gameClues: document.querySelector("#gameClues"),
   gameArticle: document.querySelector("#gameArticle"),
   gameInquiryTrail: document.querySelector("#gameInquiryTrail"),
@@ -1312,23 +1367,27 @@ function renderGame() {
   const completedCount = state.gameCompleted.size;
   const mastered = state.gameCompleted.has(level.id);
   const themeSlide = slides.find((slide) => slide.id === level.id);
+  const escape = level.escape;
 
   setTheme(themeSlide);
-  els.gameProgressText.textContent = `已取得 ${completedCount} / ${gameLevels.length} 枚徽章`;
+  els.gameProgressText.textContent = `已取得 ${completedCount} / ${gameLevels.length} 組密鑰`;
   els.gameProgressHint.textContent = completedCount === gameLevels.length
-    ? "五大任務完成。可以產生永續行動宣言。"
-    : "解開每關全部追問即可取得徽章。";
+    ? "五間密室已解除封鎖。可以產生永續行動宣言。"
+    : "破解每間密室全部門禁即可取得密鑰。";
 
-  els.gameKicker.textContent = `第 ${state.gameLevel + 1} 關｜${level.location}`;
-  els.gameTitle.textContent = level.title;
-  els.gameScene.textContent = level.scene;
-  els.gameRole.textContent = level.role;
-  els.gameMission.textContent = level.mission;
+  els.gameKicker.textContent = `第 ${state.gameLevel + 1} 道艙門｜${level.location}`;
+  els.gameTitle.textContent = escape.room;
+  els.gameScene.textContent = escape.scene;
+  els.gameRole.textContent = escape.role;
+  els.gameMission.textContent = escape.mission;
+  els.escapeAlarm.textContent = escape.alarm;
+  els.escapeLock.textContent = escape.lock;
+  els.escapeCode.textContent = mastered ? escape.code : "待破譯";
   els.gameClues.innerHTML = level.clues
-    .map(([title, text]) => `<article class="clue-card"><strong>${title}</strong><span>${text}</span></article>`)
+    .map(([title, text], index) => `<article class="clue-card"><em>線索 ${index + 1}</em><strong>${title}</strong><span>${text}</span></article>`)
     .join("");
   els.gameArticle.innerHTML = level.article
-    .map((paragraph, index) => `<p><span>文本 ${index + 1}</span>${paragraph}</p>`)
+    .map((paragraph, index) => `<p><span>檔案 ${index + 1}</span>${paragraph}</p>`)
     .join("");
 
   renderGameMap();
@@ -1344,9 +1403,9 @@ function renderGameMap() {
       const completed = state.gameCompleted.has(level.id) ? " completed" : "";
       return `
         <button class="game-map-button${active}${completed}" type="button" data-game-level="${index}">
-          <span>第 ${index + 1} 關</span>
-          <strong>${level.shortTitle}</strong>
-          <i>${state.gameCompleted.has(level.id) ? "已解謎" : "待探究"}</i>
+          <span>艙門 ${index + 1}</span>
+          <strong>${level.escape.room}</strong>
+          <i>${state.gameCompleted.has(level.id) ? `已取得 ${level.escape.code}` : level.escape.lock}</i>
         </button>
       `;
     })
@@ -1360,8 +1419,8 @@ function renderBadges() {
       return `
         <article class="badge-card${earned ? " earned" : ""}">
           <span>${earned ? "✓" : index + 1}</span>
-          <strong>${level.badge}</strong>
-          <small>${earned ? "已取得" : "解開本關取得"}</small>
+          <strong>${earned ? level.escape.code : level.badge}</strong>
+          <small>${earned ? `${level.escape.room} 已解除封鎖` : `破解 ${level.escape.lock}`}</small>
         </article>
       `;
     })
@@ -1383,21 +1442,21 @@ function renderInquiry() {
     .join("");
 
   if (completed) {
-    els.gameInquiryPrompt.textContent = `本關解謎完成。你已經能說明「${level.shortTitle}」的核心概念。`;
+    els.gameInquiryPrompt.textContent = `門鎖解除。${level.escape.room} 的警報已停止，通行密鑰「${level.escape.code}」已寫入系統。`;
     els.gameAnswer.value = "";
     els.gameAnswer.disabled = true;
-    els.gameCheckAnswer.textContent = state.gameLevel < gameLevels.length - 1 ? "前往下一關" : "重新探究本關";
+    els.gameCheckAnswer.textContent = state.gameLevel < gameLevels.length - 1 ? "前往下一間密室" : "重新挑戰本密室";
     els.gameShowHint.disabled = true;
-    els.gameInquiryFeedback.textContent = investigation.feedback || `取得「${level.badge}」徽章。`;
+    els.gameInquiryFeedback.textContent = investigation.feedback || `取得密鑰「${level.escape.code}」。`;
     return;
   }
 
-  els.gameInquiryPrompt.textContent = `追問 ${investigation.step + 1} / ${level.inquiries.length}：${currentStep.prompt}`;
+  els.gameInquiryPrompt.textContent = `門禁 ${investigation.step + 1} / ${level.inquiries.length}：${currentStep.prompt}`;
   els.gameAnswer.disabled = false;
   els.gameAnswer.value = investigation.draft || "";
-  els.gameCheckAnswer.textContent = "提交推理";
+  els.gameCheckAnswer.textContent = "輸入破譯";
   els.gameShowHint.disabled = false;
-  els.gameInquiryFeedback.textContent = investigation.feedback || "請回到案件文本與線索卡找證據，再用自己的話回答。";
+  els.gameInquiryFeedback.textContent = investigation.feedback || "警報仍在閃爍。請回到破碎檔案與線索卡找證據，再輸入你的破譯推理。";
 }
 
 function checkInquiryAnswer() {
@@ -1418,7 +1477,7 @@ function checkInquiryAnswer() {
   const answer = els.gameAnswer.value.trim();
   investigation.draft = answer;
   if (answer.length < 4) {
-    investigation.feedback = "再多寫一點點。請用一句完整的推理，把你找到的證據放進答案。";
+    investigation.feedback = "門禁沒有反應。再多寫一點點，請用一句完整推理，把你找到的證據放進答案。";
     renderInquiry();
     return;
   }
@@ -1437,14 +1496,14 @@ function checkInquiryAnswer() {
 
     if (investigation.step === level.inquiries.length) {
       state.gameCompleted.add(level.id);
-      investigation.feedback = `本關解謎成功。你完成全部追問，取得「${level.badge}」徽章。`;
+      investigation.feedback = `封鎖解除。你完成全部門禁破譯，取得通行密鑰「${level.escape.code}」。`;
     }
     saveGameProgress();
     renderGame();
     return;
   }
 
-  investigation.feedback = `還差一點。你的答案還沒有包含這題需要的關鍵概念。${step.hint}`;
+  investigation.feedback = `警報聲還沒停。你的答案還缺少這道門禁需要的關鍵線索。${step.hint}`;
   saveGameProgress();
   renderInquiry();
 }
@@ -1470,7 +1529,7 @@ function renderPledges() {
     .join("");
 
   if (!allCompleted) {
-    els.pledgeResult.textContent = "完成五關後，這裡會解鎖行動宣言。";
+    els.pledgeResult.textContent = "取得五組密鑰後，這裡會解鎖行動宣言。";
     return;
   }
 

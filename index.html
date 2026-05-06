@@ -104,20 +104,20 @@
     <main class="game-screen is-hidden" id="gameScreen" aria-label="文字闖關遊戲">
       <section class="game-hero">
         <div>
-          <span class="game-eyebrow">文字闖關模式</span>
-          <h2>地球守護者：解謎探究任務</h2>
-          <p>閱讀案件文本、蒐集線索、回答追問。每次回答都要從文章中找證據，逐步解鎖下一個問題，直到能用自己的話說明核心概念。</p>
+          <span class="game-eyebrow">密室逃脫模式</span>
+          <h2>地球守護者：倒數密室</h2>
+          <p>五道環境密室同時啟動警報。閱讀破碎檔案、蒐集線索、輸入推理解除門鎖。每解開一道追問，就能恢復一段地球系統資料。</p>
         </div>
         <div class="game-progress-card">
-          <strong id="gameProgressText">已取得 0 / 5 枚徽章</strong>
-          <span id="gameProgressHint">完成每關全部追問即可取得徽章。</span>
+          <strong id="gameProgressText">已取得 0 / 5 組密鑰</strong>
+          <span id="gameProgressHint">破解每間密室全部門禁即可取得密鑰。</span>
           <button class="ghost-button" id="resetGame" type="button">重置闖關進度</button>
         </div>
       </section>
 
       <section class="game-layout">
         <aside class="game-map" aria-label="關卡地圖">
-          <h2>任務地圖</h2>
+          <h2>逃脫路線</h2>
           <nav id="gameMap"></nav>
         </aside>
 
@@ -133,24 +133,39 @@
             <span id="gameMission"></span>
           </div>
 
+          <div class="escape-status" aria-label="密室狀態">
+            <article>
+              <span>警報</span>
+              <strong id="escapeAlarm"></strong>
+            </article>
+            <article>
+              <span>門鎖</span>
+              <strong id="escapeLock"></strong>
+            </article>
+            <article>
+              <span>密鑰</span>
+              <strong id="escapeCode"></strong>
+            </article>
+          </div>
+
           <div class="clue-grid" id="gameClues"></div>
 
           <section class="case-file-panel">
             <div class="mini-title">
               <span>讀</span>
-              <h3>案件文本</h3>
+              <h3>破碎檔案</h3>
             </div>
             <div class="case-file" id="gameArticle"></div>
           </section>
 
           <section class="investigation-panel">
             <div class="mini-title">
-              <span>問</span>
-              <h3>探究追問</h3>
+              <span>解</span>
+              <h3>門禁破譯</h3>
             </div>
             <div class="inquiry-trail" id="gameInquiryTrail"></div>
             <p id="gameInquiryPrompt"></p>
-            <textarea id="gameAnswer" rows="4" placeholder="請用自己的話輸入推理。可以引用案件文本或線索卡中的關鍵詞。"></textarea>
+            <textarea id="gameAnswer" rows="4" placeholder="請用自己的話輸入破譯推理。可以引用破碎檔案或線索卡中的關鍵詞。"></textarea>
             <div class="answer-actions">
               <button class="primary-button" id="gameCheckAnswer" type="button">提交推理</button>
               <button class="ghost-button" id="gameShowHint" type="button">需要一點提示</button>
@@ -159,8 +174,8 @@
           </section>
         </section>
 
-        <aside class="badge-panel" aria-label="徽章與宣言">
-          <h2>守護者徽章</h2>
+        <aside class="badge-panel" aria-label="密鑰與宣言">
+          <h2>逃脫密鑰</h2>
           <div class="badge-list" id="badgeList"></div>
 
           <section class="pledge-panel" id="pledgePanel">
