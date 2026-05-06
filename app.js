@@ -488,338 +488,484 @@ slides.forEach((slide) => {
   slide.quizBank = quizBanks[slide.id];
 });
 
-const gameLevels = [
-  {
-    id: "bio",
-    badge: "臺灣生態觀察員",
-    shortTitle: "生物多樣性",
-    location: "中央山脈到西部海岸",
-    role: "你的身分：小小生態調查員",
-    title: "臺灣生物多樣性調查",
-    scene: "你收到一份調查任務：為什麼臺灣面積不大，卻有山椒魚、臺灣黑熊、候鳥、臺灣百合與許多特有種？請從地形、氣候與棲地線索找出答案。",
-    mission: "判斷臺灣生物多樣性高的原因，並能分辨遺傳多樣性、物種多樣性與生態系多樣性。",
-    prompt: "你要向同學解釋「臺灣生物多樣性高」的主因，最適合先使用哪個說法？",
-    clues: [
-      ["立體氣候帶", "臺灣從海岸、平原、丘陵到 3000 公尺以上高山，短距離內就能出現不同溫度與植被。"],
-      ["島嶼與隔離", "不同山區、溪流源頭與島嶼位置，讓族群交流變少，可能逐漸形成差異。"],
-      ["三層多樣性", "同種內差異、不同物種種類，以及森林、溪流、濕地、海岸等環境，都是生物多樣性。"],
-      ["保育警訊", "棲地破壞、外來種競爭、獵捕與氣候變遷，都可能讓族群數量下降。"]
-    ],
-    article: [
-      "臺灣面積不大，卻同時有海岸、平原、丘陵、森林、高山溪流等環境。海拔高度改變時，溫度、雨量與植被也會改變，於是不同生物能找到適合自己的棲地。",
-      "有些山椒魚生活在不同山區與溪流源頭，族群之間不容易交流。長時間隔離後，外形或基因可能逐漸累積差異，這能用來理解遺傳多樣性。",
-      "生物多樣性不只是在數有幾種動物，也包含同種生物的差異、不同物種的豐富程度，以及森林、溪流、濕地、海岸等不同生態系。保育工作除了保護動物本身，也要保護牠的棲地。"
-    ],
-    inquiries: [
-      {
-        prompt: "第一個線索藏在環境變化裡。請找出至少兩個讓臺灣形成多樣棲地的因素。",
-        groups: [["海拔", "高度", "地形"], ["氣候", "雨量", "溫度", "植被"]],
-        hint: "回到第一段，找找「海拔高度改變時，哪些條件也會改變？」",
-        success: "你抓到環境梯度的核心：海拔、地形、氣候、雨量或溫度改變，會形成不同棲地。"
-      },
-      {
-        prompt: "山椒魚為什麼可能逐漸形成不同形態或基因差異？請從「隔離」與「交流」的角度回答。",
-        groups: [["隔離", "分隔", "不同山區", "溪流源頭"], ["交流少", "不容易交流", "族群交流", "繁殖交流"], ["差異", "分化", "遺傳", "形態", "基因"]],
-        hint: "第二段提到山椒魚生活在不同山區與溪流源頭，想想這會讓族群之間發生什麼事。",
-        success: "很好。長期隔離讓族群交流變少，差異就可能慢慢累積。"
-      },
-      {
-        prompt: "請把生物多樣性的三個層次寫出來，並盡量用文章裡的詞。",
-        groups: [["遺傳"], ["物種"], ["生態系"]],
-        hint: "第三段有一句話直接整理了三個層次：同種差異、不同物種、不同生態系。",
-        success: "三層都找到了：遺傳多樣性、物種多樣性與生態系多樣性。"
-      },
-      {
-        prompt: "最後解謎：為什麼保育不能只保護某一隻動物，也要保護牠生活的地方？",
-        groups: [["棲地", "環境", "生活的地方"], ["覓食", "繁殖", "躲避", "移動", "生存"]],
-        hint: "想想動物需要在哪裡吃東西、繁殖、躲藏或移動。",
-        success: "答得好。保護棲地，才是在保護生物能持續生存的條件。"
-      }
-    ],
-    choices: [
-      ["臺灣因海拔、氣候與棲地差異大，所以能支持多樣生物。", true, "判斷很好。你抓到核心因果：環境多樣，棲地多樣，生物也更可能多樣。"],
-      ["臺灣只有一種氣候，所以所有生物都集中在同一種環境。", false, "這個說法需要修正。臺灣的重點不是單一氣候，而是海拔與環境變化很大。"],
-      ["只要把動物都放進保護區，就不需要保護棲地。", false, "這樣還不夠。保育要保護生物，也要保護牠覓食、繁殖與移動所需的棲地。"]
-    ]
+const storyGame = {
+  startScene: "intro",
+  chapters: [
+    "失落的島嶼資料庫",
+    "陌生物種的腳印",
+    "河川警報與斷裂棲地",
+    "升溫中的未來城市",
+    "最後的家園選擇"
+  ],
+  scenes: {
+    intro: {
+      chapter: 0,
+      title: "艙門即將關閉",
+      text: "你在地球記憶艙醒來。螢幕只剩五分鐘備援電力，所有環境資料被切成碎片。系統警告：若一次讀取全部資料，記憶艙會過載。你只能一步一步選擇要追蹤的線索。",
+      clue: "劇情提醒：每次選擇都會讓系統保留不同記憶碎片，最後形成不同結局。沒有單純答錯，只有不同的環境代價。",
+      choices: [
+        {
+          label: "先啟動島嶼資料庫，找出生物多樣性的第一個線索。",
+          result: "艙壁亮起臺灣島輪廓。海岸、平原、丘陵與高山像不同樓層一樣浮出。",
+          next: "bio-1",
+          effects: { biodiversity: 1 },
+          fragment: "臺灣的環境像立體樓層，棲地差異是多樣生命的起點。"
+        },
+        {
+          label: "先檢查警報來源，確認哪個系統最危險。",
+          result: "系統列出五個警報，但第一個資料庫仍要求你先理解島嶼如何保存生命。",
+          next: "bio-1",
+          effects: { evidence: 1 },
+          fragment: "遇到危機時，先確認系統脈絡，避免被警報牽著走。"
+        }
+      ]
+    },
+    "bio-1": {
+      chapter: 0,
+      title: "失落的島嶼資料庫",
+      text: "資料庫沒有一次打開全部地圖，只投影出一條從海岸到高山的垂直光帶。你看見候鳥停在海岸，山羌穿過森林，山椒魚躲進涼冷溪流。",
+      clue: "線索：海拔、溫度、雨量與植被改變，會形成不同棲地。",
+      choices: [
+        {
+          label: "沿著海拔光帶追蹤，確認棲地如何分層。",
+          result: "你取得第一段記憶：同一座島上，短距離內就能出現多種環境。",
+          next: "bio-2",
+          effects: { biodiversity: 2 },
+          fragment: "海拔與氣候差異會讓臺灣形成多樣棲地。"
+        },
+        {
+          label: "直接追蹤最稀有的生物，希望找到特有種答案。",
+          result: "系統提醒：只看單一物種會失焦。你仍找到牠需要特定棲地才能生存。",
+          next: "bio-2",
+          effects: { biodiversity: 1, evidence: 1 },
+          fragment: "特有種不是孤立存在，牠背後有棲地條件。"
+        },
+        {
+          label: "先查看人類活動紀錄，找出生物減少的原因。",
+          result: "你看見棲地破壞、獵捕與外來種紀錄，但資料庫要求你先理解生命為何原本多樣。",
+          next: "bio-2",
+          effects: { evidence: 1 },
+          fragment: "保育問題要先理解生物和棲地的關係。"
+        }
+      ]
+    },
+    "bio-2": {
+      chapter: 0,
+      title: "山椒魚的斷裂訊號",
+      text: "山椒魚標記分散在不同山區與溪流源頭。系統只顯示一句話：族群很近，卻不一定能相遇。",
+      clue: "線索：長期隔離會讓族群交流變少，差異可能逐漸累積。",
+      choices: [
+        {
+          label: "比較不同山區的山椒魚資料。",
+          result: "你發現牠們的形態與基因可能因隔離而慢慢不同。",
+          next: "bio-3",
+          effects: { biodiversity: 2 },
+          fragment: "隔離能幫助理解遺傳多樣性。"
+        },
+        {
+          label: "把牠們想成同一種動物，不再追分布差異。",
+          result: "資料庫閃爍黃燈：同種生物內部差異也是重要線索。",
+          next: "bio-3",
+          effects: { sustainable: 1 },
+          fragment: "生物多樣性不只是數有幾種動物。"
+        }
+      ]
+    },
+    "bio-3": {
+      chapter: 0,
+      title: "保育門的第一個選擇",
+      text: "出口出現兩個按鈕：保護動物，或保護牠的家。系統沒有告訴你哪個比較快，只播放一段棲地破碎的影像。",
+      clue: "線索：保育不只保護生物本身，也要保護覓食、繁殖與移動所需棲地。",
+      choices: [
+        {
+          label: "優先修復棲地，再安排物種監測。",
+          result: "森林、溪流與海岸資料逐漸連回主系統。",
+          next: "bio-record",
+          effects: { biodiversity: 2, sustainable: 1 },
+          fragment: "保護棲地，才是在保護生物能持續生活的條件。"
+        },
+        {
+          label: "先把珍貴動物移到安全區，再慢慢處理棲地。",
+          result: "短期警報下降，但系統留下提醒：沒有合適棲地，安全區也可能只是暫時避難。",
+          next: "bio-record",
+          effects: { biodiversity: 1, risk: 1 },
+          fragment: "救援個體重要，但長期仍要回到棲地。"
+        }
+      ]
+    },
+    "bio-record": {
+      chapter: 0,
+      title: "系統紀錄 1：島嶼生命",
+      text: "記憶艙恢復第一段資料：臺灣生物多樣性來自多樣棲地、族群差異與生態系網絡。你沒有得到標準答案，而是得到第一個選擇後果。",
+      clue: "章節紀錄：生物多樣性包含遺傳、物種與生態系三個層次。",
+      choices: [
+        {
+          label: "帶著第一段記憶，前往下一個警報。",
+          result: "艙門打開一條縫，陌生腳印從濕地資料區延伸出來。",
+          next: "invasive-1",
+          effects: {},
+          fragment: "第一章完成：多樣棲地支撐多樣生命。"
+        }
+      ]
+    },
+    "invasive-1": {
+      chapter: 1,
+      title: "陌生物種的腳印",
+      text: "濕地資料區出現不明腳印。系統問你：牠來自外地，所以一定危險嗎？畫面旁邊閃過番薯、番茄、福壽螺與布袋蓮。",
+      clue: "線索：外來物種不一定有害；造成大量繁殖與生態衝擊時，才可能成為外來入侵種。",
+      choices: [
+        {
+          label: "先判斷是否大量繁殖並影響原生生物。",
+          result: "系統開啟風險比對，陌生腳印被標上觀察中。",
+          next: "invasive-2",
+          effects: { risk: 2, evidence: 1 },
+          fragment: "外來不等於入侵，關鍵是是否造成衝擊。"
+        },
+        {
+          label: "把所有外來物種都列為危險，立刻清除。",
+          result: "警報短暫下降，卻誤刪了作物資料。系統提醒你：過度簡化會製造新問題。",
+          next: "invasive-2",
+          effects: { risk: 1 },
+          fragment: "防治需要判斷，不能把所有外來物種都視為同一種風險。"
+        }
+      ]
+    },
+    "invasive-2": {
+      chapter: 1,
+      title: "棄養紀錄",
+      text: "一段監視影像顯示：有人把不想養的動物放到水邊。幾個月後，牠們的數量出現在濕地各角落。",
+      clue: "線索：棄養、逃逸、貨運與觀賞用途，都可能讓外來生物進入野外。",
+      choices: [
+        {
+          label: "追查引入路徑，從源頭阻止下一次擴散。",
+          result: "你找到非法棄養與來源不明交易紀錄，濕地風險圖縮小。",
+          next: "invasive-3",
+          effects: { risk: 2 },
+          fragment: "源頭管理比事後清除更有效。"
+        },
+        {
+          label: "先大量清除已出現的個體，來源以後再說。",
+          result: "部分區域恢復，但新的腳印又從邊界出現。",
+          next: "invasive-3",
+          effects: { evidence: 1, risk: 1 },
+          fragment: "只處理眼前個體，若源頭不斷，問題會重複出現。"
+        }
+      ]
+    },
+    "invasive-3": {
+      chapter: 1,
+      title: "濕地的最後一格",
+      text: "原生鳥類築巢區旁出現外來鳥類影像。系統只顯示三個字：競爭中。",
+      clue: "線索：外來入侵種可能搶奪食物、棲地、陽光或繁殖位置。",
+      choices: [
+        {
+          label: "記錄競爭資源，建立長期監測名單。",
+          result: "系統把濕地從紅色警報改成橙色監測。",
+          next: "invasive-record",
+          effects: { risk: 2, evidence: 1 },
+          fragment: "監測資料能幫助判斷入侵風險是否擴大。"
+        },
+        {
+          label: "只保留看起來比較漂亮的物種。",
+          result: "系統發出輕微錯誤音：生態判斷不能只看人類偏好。",
+          next: "invasive-record",
+          effects: { biodiversity: 1 },
+          fragment: "外觀偏好不是生態決策的可靠依據。"
+        }
+      ]
+    },
+    "invasive-record": {
+      chapter: 1,
+      title: "系統紀錄 2：風險守門",
+      text: "記憶艙恢復第二段資料：入侵問題常從人類活動的小縫隙開始。預防、監測與源頭管理，是守住生態邊界的重要方法。",
+      clue: "章節紀錄：不非法引入、不任意棄養、不購買來源不明動植物。",
+      choices: [
+        {
+          label: "帶著風險紀錄，前往河川警報區。",
+          result: "水聲從下一個艙室傳來，螢幕上出現死魚與煙霧影像。",
+          next: "impact-1",
+          effects: {},
+          fragment: "第二章完成：外來種管理要從源頭開始。"
+        }
+      ]
+    },
+    "impact-1": {
+      chapter: 2,
+      title: "河川警報",
+      text: "河川艙的魚群影像停在同一秒。系統要求你選擇調查方法：立刻指認兇手，或先蒐集證據。",
+      clue: "線索：污染判斷需要記錄來源、地點、時間、受影響生物與環境變化。",
+      choices: [
+        {
+          label: "先整理工廠、家庭、畜牧、廢油與垃圾等可能來源。",
+          result: "水質資料開始回傳，你看見不同污染來源可能同時存在。",
+          next: "impact-2",
+          effects: { evidence: 2 },
+          fragment: "環境偵查需要證據，不宜只靠第一印象。"
+        },
+        {
+          label: "直接判定最近的工廠就是唯一原因。",
+          result: "系統標出工廠，但也提醒你：單一原因可能遮住其他污染來源。",
+          next: "impact-2",
+          effects: { evidence: 1 },
+          fragment: "快速判斷能行動，但也可能漏看複合原因。"
+        }
+      ]
+    },
+    "impact-2": {
+      chapter: 2,
+      title: "看不見的空氣路徑",
+      text: "煙霧資料飄到河川圖層上方，酸雨模擬線開始落下。你發現污染不一定停在原本的位置。",
+      clue: "線索：空氣污染可能影響健康，也可能透過酸雨影響水域、農作物與建築物。",
+      choices: [
+        {
+          label: "追蹤污染移動路徑，而不是只看排放點。",
+          result: "你把空氣、水域與農作物資料連成一張影響網。",
+          next: "impact-3",
+          effects: { evidence: 2, sustainable: 1 },
+          fragment: "污染會沿著空氣、水與土地移動。"
+        },
+        {
+          label: "只處理肉眼看得見的垃圾與污水。",
+          result: "河面乾淨了一些，但酸雨模擬仍持續閃爍。",
+          next: "impact-3",
+          effects: { evidence: 1 },
+          fragment: "看不見的污染也可能造成長期影響。"
+        }
+      ]
+    },
+    "impact-3": {
+      chapter: 2,
+      title: "斷裂的淺山通道",
+      text: "最後一段影像顯示道路穿過淺山。車燈掃過，一隻動物停在路邊。系統問：便利和棲地，能不能一起被看見？",
+      clue: "線索：道路和開發可能切割棲地，增加動物移動與路殺風險。",
+      choices: [
+        {
+          label: "設計生態廊道與監測，同時保留必要交通。",
+          result: "道路仍在，但淺山通道重新連起幾個綠色節點。",
+          next: "impact-record",
+          effects: { evidence: 1, sustainable: 2, biodiversity: 1 },
+          fragment: "好的開發評估要兼顧人類需求與棲地連結。"
+        },
+        {
+          label: "只追求道路更快更直，生物自己會適應。",
+          result: "交通時間下降，但系統增加棲地破碎化警告。",
+          next: "impact-record",
+          effects: { evidence: 1 },
+          fragment: "便利若忽略棲地，可能把環境成本留到未來。"
+        }
+      ]
+    },
+    "impact-record": {
+      chapter: 2,
+      title: "系統紀錄 3：證據與代價",
+      text: "記憶艙恢復第三段資料：水污染、空氣污染與棲地破壞常互相牽連。環境判斷不是只問方便不方便，也要問誰承擔代價。",
+      clue: "章節紀錄：污染追蹤、棲地連結與資料證據，是環境決策的重要基礎。",
+      choices: [
+        {
+          label: "帶著證據圖，進入升溫中的未來城市。",
+          result: "艙室溫度升高，玻璃外的城市被熱浪染成橘色。",
+          next: "climate-1",
+          effects: {},
+          fragment: "第三章完成：環境問題需要證據與平衡。"
+        }
+      ]
+    },
+    "climate-1": {
+      chapter: 3,
+      title: "今天很冷的謎題",
+      text: "未來城市的廣播傳來一句話：今天很冷，所以沒有暖化。系統沒有反駁，只把一百年的溫度線放在你面前。",
+      clue: "線索：天氣是短時間狀態；氣候是長時間統計出的趨勢。",
+      choices: [
+        {
+          label: "查看長期趨勢，而不是只看今天。",
+          result: "溫度線不再雜亂，長期上升的訊號慢慢浮出。",
+          next: "climate-2",
+          effects: { climate: 2, evidence: 1 },
+          fragment: "單一天氣不能代表長期氣候趨勢。"
+        },
+        {
+          label: "相信今天的體感，先關閉暖化警報。",
+          result: "警報暫停一秒後重新啟動，系統提醒你：體感不是完整證據。",
+          next: "climate-2",
+          effects: { evidence: 1 },
+          fragment: "感覺可以是線索，但不能取代長期資料。"
+        }
+      ]
+    },
+    "climate-2": {
+      chapter: 3,
+      title: "溫室效應調節器",
+      text: "控制台上有兩個旋鈕：正常保溫、異常加劇。你必須判斷問題不是溫室效應本身，而是過量。",
+      clue: "線索：正常溫室效應維持適合生命的溫度；溫室氣體過多會使全球平均溫度上升。",
+      choices: [
+        {
+          label: "保留正常保溫，降低過量排放。",
+          result: "控制台穩定下來，紅外線熱能回流數值下降。",
+          next: "climate-3",
+          effects: { climate: 2, sustainable: 1 },
+          fragment: "問題不是所有溫室效應，而是異常加劇。"
+        },
+        {
+          label: "把所有溫室效應都關掉。",
+          result: "系統立刻阻止你：沒有正常保溫，地球也不適合生命。",
+          next: "climate-3",
+          effects: { climate: 1 },
+          fragment: "正常溫室效應是生命條件之一。"
+        }
+      ]
+    },
+    "climate-3": {
+      chapter: 3,
+      title: "誰會被熱浪追上",
+      text: "熱浪、洪水、乾旱與珊瑚白化的影像排成一列。系統問：這只是遠方動物的故事嗎？",
+      clue: "線索：氣候變遷會影響食物、健康、水資源、居住安全與生物棲地。",
+      choices: [
+        {
+          label: "把生物棲地和人類生活一起納入風險圖。",
+          result: "城市、農田、海岸和森林連成同一張調適地圖。",
+          next: "climate-record",
+          effects: { climate: 2, sustainable: 1 },
+          fragment: "氣候風險會回到人類食物、健康和居住安全。"
+        },
+        {
+          label: "只關注最醒目的極地影像。",
+          result: "北極影像很重要，但系統提醒你：熱浪與水資源也正在靠近生活。",
+          next: "climate-record",
+          effects: { climate: 1, biodiversity: 1 },
+          fragment: "氣候變遷不只發生在遠方。"
+        }
+      ]
+    },
+    "climate-record": {
+      chapter: 3,
+      title: "系統紀錄 4：長期趨勢",
+      text: "記憶艙恢復第四段資料：判斷氣候變遷，需要長期資料，也需要理解人為排放如何改變溫室效應。",
+      clue: "章節紀錄：氣候行動包含減緩排放，也包含面對熱浪、洪水與棲地改變的調適。",
+      choices: [
+        {
+          label: "帶著氣候風險圖，進入最後的家園選擇。",
+          result: "最後艙門打開，能源、水足跡與碳足跡指標同時亮起。",
+          next: "action-1",
+          effects: {},
+          fragment: "第四章完成：氣候判斷需要長期證據。"
+        }
+      ]
+    },
+    "action-1": {
+      chapter: 4,
+      title: "最後的家園選擇",
+      text: "核心艙顯示：城市想要用電、交通、食物與安全的居住環境。系統問你：永續行動要從一次大活動開始，還是從能持續的日常開始？",
+      clue: "線索：永續行動需要可持續的習慣，而不是只靠一次活動。",
+      choices: [
+        {
+          label: "從每天可持續的小行動開始，再累積成班級方案。",
+          result: "系統收下你的方案：水壺、節能、低碳交通與資源回收被列入日常清單。",
+          next: "action-2",
+          effects: { sustainable: 2 },
+          fragment: "永續行動要能持續，才會累積改變。"
+        },
+        {
+          label: "設計一次很盛大的活動，讓大家印象深刻。",
+          result: "活動很有聲量，但系統追問：活動結束後，習慣有沒有留下？",
+          next: "action-2",
+          effects: { sustainable: 1, evidence: 1 },
+          fragment: "大型活動能提醒大家，但日常習慣才是長期關鍵。"
+        }
+      ]
+    },
+    "action-2": {
+      chapter: 4,
+      title: "能源不是無代價的答案",
+      text: "風力、太陽能、水力三張卡片同時亮起。每張卡片下方都有小字：地點、天候、設備、土地、河川生態。",
+      clue: "線索：友善能源污染較低，但仍需要評估限制與生態影響。",
+      choices: [
+        {
+          label: "比較不同能源條件，選擇最適合地點的組合。",
+          result: "系統把能源方案改成混合配置，並保留生態評估欄位。",
+          next: "action-3",
+          effects: { sustainable: 2, climate: 1 },
+          fragment: "低污染能源仍需要地點與生態評估。"
+        },
+        {
+          label: "只選看起來最環保的一種能源，快速決定。",
+          result: "方案完成很快，但系統留下風險註記：單一答案可能忽略地方條件。",
+          next: "action-3",
+          effects: { climate: 1 },
+          fragment: "能源選擇沒有萬用答案。"
+        }
+      ]
+    },
+    "action-3": {
+      chapter: 4,
+      title: "水足跡與碳足跡",
+      text: "最後兩條數字線浮現：一條是碳足跡，一條是水足跡。它們不是只看使用當下，也看產品和生活的整個過程。",
+      clue: "線索：碳足跡看溫室氣體排放；水足跡看直接與間接消耗的水資源。",
+      choices: [
+        {
+          label: "把購買、使用、回收與日常交通一起納入行動宣言。",
+          result: "記憶艙判定你看見了生活背後的隱藏成本。",
+          next: "action-record",
+          effects: { sustainable: 2, climate: 1, evidence: 1 },
+          fragment: "足跡思考提醒我們看見產品與生活的完整過程。"
+        },
+        {
+          label: "只要求大家分類回收，其他生活選擇先不討論。",
+          result: "回收資料亮起，但系統提醒：源頭減量通常更前面。",
+          next: "action-record",
+          effects: { sustainable: 1 },
+          fragment: "回收重要，但源頭減量能更早降低負擔。"
+        }
+      ]
+    },
+    "action-record": {
+      chapter: 4,
+      title: "系統紀錄 5：家園不是單選題",
+      text: "記憶艙恢復最後資料：永續不是一次選出完美答案，而是在能源、生活、保育與社區需求之間持續協調。",
+      clue: "章節紀錄：你的選擇已形成一種決策風格。系統即將產生本輪結局。",
+      choices: [
+        {
+          label: "讀取本輪結局。",
+          result: "所有記憶碎片開始排列，系統根據你的選擇生成反思紀錄。",
+          next: "ending",
+          effects: {},
+          fragment: "第五章完成：永續行動需要選擇，也需要持續修正。"
+        }
+      ]
+    }
   },
-  {
-    id: "invasive",
-    badge: "入侵種防線守衛",
-    shortTitle: "外來入侵種",
-    location: "濕地邊緣與農田水路",
-    role: "你的身分：入侵種調查員",
-    title: "外來入侵種危機",
-    scene: "濕地突然出現大量陌生植物，水面被蓋住，附近農田也傳出福壽螺啃食作物。你要判斷這些外來物種是否已經造成生態衝擊。",
-    mission: "分辨外來物種與外來入侵種，理解引進、逃逸、棄養與快速擴散的風險。",
-    prompt: "你會如何向同學說明「外來種」與「外來入侵種」的差別？",
-    clues: [
-      ["不一定有害", "番茄、番薯等也來自其他地區，但外來物種不一定都會破壞生態。"],
-      ["成群繁殖", "若外來生物在新環境大量繁殖，並搶奪食物、棲地或陽光，就可能變成入侵種。"],
-      ["人類途徑", "貨運、觀賞、寵物、產業材料、棄養與逃逸，都可能讓外來生物進入野外。"],
-      ["預防優先", "不非法引入、不任意棄養、不購買來源不明的動植物，是最有效的防線。"]
-    ],
-    article: [
-      "外來物種是因人類活動從其他地區進入新環境的生物，例如作物、觀賞植物或寵物。外來物種不一定有害，重點是牠進入野外後是否大量繁殖並造成影響。",
-      "如果外來生物在新環境缺少天敵、適應力強，可能快速擴散，搶奪原生生物的食物、棲地、陽光或繁殖位置。這時就可能成為外來入侵種。",
-      "防治入侵種最有效的是源頭管理：不非法引入、不任意棄養、不購買來源不明的動植物，也要清楚記錄發現地點、時間與物種身分。"
-    ],
-    inquiries: [
-      {
-        prompt: "先解開名詞謎題：外來物種為什麼不一定等於外來入侵種？",
-        groups: [["不一定", "不等於", "不一定有害"], ["大量繁殖", "造成影響", "破壞", "衝擊", "排擠"]],
-        hint: "第一段說外來物種不一定有害，重點是進入野外後是否發生什麼事。",
-        success: "概念修正成功。外來物種只有在大量繁殖並造成衝擊時，才可能成為入侵種。"
-      },
-      {
-        prompt: "文章提到外來生物快速擴散可能和哪些條件有關？請至少寫出兩個。",
-        groups: [["缺少天敵", "天敵少", "沒有天敵"], ["適應力強", "快速擴散", "大量繁殖"]],
-        hint: "第二段前半部直接說明牠們為什麼可能快速擴散。",
-        success: "你找到擴散關鍵：缺少天敵、適應力強與大量繁殖。"
-      },
-      {
-        prompt: "如果一種外來鳥類造成問題，牠可能和原生鳥類競爭哪些資源？",
-        groups: [["食物", "棲地", "陽光", "繁殖位置", "築巢"], ["搶", "競爭", "排擠", "奪"]],
-        hint: "第二段列出可能被搶奪的資源。鳥類案例可特別想繁殖或築巢位置。",
-        success: "推理到位。入侵種可能搶食物、棲地或繁殖位置，造成原生種壓力。"
-      },
-      {
-        prompt: "最後解謎：如果你是校園守門員，要防止外來種問題，最重要的源頭行動是什麼？",
-        groups: [["不非法引入", "不任意棄養", "不購買來源不明", "源頭管理"], ["動植物", "寵物", "植物", "物種"]],
-        hint: "第三段列出三個「不要」。選其中兩個寫入答案也可以。",
-        success: "守門成功。源頭管理比事後清除更有效，也更省成本。"
-      }
-    ],
-    choices: [
-      ["先確認是否由人類引入、是否大量繁殖、是否影響原生生態。", true, "判斷很完整。這三個問題能幫你從外來物種進一步判斷是否成為入侵種。"],
-      ["只要不是臺灣原本就有的生物，就一定要稱為入侵種。", false, "需要再精準一點。外來物種不一定造成危害，造成衝擊才是入侵種。"],
-      ["看到不想養的動植物，可以放到野外讓牠自由生活。", false, "這是高風險做法。棄養可能讓外來生物進入自然環境並造成生態問題。"]
-    ]
-  },
-  {
-    id: "impact",
-    badge: "環境偵探",
-    shortTitle: "環境衝擊",
-    location: "河川、城市道路與淺山棲地",
-    role: "你的身分：環境問題偵探",
-    title: "人類活動與環境衝擊",
-    scene: "你來到一條河川，發現魚類死亡、附近道路車流量大，山坡地也正在開發。你要找出水污染、空氣污染與棲地破壞的因果關係。",
-    mission: "辨認污染來源與棲地破碎化，思考人類便利、健康安全與生物多樣性的平衡。",
-    prompt: "如果一條河川出現魚類死亡，你第一步最適合怎麼調查？",
-    clues: [
-      ["水污染來源", "工廠廢水、家庭污水、畜牧污水、廢油與垃圾，都可能污染河川。"],
-      ["空氣污染", "工廠、汽機車與燃燒行為可能產生臭氧、二氧化硫、懸浮微粒等污染物。"],
-      ["棲地切割", "道路、開墾與工程可能把完整棲地切成小塊，增加動物移動與路殺風險。"],
-      ["生物價值", "糧食、醫藥、建材、衣物原料與清潔材料，都與生物多樣性有關。"]
-    ],
-    article: [
-      "一條河川出現魚類死亡，不一定只有單一原因。可能的線索包含工廠廢水、家庭污水、畜牧污水、廢油、垃圾，也需要記錄地點、時間、受影響生物與水質變化。",
-      "空氣污染可能來自工廠、汽機車、燃燒行為等。污染物會影響人體健康，也可能形成酸雨，進一步影響水域、農作物與建築物。",
-      "道路與山坡地開發讓生活便利，但也可能切割棲地，使動物移動更危險，甚至增加路殺。評估開發時，要同時思考便利、污染、棲地與生物多樣性的代價。"
-    ],
-    inquiries: [
-      {
-        prompt: "河川魚類死亡時，為什麼不能只憑第一眼就下結論？請寫出需要蒐集的資料。",
-        groups: [["地點", "時間", "水質", "受影響生物", "來源"], ["記錄", "蒐集", "調查", "比較"]],
-        hint: "第一段提醒我們要記錄哪些資料，再比較可能原因。",
-        success: "很像環境偵探了。先記錄地點、時間、污染來源與受影響生物，才有證據判斷。"
-      },
-      {
-        prompt: "請從文章找出兩種可能造成水污染的來源。",
-        groups: [["工廠廢水", "家庭污水", "畜牧污水", "廢油", "垃圾"], ["工廠廢水", "家庭污水", "畜牧污水", "廢油", "垃圾"]],
-        keywords: ["工廠廢水", "家庭污水", "畜牧污水", "廢油", "垃圾"],
-        minMatches: 2,
-        hint: "第一段列出五種可能來源，任選兩種寫出來。",
-        success: "你找到了水污染來源。接著要思考污染如何影響生物與人類。"
-      },
-      {
-        prompt: "空氣污染除了影響呼吸健康，還可能透過什麼方式影響水域、農作物或建築物？",
-        groups: [["酸雨"], ["水域", "農作物", "建築", "土壤"]],
-        hint: "第二段提到污染物可能形成某種雨。",
-        success: "沒錯，酸雨能把空氣污染的影響帶到水域、農作物與建築物。"
-      },
-      {
-        prompt: "最後解謎：道路與山坡地開發為什麼需要評估生態代價？",
-        groups: [["棲地", "切割", "破碎", "路殺"], ["便利", "開發", "道路", "生活"]],
-        hint: "第三段把人類便利和棲地切割放在一起比較。",
-        success: "你抓到平衡觀點：開發帶來便利，也可能造成棲地切割與路殺風險。"
-      }
-    ],
-    choices: [
-      ["記錄污染來源、地點、時間與受影響生物，再比較可能原因。", true, "這是可靠的偵探做法。先蒐證，再根據證據判斷原因。"],
-      ["只要看到工廠，就直接判定所有問題都是工廠造成。", false, "還需要證據。環境問題可能有多種來源，調查要記錄資料並比較可能性。"],
-      ["道路讓人類方便，所以不需要評估對生物的影響。", false, "便利很重要，但道路可能切割棲地。好的決策要同時看人類需求與生態代價。"]
-    ]
-  },
-  {
-    id: "climate",
-    badge: "氣候變遷解謎者",
-    shortTitle: "全球暖化",
-    location: "未來氣候觀測站",
-    role: "你的身分：氣候資料解謎者",
-    title: "全球暖化與氣候變遷",
-    scene: "未來觀測站傳來警訊：熱浪、洪水、乾旱、森林大火增加，珊瑚白化與寒帶棲地縮小也更常被討論。你要破解溫室效應與暖化的關係。",
-    mission: "理解正常與異常溫室效應，辨認溫室氣體來源，推論氣候變遷對生物與人類生活的影響。",
-    prompt: "面對同學說「今天很冷，所以沒有全球暖化」，你會怎麼回應？",
-    clues: [
-      ["天氣與氣候", "今天冷或明天下雨是天氣；長時間統計出的溫度、雨量與季節型態才是氣候。"],
-      ["正常溫室效應", "適量溫室氣體能維持地球適合生命的溫度。"],
-      ["異常加劇", "化石燃料燃燒、森林砍伐與甲烷排放，會讓溫室氣體過多並提高平均溫度。"],
-      ["影響擴散", "海平面、冰雪、農作物、水資源、健康與生物棲地都可能受到影響。"]
-    ],
-    article: [
-      "天氣是短時間的狀態，例如今天下雨、明天變冷；氣候則是長時間統計出的溫度、雨量與季節型態。全球暖化討論的是長期平均趨勢，不能只用某一天的冷熱判斷。",
-      "正常溫室效應能維持地球適合生命的溫度。但人類大量燃燒化石燃料、砍伐森林，或增加甲烷等溫室氣體排放，會使溫室效應異常加劇，讓全球平均溫度上升。",
-      "暖化可能造成熱浪、洪水、乾旱、森林大火，也可能讓冰雪融化、海平面上升、珊瑚白化、農作物受影響，進一步影響人類的食物、健康與居住安全。"
-    ],
-    inquiries: [
-      {
-        prompt: "先破解常見迷思：為什麼不能用「今天很冷」來否定全球暖化？",
-        groups: [["天氣"], ["氣候", "長期", "平均", "趨勢"]],
-        hint: "第一段把天氣和氣候分開定義。你的答案要同時提到短期與長期。",
-        success: "迷思破解。單日天氣不能代表長期氣候趨勢。"
-      },
-      {
-        prompt: "正常溫室效應和異常溫室效應差在哪裡？",
-        groups: [["正常", "適量", "維持"], ["異常", "過多", "加劇", "上升"]],
-        hint: "第二段前後各有一句：正常能維持溫度，異常會讓平均溫度上升。",
-        success: "你抓到差異：適量有助生命，過量加劇會造成暖化。"
-      },
-      {
-        prompt: "文章列出哪些人類活動會增加溫室氣體？請至少寫出兩個。",
-        groups: [["燃燒化石燃料", "化石燃料", "煤", "石油", "天然氣"], ["砍伐森林", "森林砍伐", "甲烷", "排放"]],
-        hint: "第二段中間列出三個來源：化石燃料、森林、甲烷。",
-        success: "找到了。化石燃料、森林砍伐與甲烷排放都會加劇問題。"
-      },
-      {
-        prompt: "最後解謎：全球暖化為什麼不只是北極熊的問題，也和人類生活有關？",
-        groups: [["食物", "健康", "居住", "水資源", "農作物"], ["影響", "安全", "生活", "人類"]],
-        hint: "第三段最後一句提到人類的三種安全。",
-        success: "很完整。氣候變遷會回到食物、健康、水資源與居住安全。"
-      }
-    ],
-    choices: [
-      ["用長期資料判斷氣候趨勢，不能只用某一天的天氣下結論。", true, "回應精準。全球暖化討論的是長期平均趨勢，不是單一天氣。"],
-      ["只要有一天很冷，就能證明全球暖化不存在。", false, "這是常見誤解。單日天氣不能代表長期氣候趨勢。"],
-      ["溫室效應完全有害，地球最好沒有任何溫室氣體。", false, "需要修正。正常溫室效應讓地球適合生命，問題是人為排放使它異常加劇。"]
-    ]
-  },
-  {
-    id: "action",
-    badge: "永續家園設計師",
-    shortTitle: "永續行動",
-    location: "2050 永續校園工作坊",
-    role: "你的身分：永續行動設計師",
-    title: "打造永續家園行動圖",
-    scene: "校園準備提出 2050 永續行動方案。你要把前四關學到的知識轉成可實踐的行動，從能源、碳足跡、水足跡與日常習慣開始。",
-    mission: "比較友善能源的優缺點，理解碳足跡與水足跡，設計能持續執行的綠色行動。",
-    prompt: "如果要設計班級永續行動，你會優先採取哪一種策略？",
-    clues: [
-      ["淨零觀念", "先降低排放，再用森林碳匯或負碳技術抵消難以避免的排放。"],
-      ["能源選擇", "風力、太陽能與水力較低污染，但仍有地點、設備、天候與生態影響限制。"],
-      ["足跡思考", "碳足跡看溫室氣體排放，水足跡看直接與間接耗用的水資源。"],
-      ["日常行動", "源頭減量、重複使用、節約能源、低碳交通、在地蔬食與資源回收都能累積效果。"]
-    ],
-    article: [
-      "永續行動不是只靠一次大型活動，而是把日常選擇變成能持續的習慣。淨零排放的想法是先降低排放，再用森林碳匯或負碳技術抵消難以避免的排放。",
-      "風力、太陽能與水力發電污染較低，但不代表完全沒有代價。它們仍可能受到地點、設備、天候、土地與生態影響限制，因此需要評估。",
-      "碳足跡是活動或產品生命週期中的溫室氣體排放；水足跡則是直接與間接消耗的水資源。源頭減量、重複使用、節能、低碳交通、在地蔬食與資源回收，都能累積成永續行動。"
-    ],
-    inquiries: [
-      {
-        prompt: "從第一段找答案：為什麼永續行動不能只靠一次大型活動？",
-        groups: [["日常", "習慣", "持續"], ["選擇", "行動", "生活"]],
-        hint: "第一段說永續行動是把日常選擇變成什麼？",
-        success: "方向對了。永續需要日常持續，而不是只靠一次活動。"
-      },
-      {
-        prompt: "淨零排放的順序是什麼？請寫出「先做什麼，再做什麼」。",
-        groups: [["降低排放", "減少排放", "先降低"], ["抵消", "碳匯", "負碳"]],
-        hint: "第一段第二句有明確順序：先降低，再抵消。",
-        success: "你掌握淨零核心：先減量，再處理難以避免的排放。"
-      },
-      {
-        prompt: "為什麼友善能源仍然需要評估，而不是直接說完全沒有影響？",
-        groups: [["地點", "設備", "天候", "土地", "生態"], ["限制", "代價", "影響", "評估"]],
-        hint: "第二段列出友善能源可能受到哪些限制。",
-        success: "評估觀念很好。低污染不等於零影響，仍要看地點與生態代價。"
-      },
-      {
-        prompt: "最後解謎：如果你要寫班級行動宣言，至少提出兩個能持續的日常行動。",
-        groups: [["源頭減量", "重複使用", "節能", "低碳交通", "在地蔬食", "資源回收", "減塑"], ["持續", "日常", "每天", "習慣", "一週"]],
-        keywords: ["源頭減量", "重複使用", "節能", "低碳交通", "在地蔬食", "資源回收", "減塑"],
-        minMatches: 2,
-        hint: "第三段最後一句列出多個行動，請挑兩個，並說明它們要持續做。",
-        success: "很棒。能持續的日常行動，才有機會累積成真正的改變。"
-      }
-    ],
-    choices: [
-      ["選擇能持續執行的小行動，例如減塑、節能、低碳交通與資源回收。", true, "很適合班級推動。永續行動重點是可實踐、可持續、可觀察改變。"],
-      ["只要偶爾做一次大型活動，平常就不需要改變習慣。", false, "大型活動有宣傳效果，但日常持續行動更能累積環境效益。"],
-      ["友善能源完全沒有任何限制，所以不需要評估地點與生態影響。", false, "仍要評估。友善能源較低污染，但也需要考量設備、天候、土地與生態。"]
-    ]
-  }
-];
-
-const escapeStories = {
-  bio: {
-    room: "霧鎖標本室",
-    alarm: "高山棲地圖層破碎，山椒魚標本櫃進入封鎖。",
-    lock: "環境梯度鎖",
-    code: "ALT-3500",
-    role: "你的身分：被困在標本室的小小生態調查員",
-    scene: "深夜的自然史標本室突然停電，牆上的臺灣立體地圖亮起紅光。山椒魚標本櫃開始倒數封鎖，出口門禁要求你重建「臺灣為何孕育多樣生命」的證據鏈。",
-    mission: "解除條件：找出地形、氣候、隔離與棲地之間的關係，恢復標本室的生物多樣性檔案。"
-  },
-  invasive: {
-    room: "貨櫃溫室",
-    alarm: "未知生物訊號快速增加，濕地艙水位異常。",
-    lock: "入侵判別鎖",
-    code: "ALIEN-RISK",
-    role: "你的身分：被派往貨櫃溫室的入侵種調查員",
-    scene: "港口旁的貨櫃溫室自動上鎖，水面被陌生植物覆蓋，監視器拍到不明動物逃入濕地。你必須判斷哪些只是外來物種，哪些已經觸發入侵警報。",
-    mission: "解除條件：分辨外來物種與外來入侵種，找出擴散原因與源頭防線。"
-  },
-  impact: {
-    room: "污染迴廊",
-    alarm: "河川氧氣值下降，淺山通道被工程閘門切斷。",
-    lock: "證據追蹤鎖",
-    code: "TRACE-03",
-    role: "你的身分：困在污染迴廊的環境偵探",
-    scene: "你走進河川監測站後，防火門突然落下。螢幕顯示魚群死亡、煙霧擴散、道路切割棲地三組警報。門禁只接受有證據的推理，猜測會讓警報升高。",
-    mission: "解除條件：從污染來源、影響路徑與棲地破碎化中建立因果證據。"
-  },
-  climate: {
-    room: "升溫控制室",
-    alarm: "紅外線熱能回流過高，極端氣候模擬器失控。",
-    lock: "溫室效應鎖",
-    code: "1.5C-GATE",
-    role: "你的身分：被困在未來觀測站的氣候資料解謎者",
-    scene: "未來觀測站傳來尖銳警報，熱浪、洪水、乾旱與珊瑚白化影像快速閃爍。控制室要求你分辨天氣與氣候，否則升溫模擬器不會停下。",
-    mission: "解除條件：釐清正常與異常溫室效應，找出人為排放與生活衝擊。"
-  },
-  action: {
-    room: "永續核心艙",
-    alarm: "城市能源系統過載，水資源與碳排指標同步亮紅燈。",
-    lock: "2050 淨零鎖",
-    code: "NETZERO-2050",
-    role: "你的身分：進入核心艙的永續行動設計師",
-    scene: "最後一道門後是城市核心艙。螢幕顯示能源、碳足跡、水足跡全部超標。你必須把前面取得的知識轉化為可持續的行動，才能讓城市系統重新啟動。",
-    mission: "解除條件：說明淨零順序、能源限制與可持續日常行動，建立班級永續宣言。"
+  endings: {
+    biodiversity: {
+      title: "生態修復者結局",
+      summary: "你最常選擇從棲地、物種關係與長期保育出發。記憶艙判定你擅長看見生命彼此連結的網絡。",
+      strength: "優點：能避免只保護單一個體，而忘記牠生活所需的環境。",
+      blindSpot: "盲點：面對污染、能源或政策衝突時，還需要更多資料與協調策略。"
+    },
+    risk: {
+      title: "風險守門員結局",
+      summary: "你對源頭管理、外來種風險和預防行動特別敏感。記憶艙判定你會先守住問題進入自然環境的入口。",
+      strength: "優點：能在問題擴大前建立防線，減少事後清除的代價。",
+      blindSpot: "盲點：若過度追求快速管制，可能忽略外來物種不一定都會造成危害。"
+    },
+    evidence: {
+      title: "環境偵探結局",
+      summary: "你常選擇蒐集證據、比較來源、追蹤污染路徑。記憶艙判定你重視判斷背後的資料品質。",
+      strength: "優點：能避免憑直覺下結論，也能看見複合原因。",
+      blindSpot: "盲點：若一直等待更多資料，可能錯過需要先採取預防行動的時機。"
+    },
+    climate: {
+      title: "氣候行動者結局",
+      summary: "你傾向從長期趨勢、排放減量與氣候風險思考問題。記憶艙判定你能把遠方警訊連回日常生活。",
+      strength: "優點：能看見暖化如何影響食物、健康、水資源與棲地。",
+      blindSpot: "盲點：如果只談減碳，可能低估地方棲地、社區需求與公平協調。"
+    },
+    sustainable: {
+      title: "永續協調者結局",
+      summary: "你常在能源、生活習慣、保育與社區需求之間尋找平衡。記憶艙判定你重視可持續的日常改變。",
+      strength: "優點：能把知識轉成行動，並考慮長期執行的可能性。",
+      blindSpot: "盲點：協調需要時間，若缺少明確證據或優先順序，行動可能變得太慢。"
+    }
   }
 };
-
-gameLevels.forEach((level) => {
-  level.escape = escapeStories[level.id];
-});
-
-const pledgeChoices = [
-  "自備水壺與餐具，減少一次性用品",
-  "離開教室隨手關燈與電扇",
-  "短距離步行或騎腳踏車",
-  "每週至少一天選擇低碳蔬食",
-  "購買前先想是否真的需要",
-  "正確分類回收並減少過度包裝"
-];
 
 const hotspotReadings = {
   bio: {
@@ -976,10 +1122,8 @@ const state = {
   hotspotsVisible: true,
   completed: new Set(JSON.parse(localStorage.getItem("unit3-panorama-completed") || "[]")),
   quizSessions: {},
-  gameLevel: 0,
-  gameCompleted: new Set(JSON.parse(localStorage.getItem("unit3-game-completed") || "[]")),
-  gameInvestigations: JSON.parse(localStorage.getItem("unit3-game-investigations") || "{}"),
-  pledges: new Set(JSON.parse(localStorage.getItem("unit3-game-pledges") || "[]"))
+  story: JSON.parse(localStorage.getItem("unit3-story-state") || "null"),
+  storyEndings: new Set(JSON.parse(localStorage.getItem("unit3-story-endings") || "[]"))
 };
 
 const els = {
@@ -1011,27 +1155,17 @@ const els = {
   toggleHotspots: document.querySelector("#toggleHotspots"),
   gameProgressText: document.querySelector("#gameProgressText"),
   gameProgressHint: document.querySelector("#gameProgressHint"),
-  gameMap: document.querySelector("#gameMap"),
-  gameKicker: document.querySelector("#gameKicker"),
-  gameTitle: document.querySelector("#gameTitle"),
-  gameScene: document.querySelector("#gameScene"),
-  gameRole: document.querySelector("#gameRole"),
-  gameMission: document.querySelector("#gameMission"),
-  escapeAlarm: document.querySelector("#escapeAlarm"),
-  escapeLock: document.querySelector("#escapeLock"),
-  escapeCode: document.querySelector("#escapeCode"),
-  gameClues: document.querySelector("#gameClues"),
-  gameArticle: document.querySelector("#gameArticle"),
-  gameInquiryTrail: document.querySelector("#gameInquiryTrail"),
-  gameInquiryPrompt: document.querySelector("#gameInquiryPrompt"),
-  gameAnswer: document.querySelector("#gameAnswer"),
-  gameCheckAnswer: document.querySelector("#gameCheckAnswer"),
-  gameShowHint: document.querySelector("#gameShowHint"),
-  gameInquiryFeedback: document.querySelector("#gameInquiryFeedback"),
-  badgeList: document.querySelector("#badgeList"),
-  pledgePanel: document.querySelector("#pledgePanel"),
-  pledgeActions: document.querySelector("#pledgeActions"),
-  pledgeResult: document.querySelector("#pledgeResult")
+  storyChapterList: document.querySelector("#storyChapterList"),
+  endingGallery: document.querySelector("#endingGallery"),
+  storyKicker: document.querySelector("#storyKicker"),
+  storyTitle: document.querySelector("#storyTitle"),
+  storyText: document.querySelector("#storyText"),
+  storyClue: document.querySelector("#storyClue"),
+  storyChoices: document.querySelector("#storyChoices"),
+  storyResult: document.querySelector("#storyResult"),
+  storyContinue: document.querySelector("#storyContinue"),
+  storyEnding: document.querySelector("#storyEnding"),
+  memoryFragments: document.querySelector("#memoryFragments")
 };
 
 function currentSlide() {
@@ -1302,44 +1436,54 @@ function submitQuizRound() {
   renderQuiz();
 }
 
-function currentGameLevel() {
-  return gameLevels[state.gameLevel];
-}
-
-function saveGameProgress() {
-  localStorage.setItem("unit3-game-completed", JSON.stringify([...state.gameCompleted]));
-  localStorage.setItem("unit3-game-investigations", JSON.stringify(state.gameInvestigations));
-  localStorage.setItem("unit3-game-pledges", JSON.stringify([...state.pledges]));
-}
-
-function createInvestigationState() {
+function createStoryState() {
   return {
-    step: 0,
-    solved: [],
-    hints: [],
-    feedback: "",
-    draft: ""
+    sceneId: storyGame.startScene,
+    pendingChoice: null,
+    history: [],
+    fragments: [],
+    scores: {
+      biodiversity: 0,
+      risk: 0,
+      evidence: 0,
+      climate: 0,
+      sustainable: 0
+    },
+    finished: false,
+    endingId: null
   };
 }
 
-function getInvestigation(level) {
-  if (!state.gameInvestigations[level.id]) {
-    state.gameInvestigations[level.id] = createInvestigationState();
-  }
-  return state.gameInvestigations[level.id];
+function getStoryState() {
+  if (!state.story) state.story = createStoryState();
+  return state.story;
 }
 
-function normalizeText(text) {
-  return text.toLowerCase().replace(/\s+/g, "");
+function saveStoryProgress() {
+  localStorage.setItem("unit3-story-state", JSON.stringify(getStoryState()));
+  localStorage.setItem("unit3-story-endings", JSON.stringify([...state.storyEndings]));
 }
 
-function answerMatches(answer, step) {
-  const normalized = normalizeText(answer);
-  if (step.keywords && step.minMatches) {
-    const matchedCount = step.keywords.filter((keyword) => normalized.includes(normalizeText(keyword))).length;
-    if (matchedCount < step.minMatches) return false;
+function currentStoryScene() {
+  return storyGame.scenes[getStoryState().sceneId];
+}
+
+function chooseEndingId(scores) {
+  return Object.entries(scores).sort((left, right) => {
+    if (right[1] !== left[1]) return right[1] - left[1];
+    const priority = ["sustainable", "evidence", "biodiversity", "risk", "climate"];
+    return priority.indexOf(left[0]) - priority.indexOf(right[0]);
+  })[0][0];
+}
+
+function applyStoryEffects(choice) {
+  const story = getStoryState();
+  Object.entries(choice.effects || {}).forEach(([key, value]) => {
+    story.scores[key] = (story.scores[key] || 0) + value;
+  });
+  if (choice.fragment && !story.fragments.includes(choice.fragment)) {
+    story.fragments.push(choice.fragment);
   }
-  return step.groups.every((group) => group.some((keyword) => normalized.includes(normalizeText(keyword))));
 }
 
 function switchMode(mode) {
@@ -1357,203 +1501,142 @@ function switchMode(mode) {
   }
 }
 
-function goToGameLevel(index) {
-  state.gameLevel = (index + gameLevels.length) % gameLevels.length;
-  renderGame();
-}
-
 function renderGame() {
-  const level = currentGameLevel();
-  const completedCount = state.gameCompleted.size;
-  const mastered = state.gameCompleted.has(level.id);
-  const themeSlide = slides.find((slide) => slide.id === level.id);
-  const escape = level.escape;
+  const story = getStoryState();
+  const scene = currentStoryScene();
+  const chapterNumber = Math.min(scene.chapter + 1, storyGame.chapters.length);
 
-  setTheme(themeSlide);
-  els.gameProgressText.textContent = `已取得 ${completedCount} / ${gameLevels.length} 組密鑰`;
-  els.gameProgressHint.textContent = completedCount === gameLevels.length
-    ? "五間密室已解除封鎖。可以產生永續行動宣言。"
-    : "破解每間密室全部門禁即可取得密鑰。";
+  setTheme(slides[Math.min(scene.chapter, slides.length - 1)]);
+  els.gameProgressText.textContent = story.finished ? "本輪旅程已抵達結局" : `目前章節 ${chapterNumber} / ${storyGame.chapters.length}`;
+  els.gameProgressHint.textContent = story.finished
+    ? "可以再玩一次，嘗試解鎖不同結局。"
+    : "每幕只揭露一段線索，選擇後才會出現後續。";
 
-  els.gameKicker.textContent = `第 ${state.gameLevel + 1} 道艙門｜${level.location}`;
-  els.gameTitle.textContent = escape.room;
-  els.gameScene.textContent = escape.scene;
-  els.gameRole.textContent = escape.role;
-  els.gameMission.textContent = escape.mission;
-  els.escapeAlarm.textContent = escape.alarm;
-  els.escapeLock.textContent = escape.lock;
-  els.escapeCode.textContent = mastered ? escape.code : "待破譯";
-  els.gameClues.innerHTML = level.clues
-    .map(([title, text], index) => `<article class="clue-card"><em>線索 ${index + 1}</em><strong>${title}</strong><span>${text}</span></article>`)
-    .join("");
-  els.gameArticle.innerHTML = level.article
-    .map((paragraph, index) => `<p><span>檔案 ${index + 1}</span>${paragraph}</p>`)
-    .join("");
-
-  renderGameMap();
-  renderBadges();
-  renderInquiry();
-  renderPledges();
+  renderStoryChapters(scene);
+  renderEndingGallery();
+  renderStoryStage(scene);
+  renderMemoryFragments();
 }
 
-function renderGameMap() {
-  els.gameMap.innerHTML = gameLevels
-    .map((level, index) => {
-      const active = index === state.gameLevel ? " active" : "";
-      const completed = state.gameCompleted.has(level.id) ? " completed" : "";
+function renderStoryChapters(scene) {
+  els.storyChapterList.innerHTML = storyGame.chapters
+    .map((chapter, index) => {
+      const reached = getStoryState().history.some((entry) => storyGame.scenes[entry.sceneId]?.chapter === index) || scene.chapter === index;
+      const active = scene.chapter === index && !getStoryState().finished;
       return `
-        <button class="game-map-button${active}${completed}" type="button" data-game-level="${index}">
-          <span>艙門 ${index + 1}</span>
-          <strong>${level.escape.room}</strong>
-          <i>${state.gameCompleted.has(level.id) ? `已取得 ${level.escape.code}` : level.escape.lock}</i>
-        </button>
-      `;
-    })
-    .join("");
-}
-
-function renderBadges() {
-  els.badgeList.innerHTML = gameLevels
-    .map((level, index) => {
-      const earned = state.gameCompleted.has(level.id);
-      return `
-        <article class="badge-card${earned ? " earned" : ""}">
-          <span>${earned ? "✓" : index + 1}</span>
-          <strong>${earned ? level.escape.code : level.badge}</strong>
-          <small>${earned ? `${level.escape.room} 已解除封鎖` : `破解 ${level.escape.lock}`}</small>
+        <article class="chapter-item${active ? " active" : ""}${reached ? " reached" : ""}">
+          <span>第 ${index + 1} 章</span>
+          <strong>${chapter}</strong>
         </article>
       `;
     })
     .join("");
 }
 
-function renderInquiry() {
-  const level = currentGameLevel();
-  const investigation = getInvestigation(level);
-  const currentStep = level.inquiries[investigation.step];
-  const solvedCount = Math.min(investigation.solved.length, level.inquiries.length);
-  const completed = solvedCount === level.inquiries.length;
-
-  els.gameInquiryTrail.innerHTML = level.inquiries
-    .map((step, index) => {
-      const stateClass = index < solvedCount ? " solved" : index === solvedCount ? " current" : "";
-      return `<span class="${stateClass}">${index + 1}</span>`;
+function renderEndingGallery() {
+  els.endingGallery.innerHTML = Object.entries(storyGame.endings)
+    .map(([endingId, ending]) => {
+      const unlocked = state.storyEndings.has(endingId);
+      return `
+        <article class="ending-item${unlocked ? " unlocked" : ""}">
+          <span>${unlocked ? "已解鎖" : "未解鎖"}</span>
+          <strong>${unlocked ? ending.title : "？？？結局"}</strong>
+        </article>
+      `;
     })
     .join("");
-
-  if (completed) {
-    els.gameInquiryPrompt.textContent = `門鎖解除。${level.escape.room} 的警報已停止，通行密鑰「${level.escape.code}」已寫入系統。`;
-    els.gameAnswer.value = "";
-    els.gameAnswer.disabled = true;
-    els.gameCheckAnswer.textContent = state.gameLevel < gameLevels.length - 1 ? "前往下一間密室" : "重新挑戰本密室";
-    els.gameShowHint.disabled = true;
-    els.gameInquiryFeedback.textContent = investigation.feedback || `取得密鑰「${level.escape.code}」。`;
-    return;
-  }
-
-  els.gameInquiryPrompt.textContent = `門禁 ${investigation.step + 1} / ${level.inquiries.length}：${currentStep.prompt}`;
-  els.gameAnswer.disabled = false;
-  els.gameAnswer.value = investigation.draft || "";
-  els.gameCheckAnswer.textContent = "輸入破譯";
-  els.gameShowHint.disabled = false;
-  els.gameInquiryFeedback.textContent = investigation.feedback || "警報仍在閃爍。請回到破碎檔案與線索卡找證據，再輸入你的破譯推理。";
 }
 
-function checkInquiryAnswer() {
-  const level = currentGameLevel();
-  const investigation = getInvestigation(level);
+function renderStoryStage(scene) {
+  const story = getStoryState();
+  els.storyKicker.textContent = story.finished ? "結局生成" : `第 ${scene.chapter + 1} 章｜${storyGame.chapters[scene.chapter]}`;
+  els.storyTitle.textContent = scene.title;
+  els.storyText.textContent = scene.text;
+  els.storyClue.textContent = scene.clue;
+  els.storyResult.classList.toggle("is-hidden", !story.pendingChoice);
+  els.storyResult.textContent = story.pendingChoice?.result || "";
+  els.storyContinue.classList.toggle("is-hidden", !story.pendingChoice || story.finished);
+  els.storyChoices.classList.toggle("is-hidden", Boolean(story.pendingChoice) || story.finished);
+  els.storyEnding.classList.toggle("is-hidden", !story.finished);
 
-  if (investigation.solved.length === level.inquiries.length) {
-    if (state.gameLevel < gameLevels.length - 1) {
-      goToGameLevel(state.gameLevel + 1);
-      return;
-    }
-    state.gameInvestigations[level.id] = createInvestigationState();
-    saveGameProgress();
-    renderGame();
+  if (story.finished) {
+    const ending = storyGame.endings[story.endingId];
+    els.storyChoices.innerHTML = "";
+    els.storyEnding.innerHTML = `
+      <span>本輪結局</span>
+      <h3>${ending.title}</h3>
+      <p>${ending.summary}</p>
+      <article><strong>${ending.strength}</strong><strong>${ending.blindSpot}</strong></article>
+      <div class="ending-actions">
+        <button class="primary-button" type="button" data-story-restart>再玩一次，嘗試不同路線</button>
+        <button class="ghost-button" type="button" data-story-panorama>回知識全景</button>
+      </div>
+    `;
     return;
   }
 
-  const answer = els.gameAnswer.value.trim();
-  investigation.draft = answer;
-  if (answer.length < 4) {
-    investigation.feedback = "門禁沒有反應。再多寫一點點，請用一句完整推理，把你找到的證據放進答案。";
-    renderInquiry();
-    return;
-  }
-
-  const step = level.inquiries[investigation.step];
-  if (answerMatches(answer, step)) {
-    investigation.solved.push({
-      prompt: step.prompt,
-      answer,
-      success: step.success
-    });
-    investigation.step += 1;
-    investigation.draft = "";
-    investigation.hints = [];
-    investigation.feedback = step.success;
-
-    if (investigation.step === level.inquiries.length) {
-      state.gameCompleted.add(level.id);
-      investigation.feedback = `封鎖解除。你完成全部門禁破譯，取得通行密鑰「${level.escape.code}」。`;
-    }
-    saveGameProgress();
-    renderGame();
-    return;
-  }
-
-  investigation.feedback = `警報聲還沒停。你的答案還缺少這道門禁需要的關鍵線索。${step.hint}`;
-  saveGameProgress();
-  renderInquiry();
-}
-
-function showInquiryHint() {
-  const level = currentGameLevel();
-  const investigation = getInvestigation(level);
-  const step = level.inquiries[investigation.step];
-  if (!step) return;
-  investigation.feedback = `提示：${step.hint}`;
-  saveGameProgress();
-  renderInquiry();
-}
-
-function renderPledges() {
-  const allCompleted = state.gameCompleted.size === gameLevels.length;
-  els.pledgePanel.classList.toggle("locked", !allCompleted);
-  els.pledgeActions.innerHTML = pledgeChoices
-    .map((choice) => {
-      const selected = state.pledges.has(choice);
-      return `<button class="pledge-button${selected ? " selected" : ""}" type="button" data-pledge="${choice}" ${!allCompleted ? "disabled" : ""}>${choice}</button>`;
-    })
+  els.storyChoices.innerHTML = scene.choices
+    .map((choice, index) => `
+      <button class="story-choice" type="button" data-story-choice="${index}">
+        <strong>${choice.label}</strong>
+      </button>
+    `)
     .join("");
-
-  if (!allCompleted) {
-    els.pledgeResult.textContent = "取得五組密鑰後，這裡會解鎖行動宣言。";
-    return;
-  }
-
-  const selected = [...state.pledges];
-  if (selected.length < 3) {
-    els.pledgeResult.textContent = `已選 ${selected.length} / 3。請選擇三項可以持續做到的行動。`;
-    return;
-  }
-
-  els.pledgeResult.innerHTML = `
-    <strong>我的永續行動宣言</strong>
-    <span>我願意從今天開始：${selected.slice(0, 3).join("、")}。讓地球守護從日常開始。</span>
-  `;
+  els.storyEnding.innerHTML = "";
 }
 
-function togglePledge(choice) {
-  if (state.gameCompleted.size !== gameLevels.length) return;
-  if (state.pledges.has(choice)) {
-    state.pledges.delete(choice);
-  } else if (state.pledges.size < 3) {
-    state.pledges.add(choice);
+function renderMemoryFragments() {
+  const story = getStoryState();
+  if (!story.fragments.length) {
+    els.memoryFragments.innerHTML = `<article class="memory-empty">尚未取得記憶碎片。做出第一個選擇後，系統會記錄你看見的環境線索。</article>`;
+    return;
   }
-  saveGameProgress();
-  renderPledges();
+  els.memoryFragments.innerHTML = story.fragments
+    .map((fragment, index) => `<article class="memory-fragment"><span>${index + 1}</span><p>${fragment}</p></article>`)
+    .join("");
+}
+
+function chooseStoryOption(index) {
+  const story = getStoryState();
+  if (story.pendingChoice || story.finished) return;
+  const scene = currentStoryScene();
+  const choice = scene.choices[index];
+  applyStoryEffects(choice);
+  story.pendingChoice = {
+    result: choice.result,
+    next: choice.next
+  };
+  story.history.push({
+    sceneId: story.sceneId,
+    choice: choice.label
+  });
+  saveStoryProgress();
+  renderGame();
+}
+
+function continueStory() {
+  const story = getStoryState();
+  if (!story.pendingChoice) return;
+  const nextScene = story.pendingChoice.next;
+  story.pendingChoice = null;
+
+  if (nextScene === "ending") {
+    story.finished = true;
+    story.endingId = chooseEndingId(story.scores);
+    state.storyEndings.add(story.endingId);
+  } else {
+    story.sceneId = nextScene;
+  }
+
+  saveStoryProgress();
+  renderGame();
+}
+
+function resetStoryGame(clearGallery = true) {
+  state.story = createStoryState();
+  if (clearGallery) state.storyEndings.clear();
+  saveStoryProgress();
+  renderGame();
 }
 
 els.slideNav.addEventListener("click", (event) => {
@@ -1585,11 +1668,7 @@ document.querySelector("#resetProgress").addEventListener("click", () => {
 });
 
 document.querySelector("#resetGame").addEventListener("click", () => {
-  state.gameCompleted.clear();
-  state.gameInvestigations = {};
-  state.pledges.clear();
-  saveGameProgress();
-  renderGame();
+  resetStoryGame(true);
 });
 
 document.querySelectorAll(".tab").forEach((tab) => {
@@ -1613,33 +1692,26 @@ els.toggleHotspots.addEventListener("click", () => {
 els.showPanorama.addEventListener("click", () => switchMode("panorama"));
 els.showGame.addEventListener("click", () => switchMode("game"));
 
-els.gameMap.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-game-level]");
+els.storyChoices.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-story-choice]");
   if (!button) return;
-  goToGameLevel(Number(button.dataset.gameLevel));
+  chooseStoryOption(Number(button.dataset.storyChoice));
 });
 
-els.gameAnswer.addEventListener("input", () => {
-  const investigation = getInvestigation(currentGameLevel());
-  investigation.draft = els.gameAnswer.value;
-  saveGameProgress();
-});
+els.storyContinue.addEventListener("click", continueStory);
 
-els.gameCheckAnswer.addEventListener("click", checkInquiryAnswer);
-els.gameShowHint.addEventListener("click", showInquiryHint);
-
-els.pledgeActions.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-pledge]");
-  if (!button) return;
-  togglePledge(button.dataset.pledge);
+els.storyEnding.addEventListener("click", (event) => {
+  if (event.target.closest("[data-story-restart]")) {
+    resetStoryGame(false);
+  }
+  if (event.target.closest("[data-story-panorama]")) {
+    switchMode("panorama");
+  }
 });
 
 document.addEventListener("keydown", (event) => {
   if (state.mode === "game") {
-    if (event.key === "ArrowLeft") goToGameLevel(state.gameLevel - 1);
-    if (event.key === "ArrowRight") goToGameLevel(state.gameLevel + 1);
-    const gameNumber = Number(event.key);
-    if (gameNumber >= 1 && gameNumber <= gameLevels.length) goToGameLevel(gameNumber - 1);
+    if (event.key === "Enter" && !els.storyContinue.classList.contains("is-hidden")) continueStory();
     return;
   }
   if (event.key === "ArrowLeft") goToSlide(state.current - 1);
@@ -1652,10 +1724,8 @@ renderSlide();
 renderGame();
 const initialHash = window.location.hash;
 const slideHash = initialHash.match(/^#slide-(\d)(?:-(focus|hotspot|quiz))?$/);
-const gameHash = initialHash.match(/^#game(?:-(\d))?$/);
-if (gameHash) {
+if (initialHash === "#game") {
   switchMode("game");
-  if (gameHash[1]) goToGameLevel(Number(gameHash[1]) - 1);
 } else if (slideHash) {
   goToSlide(Number(slideHash[1]) - 1);
   if (slideHash[2]) switchTab(slideHash[2]);

@@ -101,89 +101,50 @@
       </aside>
     </main>
 
-    <main class="game-screen is-hidden" id="gameScreen" aria-label="文字闖關遊戲">
-      <section class="game-hero">
+    <main class="game-screen is-hidden" id="gameScreen" aria-label="分支敘事文字遊戲">
+      <section class="story-hero">
         <div>
-          <span class="game-eyebrow">密室逃脫模式</span>
-          <h2>地球守護者：倒數密室</h2>
-          <p>五道環境密室同時啟動警報。閱讀破碎檔案、蒐集線索、輸入推理解除門鎖。每解開一道追問，就能恢復一段地球系統資料。</p>
+          <span class="game-eyebrow">分支敘事模式</span>
+          <h2>地球記憶艙：最後五分鐘</h2>
+          <p>艙門即將關閉，系統只會逐步揭露線索。每一次選擇都會留下記憶碎片，並把故事推向不同結局。</p>
         </div>
         <div class="game-progress-card">
-          <strong id="gameProgressText">已取得 0 / 5 組密鑰</strong>
-          <span id="gameProgressHint">破解每間密室全部門禁即可取得密鑰。</span>
-          <button class="ghost-button" id="resetGame" type="button">重置闖關進度</button>
+          <strong id="gameProgressText">目前章節 1 / 5</strong>
+          <span id="gameProgressHint">先閱讀劇情提醒，再選擇下一步行動。</span>
+          <button class="ghost-button" id="resetGame" type="button">重置遊戲與結局圖鑑</button>
         </div>
       </section>
 
-      <section class="game-layout">
-        <aside class="game-map" aria-label="關卡地圖">
-          <h2>逃脫路線</h2>
-          <nav id="gameMap"></nav>
+      <section class="story-layout">
+        <aside class="story-side" aria-label="章節與結局圖鑑">
+          <h2>章節進度</h2>
+          <nav class="chapter-list" id="storyChapterList"></nav>
+
+          <section class="ending-gallery">
+            <h2>結局圖鑑</h2>
+            <div id="endingGallery"></div>
+          </section>
         </aside>
 
-        <section class="game-card" aria-label="目前關卡">
-          <div class="game-level-head">
-            <span id="gameKicker">第 1 關</span>
-            <h2 id="gameTitle"></h2>
-            <p id="gameScene"></p>
+        <section class="story-stage" aria-label="目前劇情">
+          <div class="story-card">
+            <span id="storyKicker"></span>
+            <h2 id="storyTitle"></h2>
+            <p id="storyText"></p>
+            <article class="story-clue" id="storyClue"></article>
           </div>
 
-          <div class="game-mission">
-            <strong id="gameRole"></strong>
-            <span id="gameMission"></span>
-          </div>
+          <div class="story-result is-hidden" id="storyResult" aria-live="polite"></div>
+          <div class="story-choices" id="storyChoices"></div>
+          <button class="primary-button is-hidden" id="storyContinue" type="button">繼續</button>
 
-          <div class="escape-status" aria-label="密室狀態">
-            <article>
-              <span>警報</span>
-              <strong id="escapeAlarm"></strong>
-            </article>
-            <article>
-              <span>門鎖</span>
-              <strong id="escapeLock"></strong>
-            </article>
-            <article>
-              <span>密鑰</span>
-              <strong id="escapeCode"></strong>
-            </article>
-          </div>
-
-          <div class="clue-grid" id="gameClues"></div>
-
-          <section class="case-file-panel">
-            <div class="mini-title">
-              <span>讀</span>
-              <h3>破碎檔案</h3>
-            </div>
-            <div class="case-file" id="gameArticle"></div>
-          </section>
-
-          <section class="investigation-panel">
-            <div class="mini-title">
-              <span>解</span>
-              <h3>門禁破譯</h3>
-            </div>
-            <div class="inquiry-trail" id="gameInquiryTrail"></div>
-            <p id="gameInquiryPrompt"></p>
-            <textarea id="gameAnswer" rows="4" placeholder="請用自己的話輸入破譯推理。可以引用破碎檔案或線索卡中的關鍵詞。"></textarea>
-            <div class="answer-actions">
-              <button class="primary-button" id="gameCheckAnswer" type="button">提交推理</button>
-              <button class="ghost-button" id="gameShowHint" type="button">需要一點提示</button>
-            </div>
-            <p class="inquiry-feedback" id="gameInquiryFeedback" aria-live="polite"></p>
-          </section>
+          <section class="story-ending is-hidden" id="storyEnding" aria-live="polite"></section>
         </section>
 
-        <aside class="badge-panel" aria-label="密鑰與宣言">
-          <h2>逃脫密鑰</h2>
-          <div class="badge-list" id="badgeList"></div>
-
-          <section class="pledge-panel" id="pledgePanel">
-            <h3>我的永續行動宣言</h3>
-            <p>完成五關後，選擇三項自己願意實踐的行動。</p>
-            <div class="pledge-actions" id="pledgeActions"></div>
-            <div class="pledge-result" id="pledgeResult"></div>
-          </section>
+        <aside class="memory-panel" aria-label="記憶碎片">
+          <h2>記憶碎片</h2>
+          <p>你的選擇會逐步留下線索。它們不代表分數，而是這次旅程看見的環境面向。</p>
+          <div class="memory-list" id="memoryFragments"></div>
         </aside>
       </section>
     </main>
