@@ -106,22 +106,22 @@
         <div>
           <span class="game-eyebrow">環境決策任務</span>
           <h2>地球記憶艙：五道危機任務</h2>
-          <p>每個章節都是獨立任務。你會連續做出環境選擇，系統不給分數，而是產生小結局，回饋你的守護風格與可能迷思。</p>
+          <p>每個章節都是獨立任務。請先閱讀知識全景圖，再依照線索做出判斷；錯誤選擇可能讓任務中止，完成後會得到分數、等第與觀念回饋。</p>
         </div>
         <div class="game-progress-card">
           <strong id="gameProgressText">選擇 1 個章節任務</strong>
-          <span id="gameProgressHint">每章約 6 次選擇，完成後產生小結局與觀念導引。</span>
-          <button class="ghost-button" id="resetGame" type="button">重置任務與結局圖鑑</button>
+          <span id="gameProgressHint">每章約 6 次選擇，答對才能穩定推進；若任務失敗，請回全景圖查證後再挑戰。</span>
+          <button class="ghost-button" id="resetGame" type="button">重置任務與通關紀錄</button>
         </div>
       </section>
 
       <section class="story-layout">
-        <aside class="story-side" aria-label="章節與結局圖鑑">
+        <aside class="story-side" aria-label="章節與通關紀錄">
           <h2>章節任務</h2>
           <nav class="chapter-list" id="storyChapterList"></nav>
 
           <section class="ending-gallery">
-            <h2>結局圖鑑</h2>
+            <h2>通關紀錄</h2>
             <div id="endingGallery"></div>
           </section>
         </aside>
@@ -143,7 +143,7 @@
 
         <aside class="memory-panel" aria-label="記憶碎片">
           <h2>任務筆記</h2>
-          <p>你的選擇會逐步留下線索。它們不代表分數，而是這次任務看見的環境面向。</p>
+          <p>你的選擇會逐步留下線索、分數與錯誤提醒，幫助你回到知識全景圖查證。</p>
           <div class="memory-list" id="memoryFragments"></div>
         </aside>
       </section>

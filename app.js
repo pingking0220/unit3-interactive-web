@@ -2631,6 +2631,95 @@ Object.entries(clearChapterScripts).forEach(([chapterId, script]) => {
   });
 });
 
+const masteryLevels = {
+  correct: {
+    points: 2,
+    label: "知識判斷正確",
+    tone: "success",
+    prefix: "任務推進成功：你把全景圖中的關鍵概念用在判斷上。"
+  },
+  partial: {
+    points: 1,
+    label: "部分理解",
+    tone: "warning",
+    prefix: "任務勉強推進：你的方向有可取之處，但還少了一個重要條件。"
+  },
+  fail: {
+    points: 0,
+    label: "任務中止",
+    tone: "danger",
+    prefix: "任務失敗：這個判斷和知識全景圖的核心概念衝突。"
+  }
+};
+
+const masteryPatterns = {
+  bio: [
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "partial"],
+    ["correct", "fail", "partial"],
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "correct"],
+    ["correct", "partial", "partial"]
+  ],
+  invasive: [
+    ["correct", "partial", "fail"],
+    ["correct", "partial", "correct"],
+    ["correct", "partial", "fail"],
+    ["correct", "partial", "fail"],
+    ["correct", "fail", "partial"],
+    ["correct", "partial", "fail"]
+  ],
+  impact: [
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "partial"],
+    ["correct", "fail", "correct"],
+    ["correct", "partial", "fail"],
+    ["correct", "partial", "fail"]
+  ],
+  climate: [
+    ["correct", "fail", "partial"],
+    ["correct", "fail", "partial"],
+    ["correct", "fail", "partial"],
+    ["correct", "partial", "fail"],
+    ["correct", "partial", "fail"],
+    ["correct", "partial", "fail"]
+  ],
+  action: [
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "fail"],
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "correct"],
+    ["correct", "partial", "partial"],
+    ["correct", "partial", "partial"]
+  ]
+};
+
+const masteryFailGuides = {
+  bio: "請回到全景圖 1，重新看「海拔、氣候、棲地與物種」之間的關係，再判斷生物為什麼住在特定環境。",
+  invasive: "請回到全景圖 2，重新分辨「外來物種」和「外來入侵種」，並注意不棄養、不放生、不購買來源不明動植物。",
+  impact: "請回到全景圖 3，重新整理水污染、空氣污染、棲地破碎與人類需求之間的證據關係。",
+  climate: "請回到全景圖 4，重新分辨天氣與氣候，並用長期資料判斷全球暖化與極端氣候風險。",
+  action: "請回到全景圖 5，重新比較能源選擇、碳足跡、水足跡與日常綠色行動的連結。"
+};
+
+Object.entries(masteryPatterns).forEach(([chapterId, scenes]) => {
+  const chapter = chapterGames[chapterId];
+  if (!chapter) return;
+  chapter.moments.forEach((moment, sceneIndex) => {
+    moment.choices.forEach((choice, choiceIndex) => {
+      const level = scenes[sceneIndex]?.[choiceIndex] || "partial";
+      const mastery = masteryLevels[level];
+      choice.mastery = level;
+      choice.points = mastery.points;
+      choice.maxPoints = 2;
+      choice.masteryLabel = mastery.label;
+      choice.masteryTone = mastery.tone;
+      choice.eliminates = level === "fail";
+    });
+  });
+});
+
 const hotspotReadings = {
   bio: {
     "環境梯度": [
@@ -3119,13 +3208,31 @@ function createChapterRun(chapterId) {
     pendingChoice: null,
     history: [],
     fragments: [],
+    points: 0,
+    maxPoints: 0,
+    wrongCount: 0,
+    partialCount: 0,
     scores: chapter.traitOrder.reduce((scores, trait) => {
       scores[trait] = 0;
       return scores;
     }, {}),
     finished: false,
+    failed: false,
+    failReason: "",
+    grade: null,
     endingId: null
   };
+}
+
+function normalizeChapterRun(run) {
+  run.points = run.points || 0;
+  run.maxPoints = run.maxPoints || 0;
+  run.wrongCount = run.wrongCount || 0;
+  run.partialCount = run.partialCount || 0;
+  run.failed = Boolean(run.failed);
+  run.failReason = run.failReason || "";
+  run.grade = run.grade || null;
+  return run;
 }
 
 function getActiveChapter() {
@@ -3137,7 +3244,7 @@ function getChapterRun(chapterId = getStoryState().activeChapterId) {
   if (!chapterId) return null;
   const story = getStoryState();
   if (!story.runs[chapterId]) story.runs[chapterId] = createChapterRun(chapterId);
-  return story.runs[chapterId];
+  return normalizeChapterRun(story.runs[chapterId]);
 }
 
 function activateChapter(chapterId) {
@@ -3166,6 +3273,54 @@ function chooseEndingId(scores, chapter) {
     if (right[1] !== left[1]) return right[1] - left[1];
     return chapter.traitOrder.indexOf(left[0]) - chapter.traitOrder.indexOf(right[0]);
   })[0][0];
+}
+
+function getMasteryPercent(run) {
+  return run.maxPoints ? Math.round((run.points / run.maxPoints) * 100) : 0;
+}
+
+function getMasteryGrade(run) {
+  if (run.failed) {
+    return {
+      label: "未通過",
+      title: "任務中止",
+      message: "請回到知識全景圖查證關鍵概念，再重新挑戰本章。"
+    };
+  }
+
+  const percent = getMasteryPercent(run);
+  if (percent >= 95) {
+    return {
+      label: "S",
+      title: "精熟通關",
+      message: "你的判斷穩定又完整，能把全景圖知識用在新的情境中。"
+    };
+  }
+  if (percent >= 85) {
+    return {
+      label: "A",
+      title: "穩定通關",
+      message: "你大多能抓住核心概念，少數細節可以再回全景圖補強。"
+    };
+  }
+  if (percent >= 70) {
+    return {
+      label: "B",
+      title: "基礎通關",
+      message: "你已經理解主要方向，但仍有幾個判斷需要更精準。"
+    };
+  }
+  return {
+    label: "C",
+    title: "再練一次",
+    message: "你完成了任務，但精熟度還不穩，建議重讀全景圖後再挑戰。"
+  };
+}
+
+function buildChoiceResult(choice, chapter) {
+  const mastery = masteryLevels[choice.mastery] || masteryLevels.partial;
+  const failGuide = choice.eliminates ? ` ${masteryFailGuides[chapter.id] || ""}` : "";
+  return `${mastery.prefix} ${choice.result}${failGuide}`;
 }
 
 function applyStoryEffects(choice) {
@@ -3201,13 +3356,14 @@ function renderGame() {
   setTheme(chapter ? slides[chapter.themeIndex] : slides[0]);
   if (!chapter) {
     els.gameProgressText.textContent = "選擇 1 個章節任務";
-    els.gameProgressHint.textContent = "每章都是獨立任務，完成後會產生小結局與觀念回饋。";
+    els.gameProgressHint.textContent = "請先閱讀知識全景圖，再進入任務判斷。答錯關鍵概念會中止任務。";
   } else if (run.finished) {
-    els.gameProgressText.textContent = `${chapter.title}｜任務完成`;
-    els.gameProgressHint.textContent = "可以重玩本章，嘗試形成不同環境決策風格。";
+    const grade = run.grade || getMasteryGrade(run);
+    els.gameProgressText.textContent = `${chapter.title}｜${grade.label} 等第`;
+    els.gameProgressHint.textContent = `分數 ${run.points} / ${run.maxPoints}，${grade.message}`;
   } else {
     els.gameProgressText.textContent = `${chapter.title}｜第 ${run.sceneIndex + 1} / ${chapter.moments.length} 幕`;
-    els.gameProgressHint.textContent = "每幕做出一次選擇，系統會累積任務筆記與決策傾向。";
+    els.gameProgressHint.textContent = `目前分數 ${run.points} / ${run.maxPoints}。請根據全景圖線索判斷，不能只靠直覺亂點。`;
   }
 
   renderStoryChapters();
@@ -3221,10 +3377,15 @@ function renderStoryChapters() {
   els.storyChapterList.innerHTML = chapterOrder
     .map((chapterId, index) => {
       const chapter = chapterGames[chapterId];
-      const run = getStoryState().runs[chapterId];
+      const savedRun = getStoryState().runs[chapterId];
+      const run = savedRun ? normalizeChapterRun(savedRun) : null;
       const active = activeChapterId === chapterId;
       const reached = Boolean(run);
-      const status = run?.finished ? "已完成" : reached ? `第 ${run.sceneIndex + 1} 幕` : "未開始";
+      const status = run?.finished
+        ? `${run.grade?.label || getMasteryGrade(run).label} 等第`
+        : reached
+          ? `第 ${run.sceneIndex + 1} 幕`
+          : "未開始";
       return `
         <button class="chapter-item${active ? " active" : ""}${reached ? " reached" : ""}" type="button" data-chapter="${chapterId}">
           <span>任務 ${index + 1}｜${status}</span>
@@ -3245,7 +3406,7 @@ function renderEndingGallery() {
         const count = (state.storyEndings[chapterId] || []).length;
         return `
           <article class="ending-item${count ? " unlocked" : ""}">
-            <span>${count ? `已解鎖 ${count} / ${Object.keys(chapter.endings).length}` : "尚未完成"}</span>
+            <span>${count ? `已通關 ${count} 種路線` : "尚未通關"}</span>
             <strong>${chapter.title}</strong>
           </article>
         `;
@@ -3260,8 +3421,8 @@ function renderEndingGallery() {
       const unlocked = unlockedIds.includes(endingId);
       return `
         <article class="ending-item${unlocked ? " unlocked" : ""}">
-          <span>${unlocked ? "已解鎖" : "未解鎖"}</span>
-          <strong>${unlocked ? ending.title : "？？？結局"}</strong>
+          <span>${unlocked ? "已通關" : "未通關"}</span>
+          <strong>${unlocked ? ending.title : "尚未達成的通關路線"}</strong>
         </article>
       `;
     })
@@ -3276,8 +3437,8 @@ function renderStoryStage() {
   if (!chapter || !run || !scene) {
     els.storyKicker.textContent = "任務入口";
     els.storyTitle.textContent = "地球記憶艙：五道危機任務";
-    els.storyText.textContent = "請選擇一個章節開始。每章都像一個短篇環境決策測驗，約 6 次選擇後會產生小結局，並指出你的理解亮點與可能迷思。";
-    els.storyClue.textContent = "玩法提醒：沒有分數，也不會顯示答對答錯。你的選擇會形成一種環境守護風格。";
+    els.storyText.textContent = "請先閱讀對應的知識全景圖，再選擇一個章節開始。每章約 6 次選擇，選項看起來都像行動方案，但只有符合全景圖概念的判斷才能穩定通關。";
+    els.storyClue.textContent = "玩法提醒：答對得 2 分，部分理解得 1 分；若選到明顯錯誤觀念，任務會立刻中止，請回全景圖查證後再挑戰。";
     els.storyResult.classList.add("is-hidden");
     els.storyContinue.classList.add("is-hidden");
     els.storyEnding.classList.add("is-hidden");
@@ -3303,25 +3464,55 @@ function renderStoryStage() {
   els.storyText.textContent = run.history.length === 0 ? `${chapter.intro} ${scene.text}` : scene.text;
   els.storyClue.textContent = scene.clue;
   els.storyResult.classList.toggle("is-hidden", !run.pendingChoice);
-  els.storyResult.textContent = run.pendingChoice?.result || "";
+  els.storyResult.classList.remove("success", "warning", "danger");
+  if (run.pendingChoice) {
+    els.storyResult.classList.add(run.pendingChoice.tone || "warning");
+    els.storyResult.innerHTML = `
+      <span>${run.pendingChoice.label}</span>
+      <strong>${run.pendingChoice.scoreText}</strong>
+      <p>${run.pendingChoice.result}</p>
+    `;
+  } else {
+    els.storyResult.innerHTML = "";
+  }
   els.storyContinue.classList.toggle("is-hidden", !run.pendingChoice || run.finished);
   els.storyChoices.classList.toggle("is-hidden", Boolean(run.pendingChoice) || run.finished);
   els.storyEnding.classList.toggle("is-hidden", !run.finished);
 
   if (run.finished) {
-    const ending = chapter.endings[run.endingId];
+    const ending = chapter.endings[run.endingId] || chapter.endings[chooseEndingId(run.scores, chapter)];
+    const grade = run.grade || getMasteryGrade(run);
+    const percent = getMasteryPercent(run);
     els.storyChoices.innerHTML = "";
-    els.storyEnding.innerHTML = `
-      <span>${chapter.subtitle}｜小結局</span>
-      <h3>${ending.title}</h3>
-      <p>${ending.summary}</p>
-      <article><strong>${ending.strength}</strong><strong>${ending.guide}</strong><strong>${chapter.review}</strong></article>
-      <div class="ending-actions">
-        <button class="primary-button" type="button" data-story-restart>重玩本章，嘗試不同路線</button>
-        <button class="ghost-button" type="button" data-story-menu>回任務選單</button>
-        <button class="ghost-button" type="button" data-story-panorama>回知識全景</button>
-      </div>
-    `;
+    if (run.failed) {
+      els.storyEnding.innerHTML = `
+        <span>${chapter.subtitle}｜任務失敗</span>
+        <h3>${grade.title}｜${grade.label}</h3>
+        <p>${run.failReason || grade.message}</p>
+        <article>
+          <strong>本次分數：${run.points} / ${run.maxPoints}（${percent}%）</strong>
+          <strong>${masteryFailGuides[chapter.id] || chapter.review}</strong>
+          <strong>學習建議：先回知識全景圖找出相關線索，再重玩本章。不要急著點選，先說出選項背後的理由。</strong>
+        </article>
+        <div class="ending-actions">
+          <button class="primary-button" type="button" data-story-restart>重新挑戰本章</button>
+          <button class="ghost-button" type="button" data-story-menu>回任務選單</button>
+          <button class="ghost-button" type="button" data-story-panorama>回知識全景</button>
+        </div>
+      `;
+    } else {
+      els.storyEnding.innerHTML = `
+        <span>${chapter.subtitle}｜小結局</span>
+        <h3>${grade.title}｜${grade.label} 等第</h3>
+        <p>本次分數：${run.points} / ${run.maxPoints}（${percent}%）。${grade.message}</p>
+        <article><strong>${ending.title}：${ending.summary}</strong><strong>${ending.strength}</strong><strong>${ending.guide}</strong><strong>${chapter.review}</strong></article>
+        <div class="ending-actions">
+          <button class="primary-button" type="button" data-story-restart>重玩本章，挑戰更高等第</button>
+          <button class="ghost-button" type="button" data-story-menu>回任務選單</button>
+          <button class="ghost-button" type="button" data-story-panorama>回知識全景</button>
+        </div>
+      `;
+    }
     return;
   }
 
@@ -3329,6 +3520,7 @@ function renderStoryStage() {
     .map((choice, index) => `
       <button class="story-choice" type="button" data-story-choice="${index}">
         <strong>${choice.label}</strong>
+        <small>請先對照線索與知識全景圖，再決定是否採取這個行動。</small>
       </button>
     `)
     .join("");
@@ -3343,10 +3535,11 @@ function renderMemoryFragments() {
     return;
   }
   if (!run.fragments.length) {
-    els.memoryFragments.innerHTML = `<article class="memory-empty">尚未取得任務筆記。做出第一個選擇後，系統會記錄你看見的環境線索。</article>`;
+    els.memoryFragments.innerHTML = `<article class="memory-empty">尚未取得任務筆記。做出第一個選擇後，系統會記錄分數與你看見的環境線索。</article>`;
     return;
   }
-  els.memoryFragments.innerHTML = run.fragments
+  const scoreCard = `<article class="memory-fragment mastery-score"><span>${run.grade?.label || getMasteryPercent(run) + "%"}</span><p>目前分數：${run.points} / ${run.maxPoints}。部分理解 ${run.partialCount} 次，錯誤判斷 ${run.wrongCount} 次。</p></article>`;
+  els.memoryFragments.innerHTML = scoreCard + run.fragments
     .map((fragment, index) => `<article class="memory-fragment"><span>${index + 1}</span><p>${fragment}</p></article>`)
     .join("");
 }
@@ -3358,14 +3551,30 @@ function chooseStoryOption(index) {
   const scene = currentStoryScene();
   const choice = scene.choices[index];
   applyStoryEffects(choice);
+  run.maxPoints += choice.maxPoints || 2;
+  run.points += choice.points || 0;
+  if (choice.mastery === "partial") run.partialCount += 1;
+  if (choice.eliminates) {
+    run.wrongCount += 1;
+    run.failed = true;
+    run.finished = true;
+    run.failReason = buildChoiceResult(choice, chapter);
+    run.endingId = chooseEndingId(run.scores, chapter);
+    run.grade = getMasteryGrade(run);
+  }
   run.pendingChoice = {
-    result: choice.result
+    label: choice.masteryLabel || "判斷結果",
+    tone: choice.masteryTone || "warning",
+    scoreText: `本題 +${choice.points || 0} / ${choice.maxPoints || 2} 分`,
+    result: buildChoiceResult(choice, chapter)
   };
   run.history.push({
     sceneIndex: run.sceneIndex,
     sceneTitle: scene.title,
     choice: choice.label,
-    result: choice.result
+    result: choice.result,
+    mastery: choice.mastery,
+    points: choice.points || 0
   });
   saveStoryProgress();
   renderGame();
@@ -3380,9 +3589,12 @@ function continueStory() {
   if (run.sceneIndex >= chapter.moments.length - 1) {
     run.finished = true;
     run.endingId = chooseEndingId(run.scores, chapter);
-    state.storyEndings[chapter.id] = state.storyEndings[chapter.id] || [];
-    if (!state.storyEndings[chapter.id].includes(run.endingId)) {
-      state.storyEndings[chapter.id].push(run.endingId);
+    run.grade = getMasteryGrade(run);
+    if (!run.failed && getMasteryPercent(run) >= 70) {
+      state.storyEndings[chapter.id] = state.storyEndings[chapter.id] || [];
+      if (!state.storyEndings[chapter.id].includes(run.endingId)) {
+        state.storyEndings[chapter.id].push(run.endingId);
+      }
     }
   } else {
     run.sceneIndex += 1;

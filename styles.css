@@ -1515,6 +1515,50 @@ button {
   line-height: 1.6;
 }
 
+.story-result span {
+  display: inline-flex;
+  margin-bottom: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--accent);
+  font-size: 14px;
+}
+
+.story-result strong,
+.story-result p {
+  display: block;
+  margin: 0;
+}
+
+.story-result p {
+  margin-top: 6px;
+  color: #263b2d;
+}
+
+.story-result.success {
+  background: #edf8e8;
+  border-color: #85b96c;
+}
+
+.story-result.warning {
+  background: #fff8df;
+  border-color: #e7bd54;
+}
+
+.story-result.warning span {
+  background: #bd8121;
+}
+
+.story-result.danger {
+  background: #fff0ea;
+  border-color: #d56d4f;
+}
+
+.story-result.danger span {
+  background: #b84c34;
+}
+
 .story-choices {
   display: grid;
   gap: 12px;
