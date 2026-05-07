@@ -488,7 +488,7 @@ slides.forEach((slide) => {
   slide.quizBank = quizBanks[slide.id];
 });
 
-const storyGame = {
+const legacyStoryGame = {
   startScene: "intro",
   chapters: [
     "失落的島嶼資料庫",
@@ -967,6 +967,951 @@ const storyGame = {
   }
 };
 
+const chapterGames = {
+  bio: {
+    id: "bio",
+    title: "失落的島嶼資料庫",
+    subtitle: "臺灣生物多樣性",
+    themeIndex: 0,
+    mission: "修復臺灣島嶼生命資料庫，判斷多樣生命從哪裡來。",
+    intro: "資料庫只剩六段破碎訊號。你不需要答題，而是要做出一連串調查選擇，最後系統會判定你的保育決策風格。",
+    review: "建議回看：全景圖 1 的「環境梯度」「生物多樣性三層次」「保護方式」。",
+    traitOrder: ["habitat", "species", "rescue", "detective"],
+    moments: [
+      {
+        title: "第 1 幕｜島嶼資料庫崩潰",
+        text: "主控台只顯示臺灣輪廓，海岸、平原、丘陵與高山依序閃爍。系統要求你先決定調查方向。",
+        clue: "線索：臺灣的地形、海拔與氣候差異，是生物多樣性的起點。",
+        choices: [
+          {
+            label: "先掃描海岸到高山的環境階梯。",
+            result: "你看見短距離內出現濕地、森林與高山溪流，棲地差異被重新標記。",
+            effects: { habitat: 2 },
+            fragment: "多樣棲地能支撐多樣生命。"
+          },
+          {
+            label: "先追蹤最稀有、最醒目的特有種。",
+            result: "明星物種的標記亮起，但系統提醒：牠們背後都有特定棲地。",
+            effects: { species: 2 },
+            fragment: "特有種很重要，但不能脫離棲地來看。"
+          },
+          {
+            label: "先調出資料來源，確認訊號是否可靠。",
+            result: "你取得調查日期、地點與物種紀錄，資料庫穩定了一小格。",
+            effects: { detective: 2 },
+            fragment: "保育判斷需要可靠資料。"
+          }
+        ]
+      },
+      {
+        title: "第 2 幕｜海拔光帶",
+        text: "一條光帶從海邊爬上 3000 公尺高山。候鳥、山羌、臺灣黑熊與山椒魚分別停在不同位置。",
+        clue: "線索：海拔上升時，溫度、雨量、植物與動物組成會改變。",
+        choices: [
+          {
+            label: "記錄每個高度帶的溫度、雨量與代表生物。",
+            result: "環境階梯圖補上關鍵資料，資料庫判定你看見了棲地分層。",
+            effects: { habitat: 2, detective: 1 },
+            fragment: "海拔梯度會形成不同生活環境。"
+          },
+          {
+            label: "只留下最珍貴物種的照片，其他環境資料先略過。",
+            result: "照片很吸引人，但少了環境背景，系統無法解釋牠為什麼住在那裡。",
+            effects: { species: 2 },
+            fragment: "只看物種照片，可能看不見牠的生活條件。"
+          },
+          {
+            label: "先規劃臨時救援路線，把受威脅動物移走。",
+            result: "救援路線形成，但系統提醒：移走個體不等於修復牠的家。",
+            effects: { rescue: 2 },
+            fragment: "短期救援重要，但不等於長期保育。"
+          }
+        ]
+      },
+      {
+        title: "第 3 幕｜山椒魚的分隔訊號",
+        text: "不同山區的山椒魚標記相距不遠，卻被溪流源頭與山脈切開。牠們像在同一座島上的不同密室。",
+        clue: "線索：長期隔離會讓族群交流變少，差異可能逐漸累積。",
+        choices: [
+          {
+            label: "比較不同山區族群的外形與分布資料。",
+            result: "你發現同一類生物內部也可能有差異，遺傳多樣性資料被修復。",
+            effects: { detective: 2, habitat: 1 },
+            fragment: "遺傳多樣性藏在族群差異裡。"
+          },
+          {
+            label: "把牠們全部當成同一種，不再追分布差異。",
+            result: "系統亮黃燈：生物多樣性不只是數有幾種，也包含同種內差異。",
+            effects: { species: 1 },
+            fragment: "同種生物內部差異也值得保護。"
+          },
+          {
+            label: "先封鎖溪流源頭，避免人為干擾擴大。",
+            result: "干擾暫時降低，但你還需要更多資料判斷哪些區域最關鍵。",
+            effects: { rescue: 2, detective: 1 },
+            fragment: "快速保護可以爭取時間，但仍要補足調查。"
+          }
+        ]
+      },
+      {
+        title: "第 4 幕｜特有種警報",
+        text: "臺灣黑熊、臺灣百合、山椒魚與候鳥資料同時閃爍。系統問：你要先保護誰？",
+        clue: "線索：保育不只比較誰稀有，也要看棲地狀況、族群壓力與生態角色。",
+        choices: [
+          {
+            label: "先找出牠們共同依賴的棲地與移動路線。",
+            result: "多個物種的資料被同時連起，系統顯示「共用棲地」標記。",
+            effects: { habitat: 2 },
+            fragment: "保護共同棲地，可能同時幫助多種生物。"
+          },
+          {
+            label: "先選最容易引起大家關注的明星物種。",
+            result: "宣傳效果很好，但系統提醒：不醒目的苔蘚、昆蟲與溪流也支撐生態系。",
+            effects: { species: 2 },
+            fragment: "明星物種能帶動關注，但保育不能只看人氣。"
+          },
+          {
+            label: "先救數量最少、最可能立刻消失的族群。",
+            result: "危急族群得到支援，但長期警報仍指向棲地破碎。",
+            effects: { rescue: 2 },
+            fragment: "救急能避免立即損失，但仍要回到原因。"
+          }
+        ]
+      },
+      {
+        title: "第 5 幕｜棲地破碎影像",
+        text: "森林被道路切開，溪流旁出現工程痕跡。系統只留下兩個字：連結。",
+        clue: "線索：生物需要覓食、繁殖、躲藏與移動空間，棲地破碎會增加風險。",
+        choices: [
+          {
+            label: "優先修復棲地連結，再安排物種監測。",
+            result: "幾個綠色節點重新接上，資料庫判定棲地網絡開始恢復。",
+            effects: { habitat: 3 },
+            fragment: "棲地連結是長期保育的核心。"
+          },
+          {
+            label: "先把動物移到安全區，之後再討論環境。",
+            result: "短期風險下降，但安全區容量與適合度立刻變成新問題。",
+            effects: { rescue: 2 },
+            fragment: "安全區若沒有合適條件，可能只是暫時避難。"
+          },
+          {
+            label: "先蒐集路殺、繁殖與族群變化資料。",
+            result: "你建立監測表，能看出哪些破碎區域最需要優先處理。",
+            effects: { detective: 2 },
+            fragment: "監測資料能幫助排定保育優先順序。"
+          }
+        ]
+      },
+      {
+        title: "第 6 幕｜資料庫修復決策",
+        text: "最後，系統要求你提交一份保育策略。你的選擇會成為本章小結局。",
+        clue: "線索：好的保育通常需要棲地、物種、救援與資料一起思考。",
+        choices: [
+          {
+            label: "提出棲地修復與長期監測並行的方案。",
+            result: "資料庫亮起綠色網絡，系統認為你的策略能支撐長期生存。",
+            effects: { habitat: 2, detective: 1 },
+            fragment: "長期保育需要修復棲地，也需要持續追蹤。"
+          },
+          {
+            label: "提出特有種宣傳與保護名單，先喚起大眾重視。",
+            result: "訊息傳播很快，但系統要求補上棲地與執行細節。",
+            effects: { species: 2 },
+            fragment: "宣傳能打開關注，但行動方案要更完整。"
+          },
+          {
+            label: "提出立即救援與臨時安置，先降低最危急風險。",
+            result: "危急警報下降，但系統提醒要避免只處理症狀。",
+            effects: { rescue: 2 },
+            fragment: "立即救援後，還要追查威脅來源。"
+          }
+        ]
+      }
+    ],
+    endings: {
+      habitat: {
+        title: "棲地守護者",
+        summary: "你最常從棲地條件、環境梯度與生態連結思考問題。",
+        strength: "亮點：你能看見保護棲地就是保護生物長期生活的條件。",
+        guide: "提醒：也要記得補上物種監測與短期救援，避免行動太慢。"
+      },
+      species: {
+        title: "明星物種追蹤者",
+        summary: "你很容易被特有種與珍稀生物吸引，擅長喚起大家關注。",
+        strength: "亮點：你能用具體物種讓保育議題變得有感。",
+        guide: "提醒：不要只保護可愛或稀有的生物，牠背後的棲地也要一起看。"
+      },
+      rescue: {
+        title: "快速救援隊",
+        summary: "你會先處理眼前最危急的生命風險，行動感很強。",
+        strength: "亮點：你能在危機中快速爭取時間。",
+        guide: "提醒：救援不是終點，沒有合適棲地，危機可能再次出現。"
+      },
+      detective: {
+        title: "島嶼資料偵探",
+        summary: "你習慣先看資料、分布、族群差異與證據來源。",
+        strength: "亮點：你能避免只靠印象判斷保育優先順序。",
+        guide: "提醒：資料最後要轉成行動，不能只停在觀察。"
+      }
+    }
+  },
+  invasive: {
+    id: "invasive",
+    title: "陌生物種的腳印",
+    subtitle: "外來入侵種",
+    themeIndex: 1,
+    mission: "追查濕地陌生腳印，判斷牠是否成為外來入侵危機。",
+    intro: "濕地監測器捕捉到不明生物。牠來自外地，但外來不一定等於有害。你的任務是從證據中判斷風險。",
+    review: "建議回看：全景圖 2 的「外來種不一定有害」「避免入侵四守則」。",
+    traitOrder: ["prevention", "removal", "monitor", "preference"],
+    moments: [
+      {
+        title: "第 1 幕｜濕地腳印",
+        text: "泥灘上有陌生腳印。系統同時投影番薯、番茄、福壽螺與布袋蓮。",
+        clue: "線索：外來物種不一定有害，造成衝擊時才可能成為外來入侵種。",
+        choices: [
+          {
+            label: "先判斷是否大量繁殖並影響原生生物。",
+            result: "風險比對開始運作，系統把腳印標成「待觀察」。",
+            effects: { monitor: 2, prevention: 1 },
+            fragment: "外來不等於入侵，關鍵是是否造成衝擊。"
+          },
+          {
+            label: "只要是外來生物就全部列為危險。",
+            result: "警報立刻升高，但作物資料也被誤判，系統要求你重新分類。",
+            effects: { removal: 2 },
+            fragment: "過度簡化可能造成錯誤管理。"
+          },
+          {
+            label: "先看牠漂不漂亮、可不可愛，再決定態度。",
+            result: "系統發出低鳴：外觀偏好不是生態風險指標。",
+            effects: { preference: 2 },
+            fragment: "生態判斷不能只看人類喜好。"
+          }
+        ]
+      },
+      {
+        title: "第 2 幕｜來源紀錄",
+        text: "監視影像顯示有人在水邊放下一個箱子。幾週後，陌生生物開始出現在不同角落。",
+        clue: "線索：棄養、逃逸、貨運、觀賞用途都可能讓外來生物進入野外。",
+        choices: [
+          {
+            label: "追查來源，阻止下一次棄養或逃逸。",
+            result: "你找到來源不明交易與棄養紀錄，濕地邊界多了一道防線。",
+            effects: { prevention: 3 },
+            fragment: "源頭管理比事後清除更有效。"
+          },
+          {
+            label: "先清除已出現的個體，來源之後再說。",
+            result: "部分區域恢復，但新的個體又從邊界出現。",
+            effects: { removal: 2 },
+            fragment: "只處理眼前個體，若源頭不斷，問題會重複。"
+          },
+          {
+            label: "先建立日期、地點與數量紀錄。",
+            result: "擴散地圖開始成形，你看見牠們不是隨機出現。",
+            effects: { monitor: 2 },
+            fragment: "監測能看出擴散速度與熱區。"
+          }
+        ]
+      },
+      {
+        title: "第 3 幕｜繁殖速度異常",
+        text: "系統顯示數量曲線突然變陡。原本安靜的水面被陌生植物覆蓋。",
+        clue: "線索：缺少天敵、適應力強、繁殖快，會提高入侵風險。",
+        choices: [
+          {
+            label: "比較天敵、繁殖速度與棲地占用資料。",
+            result: "你確認牠在新環境中擴散很快，需要進入高風險名單。",
+            effects: { monitor: 2, prevention: 1 },
+            fragment: "快速擴散是判斷入侵風險的重要線索。"
+          },
+          {
+            label: "直接大規模清除，先讓水面恢復。",
+            result: "水面露出一部分，但系統提醒：若根系或幼體留下，仍會反彈。",
+            effects: { removal: 2 },
+            fragment: "清除需要方法與後續追蹤。"
+          },
+          {
+            label: "因為牠看起來很有生命力，所以先留下觀賞。",
+            result: "觀賞區很快擴大，原生植物的陽光被遮住。",
+            effects: { preference: 2 },
+            fragment: "適應力強不代表應該放任。"
+          }
+        ]
+      },
+      {
+        title: "第 4 幕｜築巢區競爭",
+        text: "原生鳥類築巢區旁出現外來鳥類。系統只顯示三個字：競爭中。",
+        clue: "線索：外來入侵種可能搶奪食物、棲地、陽光或繁殖位置。",
+        choices: [
+          {
+            label: "記錄牠們競爭的是食物、棲地還是繁殖位置。",
+            result: "你把衝擊從模糊警報變成可追蹤項目。",
+            effects: { monitor: 3 },
+            fragment: "衝擊要具體記錄，才知道怎麼處理。"
+          },
+          {
+            label: "先移除外來鳥類，保護原生鳥類築巢。",
+            result: "築巢壓力暫時降低，但系統要求補上監測，避免反覆入侵。",
+            effects: { removal: 2, prevention: 1 },
+            fragment: "移除行動需要搭配長期監測。"
+          },
+          {
+            label: "保留比較漂亮、叫聲比較好聽的鳥。",
+            result: "系統鎖住選項：人類偏好無法代表生態價值。",
+            effects: { preference: 2 },
+            fragment: "漂亮不等於適合留在野外。"
+          }
+        ]
+      },
+      {
+        title: "第 5 幕｜校園宣導任務",
+        text: "濕地警報外溢到校園。系統要求你設計一張提醒同學的行動卡。",
+        clue: "線索：不非法引入、不任意棄養、不購買來源不明動植物。",
+        choices: [
+          {
+            label: "主打不棄養、不放生、不買來源不明動植物。",
+            result: "行動卡直指源頭，系統標記為高預防效益。",
+            effects: { prevention: 3 },
+            fragment: "預防入侵要從人的行為開始。"
+          },
+          {
+            label: "主打看到陌生生物就自己抓走。",
+            result: "系統提醒：自行捕捉可能危險，也可能誤傷原生種。",
+            effects: { removal: 1 },
+            fragment: "處理野外生物需要正確通報與方法。"
+          },
+          {
+            label: "主打拍照打卡，讓大家覺得牠很可愛。",
+            result: "照片傳很快，但可能讓更多人想飼養或放生。",
+            effects: { preference: 2 },
+            fragment: "宣傳若沒有正確觀念，可能放大風險。"
+          }
+        ]
+      },
+      {
+        title: "第 6 幕｜濕地防線決策",
+        text: "最後，系統要求你提交防治方案。濕地會記住你的風險判斷方式。",
+        clue: "線索：外來入侵種管理通常需要預防、監測、通報與必要處理。",
+        choices: [
+          {
+            label: "建立源頭管理、通報、監測與必要清除的完整流程。",
+            result: "濕地警報降為監測狀態，系統判定防線完整。",
+            effects: { prevention: 2, monitor: 2 },
+            fragment: "完整防線包含源頭、監測與行動。"
+          },
+          {
+            label: "把重點放在快速清除，先讓畫面恢復原狀。",
+            result: "畫面變乾淨，但來源警報仍閃爍。",
+            effects: { removal: 2 },
+            fragment: "只看表面恢復，可能忽略來源。"
+          },
+          {
+            label: "保留受歡迎的外來生物，清除不討喜的生物。",
+            result: "系統判定標準錯誤：生態衝擊不能用喜好決定。",
+            effects: { preference: 2 },
+            fragment: "外來種管理要看風險，不是看喜歡。"
+          }
+        ]
+      }
+    ],
+    endings: {
+      prevention: {
+        title: "風險守門員",
+        summary: "你最重視源頭預防，會先守住問題進入自然環境的入口。",
+        strength: "亮點：能在擴散前降低風險，減少事後清除代價。",
+        guide: "提醒：不要把所有外來種都妖魔化，仍要判斷是否造成衝擊。"
+      },
+      removal: {
+        title: "快速清除隊長",
+        summary: "你行動力強，看到危機會想立刻讓環境恢復。",
+        strength: "亮點：面對已造成衝擊的入侵種，你不會拖延。",
+        guide: "提醒：只清除不追來源，問題可能很快再出現。"
+      },
+      monitor: {
+        title: "濕地監測員",
+        summary: "你重視數量、地點、時間與競爭資源等證據。",
+        strength: "亮點：能把模糊警報變成可判斷的資料。",
+        guide: "提醒：監測後仍要轉成通報、預防或防治行動。"
+      },
+      preference: {
+        title: "人類偏好決策者",
+        summary: "你容易用可愛、漂亮或受歡迎程度來判斷生物去留。",
+        strength: "亮點：你很能注意到生物與人的情感連結。",
+        guide: "提醒：野外管理要看生態衝擊，而不是人類喜好。"
+      }
+    }
+  },
+  impact: {
+    id: "impact",
+    title: "河川警報與斷裂棲地",
+    subtitle: "人類活動對環境的影響",
+    themeIndex: 2,
+    mission: "調查河川死魚、空氣污染與淺山道路開發的關聯。",
+    intro: "魚群影像停在同一秒，煙霧資料飄進水域圖層。這一章要像偵探一樣追查證據，也要面對便利與生態的兩難。",
+    review: "建議回看：全景圖 3 的「水污染」「空氣污染」「棲地破壞」。",
+    traitOrder: ["detective", "single", "convenience", "balance"],
+    moments: [
+      {
+        title: "第 1 幕｜河川死魚",
+        text: "河面出現死魚，岸邊有人指著最近的工廠說：一定是它。",
+        clue: "線索：污染判斷需要來源、地點、時間、水質與受影響生物資料。",
+        choices: [
+          {
+            label: "先蒐集水質、時間、地點與可能污染來源。",
+            result: "你建立第一張調查表，系統開始回傳資料。",
+            effects: { detective: 3 },
+            fragment: "環境判斷不能只靠第一眼。"
+          },
+          {
+            label: "直接把最近工廠列為唯一兇手。",
+            result: "工廠被標記，但其他污染來源暫時被你忽略。",
+            effects: { single: 2 },
+            fragment: "單一兇手推理很快，但可能漏看複合原因。"
+          },
+          {
+            label: "先關心河岸道路是否會影響交通。",
+            result: "交通資料出現，但死魚原因仍未解。",
+            effects: { convenience: 2 },
+            fragment: "人類需求重要，但不能取代污染調查。"
+          }
+        ]
+      },
+      {
+        title: "第 2 幕｜污染來源清單",
+        text: "工廠廢水、家庭污水、畜牧污水、廢油與垃圾同時出現在螢幕上。",
+        clue: "線索：同一條河川可能同時受到多種來源影響。",
+        choices: [
+          {
+            label: "比較不同來源的排放時間與位置。",
+            result: "你發現污染峰值不是單一時間出現，案情變得更複雜也更清楚。",
+            effects: { detective: 2 },
+            fragment: "比較資料能看見複合原因。"
+          },
+          {
+            label: "只追查最容易被大家注意到的來源。",
+            result: "調查很快有方向，但系統提醒你可能被直覺帶著走。",
+            effects: { single: 2 },
+            fragment: "明顯來源不一定是唯一來源。"
+          },
+          {
+            label: "先選擇不影響居民生活的處理方式。",
+            result: "居民接受度上升，但污染源仍需要證據確認。",
+            effects: { balance: 1, convenience: 1 },
+            fragment: "環境治理也要考慮居民生活，但不能跳過證據。"
+          }
+        ]
+      },
+      {
+        title: "第 3 幕｜看不見的空氣路徑",
+        text: "煙霧模擬線飄到農田與河川上方，酸雨提示開始閃爍。",
+        clue: "線索：空氣污染可能影響健康，也可能透過酸雨影響水域、農作物與建築物。",
+        choices: [
+          {
+            label: "追蹤污染如何從空氣移動到水域與農田。",
+            result: "你把空氣、水、土地連成同一張影響網。",
+            effects: { detective: 2, balance: 1 },
+            fragment: "污染會跨越空氣、水與土地。"
+          },
+          {
+            label: "只處理看得見的垃圾，煙霧先不管。",
+            result: "河面變乾淨一些，但酸雨警報沒有消失。",
+            effects: { single: 1 },
+            fragment: "看不見的污染也可能有長期影響。"
+          },
+          {
+            label: "先讓車流順暢，避免大家塞車怨聲載道。",
+            result: "交通燈轉綠，但空氣品質指標沒有改善。",
+            effects: { convenience: 2 },
+            fragment: "交通便利可能和空氣品質互相拉扯。"
+          }
+        ]
+      },
+      {
+        title: "第 4 幕｜淺山道路",
+        text: "新道路能縮短通勤時間，卻切過動物活動區。夜間影像中，一隻動物停在車燈前。",
+        clue: "線索：道路可能切割棲地，增加動物移動與路殺風險。",
+        choices: [
+          {
+            label: "設計生態廊道、警示與路殺監測。",
+            result: "道路仍可使用，但綠色節點被重新連起。",
+            effects: { balance: 3, detective: 1 },
+            fragment: "好的開發要兼顧交通與棲地連結。"
+          },
+          {
+            label: "道路越直越好，生物應該會自己適應。",
+            result: "通勤變快，但棲地破碎化警報上升。",
+            effects: { convenience: 3 },
+            fragment: "便利若忽略棲地，成本可能留給未來。"
+          },
+          {
+            label: "先找出動物穿越熱點，再決定工程調整。",
+            result: "你用資料找到高風險路段，工程有了調整依據。",
+            effects: { detective: 2, balance: 1 },
+            fragment: "路殺資料能幫助設計改善措施。"
+          }
+        ]
+      },
+      {
+        title: "第 5 幕｜居民會議",
+        text: "居民希望交通安全，農民擔心水污染，保育團體要求保留棲地。會議室氣氛升溫。",
+        clue: "線索：環境決策常需要在便利、安全、健康與生態之間協調。",
+        choices: [
+          {
+            label: "讓各方先看同一份監測資料，再討論方案。",
+            result: "爭論沒有立刻消失，但大家開始討論同一組證據。",
+            effects: { detective: 2, balance: 1 },
+            fragment: "共用資料能降低各說各話。"
+          },
+          {
+            label: "選一個最可能被責怪的對象，要求它負責。",
+            result: "場面暫時有出口，但真正問題可能還沒被完整處理。",
+            effects: { single: 2 },
+            fragment: "找代罪羊不等於解決系統問題。"
+          },
+          {
+            label: "優先滿足多數人的交通需求，其他之後再補。",
+            result: "支持聲變多，但生態與污染資料仍被擱置。",
+            effects: { convenience: 2 },
+            fragment: "多數便利也需要面對少數環境代價。"
+          }
+        ]
+      },
+      {
+        title: "第 6 幕｜調查報告提交",
+        text: "你要提交最後建議。系統不問誰輸誰贏，只問：你的推理看見了多少代價？",
+        clue: "線索：環境問題常是複合因果，需要證據、預防與協調。",
+        choices: [
+          {
+            label: "提出污染追蹤、棲地連結與居民需求並行方案。",
+            result: "報告被標記為整合型，系統顯示多條風險線同時下降。",
+            effects: { balance: 2, detective: 2 },
+            fragment: "整合方案能同時處理證據與需求。"
+          },
+          {
+            label: "提出單一污染源處罰方案，先給大家明確答案。",
+            result: "答案很清楚，但系統要求補上其他來源檢查。",
+            effects: { single: 2 },
+            fragment: "明確答案若證據不足，可能修錯方向。"
+          },
+          {
+            label: "提出交通優先方案，污染與棲地先列入後續觀察。",
+            result: "交通壓力下降，但環境警報沒有完全解除。",
+            effects: { convenience: 2 },
+            fragment: "把環境問題延後，可能讓代價變大。"
+          }
+        ]
+      }
+    ],
+    endings: {
+      detective: {
+        title: "環境偵探",
+        summary: "你常先蒐證、比對來源，再判斷污染和棲地問題。",
+        strength: "亮點：能避免憑直覺下結論，也能看見複合原因。",
+        guide: "提醒：資料很重要，但遇到高風險時，也要安排預防行動。"
+      },
+      single: {
+        title: "單一兇手追捕者",
+        summary: "你喜歡快速找出明確對象，讓混亂事件有清楚方向。",
+        strength: "亮點：行動方向明確，不容易陷入無限討論。",
+        guide: "提醒：環境問題常不只一個原因，別讓直覺遮住證據。"
+      },
+      convenience: {
+        title: "便利開發派",
+        summary: "你很重視人類交通、生活效率與立即需求。",
+        strength: "亮點：你能看見環境決策也牽涉居民生活。",
+        guide: "提醒：便利若忽略污染與棲地，可能把成本留給未來。"
+      },
+      balance: {
+        title: "生態協調工程師",
+        summary: "你傾向在交通、安全、污染治理與棲地保護之間找平衡。",
+        strength: "亮點：能把不同需求放在同一張圖上思考。",
+        guide: "提醒：協調方案仍要有監測，確認真的有效。"
+      }
+    }
+  },
+  climate: {
+    id: "climate",
+    title: "升溫中的未來城市",
+    subtitle: "全球暖化與氣候變遷",
+    themeIndex: 3,
+    mission: "破解未來城市升溫警報，判斷天氣、氣候與溫室效應的關係。",
+    intro: "城市警報響起，有人說今天很冷，所以暖化不存在。你要在倒數中判斷什麼是短期感覺，什麼是長期趨勢。",
+    review: "建議回看：全景圖 4 的「溫室效應示意圖」「正常與異常溫室效應」。",
+    traitOrder: ["trend", "feeling", "shutdown", "adaptation"],
+    moments: [
+      {
+        title: "第 1 幕｜今天很冷的謎題",
+        text: "未來城市廣播傳來：今天很冷，所以沒有全球暖化。系統把一百年的溫度線放到你面前。",
+        clue: "線索：天氣是短時間狀態；氣候是長時間統計趨勢。",
+        choices: [
+          {
+            label: "查看長期趨勢，而不是只看今天。",
+            result: "雜亂曲線中浮出長期上升訊號。",
+            effects: { trend: 3 },
+            fragment: "單一天氣不能代表長期氣候趨勢。"
+          },
+          {
+            label: "相信今天體感，先關閉暖化警報。",
+            result: "警報暫停一秒又重啟，系統提醒體感不是完整證據。",
+            effects: { feeling: 2 },
+            fragment: "體感可以是線索，但不能取代長期資料。"
+          },
+          {
+            label: "先問城市哪些地方最容易受熱浪影響。",
+            result: "醫院、學校、農田與海岸區域亮起。",
+            effects: { adaptation: 2 },
+            fragment: "氣候風險會落到具體生活空間。"
+          }
+        ]
+      },
+      {
+        title: "第 2 幕｜天氣與氣候資料牆",
+        text: "資料牆同時顯示今天氣溫、本週降雨與 30 年平均資料。",
+        clue: "線索：判斷氣候變遷需要長時間資料，而不是單日冷熱。",
+        choices: [
+          {
+            label: "比較多年平均溫度與降雨型態。",
+            result: "你抓到長期趨勢，短期波動不再混淆判斷。",
+            effects: { trend: 2 },
+            fragment: "氣候需要長時間統計。"
+          },
+          {
+            label: "選今天最冷的照片當作證據。",
+            result: "照片很有說服力，但系統標註：這只是一天的天氣。",
+            effects: { feeling: 2 },
+            fragment: "照片可能有感，卻不一定能代表趨勢。"
+          },
+          {
+            label: "找出容易淹水、熱傷害與缺水的地區。",
+            result: "城市風險地圖開始形成。",
+            effects: { adaptation: 2 },
+            fragment: "調適需要知道誰最容易受影響。"
+          }
+        ]
+      },
+      {
+        title: "第 3 幕｜溫室效應控制台",
+        text: "控制台上有兩個旋鈕：正常保溫、異常加劇。系統要求你不能亂轉。",
+        clue: "線索：正常溫室效應讓地球適合生命；過量溫室氣體會造成暖化。",
+        choices: [
+          {
+            label: "保留正常保溫，降低過量排放。",
+            result: "控制台穩定，紅外線熱能回流數值下降。",
+            effects: { trend: 2 },
+            fragment: "問題不是所有溫室效應，而是異常加劇。"
+          },
+          {
+            label: "把所有溫室效應都關掉。",
+            result: "系統立即鎖住旋鈕：沒有正常保溫，地球也不適合生命。",
+            effects: { shutdown: 3 },
+            fragment: "正常溫室效應是生命條件之一。"
+          },
+          {
+            label: "先找出排放最多、風險最高的區域。",
+            result: "工業區、交通路線與能源資料被標記。",
+            effects: { adaptation: 1, trend: 1 },
+            fragment: "減量和調適都需要找出熱點。"
+          }
+        ]
+      },
+      {
+        title: "第 4 幕｜排放來源資料",
+        text: "化石燃料、森林砍伐與甲烷排放三條資料線同時閃爍。",
+        clue: "線索：人類活動會增加溫室氣體，使溫室效應異常加劇。",
+        choices: [
+          {
+            label: "整理主要排放來源，設定減量優先順序。",
+            result: "城市減碳路線圖出現第一版。",
+            effects: { trend: 2 },
+            fragment: "找出排放來源，才能規劃減量。"
+          },
+          {
+            label: "只看今天哪裡最熱，其他資料先不管。",
+            result: "你找到熱點，但系統提醒熱點背後仍有長期原因。",
+            effects: { feeling: 2 },
+            fragment: "眼前高溫需要處理，也要追原因。"
+          },
+          {
+            label: "直接宣布所有排放活動都立刻停止。",
+            result: "系統要求你補上生活、能源與公平影響評估。",
+            effects: { shutdown: 2 },
+            fragment: "極端命令若缺少配套，可能難以執行。"
+          }
+        ]
+      },
+      {
+        title: "第 5 幕｜誰會被熱浪追上",
+        text: "熱浪、洪水、乾旱、珊瑚白化與農作物歉收影像排成一列。",
+        clue: "線索：氣候變遷會影響食物、健康、水資源、居住安全與生物棲地。",
+        choices: [
+          {
+            label: "把人類生活與生物棲地一起放進風險圖。",
+            result: "城市、農田、海岸與森林連成同一張調適地圖。",
+            effects: { adaptation: 3 },
+            fragment: "氣候風險不是遠方故事，會回到生活。"
+          },
+          {
+            label: "只關注最醒目的極地影像。",
+            result: "北極影像很重要，但熱浪與缺水也正在靠近城市。",
+            effects: { feeling: 1 },
+            fragment: "氣候變遷不只發生在遠方。"
+          },
+          {
+            label: "只談減碳，先不討論如何面對已發生的風險。",
+            result: "減碳路線亮起，但醫院與海岸警報仍在閃。",
+            effects: { trend: 1, shutdown: 1 },
+            fragment: "減緩和調適都需要。"
+          }
+        ]
+      },
+      {
+        title: "第 6 幕｜未來城市決策",
+        text: "最後，城市要你提交方案：你要如何同時面對升溫原因與已出現的風險？",
+        clue: "線索：氣候行動包含減緩排放，也包含調適熱浪、洪水與棲地改變。",
+        choices: [
+          {
+            label: "用長期資料規劃減碳，並設定熱浪與淹水調適。",
+            result: "城市風險圖降溫，系統判定方案兼顧原因與後果。",
+            effects: { trend: 2, adaptation: 2 },
+            fragment: "好的氣候行動要同時減緩與調適。"
+          },
+          {
+            label: "先處理大家今天感覺最嚴重的熱點。",
+            result: "部分區域得到降溫，但長期排放曲線沒有改變。",
+            effects: { feeling: 2 },
+            fragment: "眼前感受重要，但不能取代長期策略。"
+          },
+          {
+            label: "提出全面停止方案，但暫時不做地方調適。",
+            result: "目標很強烈，但系統提醒你要補上可執行步驟。",
+            effects: { shutdown: 2 },
+            fragment: "強烈目標需要配套與執行路線。"
+          }
+        ]
+      }
+    ],
+    endings: {
+      trend: {
+        title: "氣候行動者",
+        summary: "你重視長期趨勢、排放來源與減量路線。",
+        strength: "亮點：能用資料破解「今天很冷」這類迷思。",
+        guide: "提醒：除了減碳，也要規劃熱浪、洪水與棲地變化的調適。"
+      },
+      feeling: {
+        title: "體感判斷者",
+        summary: "你很注意眼前冷熱與大家立即感受到的問題。",
+        strength: "亮點：你能快速回應生活中的不舒服與危險。",
+        guide: "提醒：天氣不等於氣候，單日感受不能否定長期暖化。"
+      },
+      shutdown: {
+        title: "溫室效應關閉者",
+        summary: "你傾向用非常強烈、快速的方式處理暖化。",
+        strength: "亮點：你看見問題嚴重，不想拖延。",
+        guide: "提醒：正常溫室效應不是壞事；減量也需要可執行配套。"
+      },
+      adaptation: {
+        title: "城市調適規劃師",
+        summary: "你會把熱浪、洪水、健康、農作與棲地一起放進風險圖。",
+        strength: "亮點：能把氣候風險連回人類與生物的日常生活。",
+        guide: "提醒：調適之外，也要追蹤排放來源與長期減量。"
+      }
+    }
+  },
+  action: {
+    id: "action",
+    title: "最後的家園選擇",
+    subtitle: "永續行動",
+    themeIndex: 4,
+    mission: "為班級設計一份能持續執行的永續家園方案。",
+    intro: "核心艙把能源、碳足跡、水足跡與生活選擇放在同一張桌上。這次沒有完美答案，只有能不能持續修正的方案。",
+    review: "建議回看：全景圖 5 的「能源選擇」「碳足跡」「水足跡」「日常綠色行動」。",
+    traitOrder: ["coordinator", "campaign", "singleEnergy", "recycle"],
+    moments: [
+      {
+        title: "第 1 幕｜永續校園提案",
+        text: "班級要提出永續方案。有人想辦大型活動，有人想從每天的習慣開始。",
+        clue: "線索：永續行動需要能持續，不只是一次活動。",
+        choices: [
+          {
+            label: "從每天可持續的小行動開始，再累積成方案。",
+            result: "水壺、節能、低碳交通與回收被列入日常清單。",
+            effects: { coordinator: 2 },
+            fragment: "永續需要可持續的日常習慣。"
+          },
+          {
+            label: "先辦一場盛大的活動，讓大家印象深刻。",
+            result: "活動很有聲量，但系統追問：活動結束後習慣有留下嗎？",
+            effects: { campaign: 2 },
+            fragment: "大型活動能提醒大家，但不一定形成習慣。"
+          },
+          {
+            label: "先規定大家一定要分類回收。",
+            result: "回收桶變整齊，但系統提醒源頭減量更前面。",
+            effects: { recycle: 2 },
+            fragment: "回收重要，但不是唯一行動。"
+          }
+        ]
+      },
+      {
+        title: "第 2 幕｜淨零排序",
+        text: "螢幕出現兩個步驟：降低排放、抵消難以避免的排放。順序被打亂了。",
+        clue: "線索：淨零不是什麼都不排，而是先減量，再處理難以避免的排放。",
+        choices: [
+          {
+            label: "先減少排放，再討論碳匯或負碳技術。",
+            result: "順序修復，系統標示為正確策略。",
+            effects: { coordinator: 2 },
+            fragment: "淨零核心是先減量，再抵消。"
+          },
+          {
+            label: "先買抵消方案，生活習慣之後再說。",
+            result: "抵消數字變好看，但實際排放仍在增加。",
+            effects: { campaign: 1 },
+            fragment: "只靠抵消容易忽略真正減量。"
+          },
+          {
+            label: "只要回收做好，就等於淨零。",
+            result: "回收欄亮起，但能源與交通排放仍未處理。",
+            effects: { recycle: 2 },
+            fragment: "回收不能代表全部減碳。"
+          }
+        ]
+      },
+      {
+        title: "第 3 幕｜能源卡片",
+        text: "風力、太陽能與水力三張卡片亮起，每張下方都有小字：地點、天候、設備、土地、生態。",
+        clue: "線索：友善能源污染較低，但仍需要評估限制與環境影響。",
+        choices: [
+          {
+            label: "比較地點、天候、設備與生態影響，做能源組合。",
+            result: "系統產生混合能源方案，並保留地方評估欄位。",
+            effects: { coordinator: 2 },
+            fragment: "能源選擇需要因地制宜。"
+          },
+          {
+            label: "只選看起來最環保的一種能源，快速決定。",
+            result: "方案很快完成，但地方限制警報亮起。",
+            effects: { singleEnergy: 3 },
+            fragment: "沒有任何能源是萬用答案。"
+          },
+          {
+            label: "把能源主題放到大型宣傳活動裡。",
+            result: "大家開始注意能源議題，但仍需要具體方案。",
+            effects: { campaign: 2 },
+            fragment: "宣傳能開場，但方案要能落地。"
+          }
+        ]
+      },
+      {
+        title: "第 4 幕｜社區反對聲音",
+        text: "社區支持減碳，但擔心能源設施影響景觀、土地或生態。",
+        clue: "線索：永續決策也要考慮社區需求、公平與地方條件。",
+        choices: [
+          {
+            label: "召開討論，讓能源、社區與生態資料一起比較。",
+            result: "爭論變慢，但共識開始成形。",
+            effects: { coordinator: 3 },
+            fragment: "永續需要協調不同需求。"
+          },
+          {
+            label: "直接宣布再生能源一定最好，不必討論。",
+            result: "目標明確，但社區疑慮變得更強。",
+            effects: { singleEnergy: 2 },
+            fragment: "友善能源仍可能有地方影響。"
+          },
+          {
+            label: "先做宣傳影片，讓大家支持方案。",
+            result: "支持度增加，但反對者追問具體資料。",
+            effects: { campaign: 2 },
+            fragment: "說服需要資料，不只是口號。"
+          }
+        ]
+      },
+      {
+        title: "第 5 幕｜碳足跡與水足跡",
+        text: "兩條數字線浮現：一條看溫室氣體，一條看直接與間接用水。",
+        clue: "線索：足跡思考要看產品與生活的完整過程。",
+        choices: [
+          {
+            label: "把購買、使用、交通、回收與用水一起納入行動。",
+            result: "系統判定你看見生活背後的隱藏成本。",
+            effects: { coordinator: 2 },
+            fragment: "足跡思考能看見完整過程。"
+          },
+          {
+            label: "只做回收統計，其他生活選擇先不碰。",
+            result: "回收數據漂亮，但源頭減量欄位仍空白。",
+            effects: { recycle: 3 },
+            fragment: "末端回收重要，但源頭減量更早。"
+          },
+          {
+            label: "把足跡資料做成醒目的海報。",
+            result: "海報吸引注意，但系統要求加上可執行行動。",
+            effects: { campaign: 2 },
+            fragment: "資訊呈現後，還要導向行動。"
+          }
+        ]
+      },
+      {
+        title: "第 6 幕｜永續家園方案",
+        text: "最後，你要提交班級永續方案。系統提醒：永續不是單選題。",
+        clue: "線索：好的方案要能持續、可檢查、能修正，也要兼顧生活與環境。",
+        choices: [
+          {
+            label: "提出能源、減量、交通、飲食與回收的組合方案。",
+            result: "系統標記為可持續方案，並產生定期檢查表。",
+            effects: { coordinator: 3 },
+            fragment: "永續行動要能長期執行並持續修正。"
+          },
+          {
+            label: "提出大型宣傳週，先讓全校都知道議題。",
+            result: "活動充滿能量，但系統要求補上活動後的習慣追蹤。",
+            effects: { campaign: 2 },
+            fragment: "熱血需要接上日常，才會留下改變。"
+          },
+          {
+            label: "提出全班回收守則，先把回收做到最好。",
+            result: "回收守則清楚，但系統提醒還有能源、交通與消費選擇。",
+            effects: { recycle: 2 },
+            fragment: "回收是重要一環，不是全部答案。"
+          }
+        ]
+      }
+    ],
+    endings: {
+      coordinator: {
+        title: "永續協調者",
+        summary: "你能在能源、生活、社區需求與環境影響之間尋找可持續方案。",
+        strength: "亮點：你重視長期執行，不容易只停在口號。",
+        guide: "提醒：協調需要明確優先順序，否則行動可能太慢。"
+      },
+      campaign: {
+        title: "熱血活動家",
+        summary: "你擅長號召、宣傳與讓大家注意環境議題。",
+        strength: "亮點：你能讓知識被看見，帶動班級氣氛。",
+        guide: "提醒：活動後要留下日常習慣，才不會只熱鬧一天。"
+      },
+      singleEnergy: {
+        title: "單一能源信徒",
+        summary: "你傾向相信某一種友善能源能快速解決大部分問題。",
+        strength: "亮點：你看見能源轉型的重要。",
+        guide: "提醒：再生能源也要考慮地點、天候、設備與生態限制。"
+      },
+      recycle: {
+        title: "回收守門員",
+        summary: "你重視分類回收，想先把看得見的資源整理好。",
+        strength: "亮點：你能把行動變得具體，容易讓同學開始做。",
+        guide: "提醒：回收之前還有源頭減量、重複使用與消費選擇。"
+      }
+    }
+  }
+};
+
+const chapterOrder = ["bio", "invasive", "impact", "climate", "action"];
+
 const hotspotReadings = {
   bio: {
     "環境梯度": [
@@ -1122,8 +2067,8 @@ const state = {
   hotspotsVisible: true,
   completed: new Set(JSON.parse(localStorage.getItem("unit3-panorama-completed") || "[]")),
   quizSessions: {},
-  story: JSON.parse(localStorage.getItem("unit3-story-state") || "null"),
-  storyEndings: new Set(JSON.parse(localStorage.getItem("unit3-story-endings") || "[]"))
+  story: JSON.parse(localStorage.getItem("unit3-chapter-game-state") || "null"),
+  storyEndings: JSON.parse(localStorage.getItem("unit3-chapter-game-endings") || "{}")
 };
 
 const els = {
@@ -1438,19 +2383,8 @@ function submitQuizRound() {
 
 function createStoryState() {
   return {
-    sceneId: storyGame.startScene,
-    pendingChoice: null,
-    history: [],
-    fragments: [],
-    scores: {
-      biodiversity: 0,
-      risk: 0,
-      evidence: 0,
-      climate: 0,
-      sustainable: 0
-    },
-    finished: false,
-    endingId: null
+    activeChapterId: null,
+    runs: {}
   };
 }
 
@@ -1459,30 +2393,69 @@ function getStoryState() {
   return state.story;
 }
 
+function createChapterRun(chapterId) {
+  const chapter = chapterGames[chapterId];
+  return {
+    sceneIndex: 0,
+    pendingChoice: null,
+    history: [],
+    fragments: [],
+    scores: chapter.traitOrder.reduce((scores, trait) => {
+      scores[trait] = 0;
+      return scores;
+    }, {}),
+    finished: false,
+    endingId: null
+  };
+}
+
+function getActiveChapter() {
+  const story = getStoryState();
+  return story.activeChapterId ? chapterGames[story.activeChapterId] : null;
+}
+
+function getChapterRun(chapterId = getStoryState().activeChapterId) {
+  if (!chapterId) return null;
+  const story = getStoryState();
+  if (!story.runs[chapterId]) story.runs[chapterId] = createChapterRun(chapterId);
+  return story.runs[chapterId];
+}
+
+function activateChapter(chapterId) {
+  const story = getStoryState();
+  story.activeChapterId = chapterId;
+  getChapterRun(chapterId);
+  saveStoryProgress();
+  renderGame();
+}
+
 function saveStoryProgress() {
-  localStorage.setItem("unit3-story-state", JSON.stringify(getStoryState()));
-  localStorage.setItem("unit3-story-endings", JSON.stringify([...state.storyEndings]));
+  localStorage.setItem("unit3-chapter-game-state", JSON.stringify(getStoryState()));
+  localStorage.setItem("unit3-chapter-game-endings", JSON.stringify(state.storyEndings));
 }
 
 function currentStoryScene() {
-  return storyGame.scenes[getStoryState().sceneId];
+  const chapter = getActiveChapter();
+  const run = getChapterRun();
+  return chapter && run ? chapter.moments[run.sceneIndex] : null;
 }
 
-function chooseEndingId(scores) {
-  return Object.entries(scores).sort((left, right) => {
+function chooseEndingId(scores, chapter) {
+  return chapter.traitOrder
+    .map((trait) => [trait, scores[trait] || 0])
+    .sort((left, right) => {
     if (right[1] !== left[1]) return right[1] - left[1];
-    const priority = ["sustainable", "evidence", "biodiversity", "risk", "climate"];
-    return priority.indexOf(left[0]) - priority.indexOf(right[0]);
+    return chapter.traitOrder.indexOf(left[0]) - chapter.traitOrder.indexOf(right[0]);
   })[0][0];
 }
 
 function applyStoryEffects(choice) {
-  const story = getStoryState();
+  const run = getChapterRun();
   Object.entries(choice.effects || {}).forEach(([key, value]) => {
-    story.scores[key] = (story.scores[key] || 0) + value;
+    run.scores[key] = (run.scores[key] || 0) + value;
   });
-  if (choice.fragment && !story.fragments.includes(choice.fragment)) {
-    story.fragments.push(choice.fragment);
+  if (choice.fragment && !run.fragments.includes(choice.fragment)) {
+    run.fragments.push(choice.fragment);
   }
 }
 
@@ -1502,41 +2475,70 @@ function switchMode(mode) {
 }
 
 function renderGame() {
-  const story = getStoryState();
+  const chapter = getActiveChapter();
+  const run = getChapterRun();
   const scene = currentStoryScene();
-  const chapterNumber = Math.min(scene.chapter + 1, storyGame.chapters.length);
 
-  setTheme(slides[Math.min(scene.chapter, slides.length - 1)]);
-  els.gameProgressText.textContent = story.finished ? "本輪旅程已抵達結局" : `目前章節 ${chapterNumber} / ${storyGame.chapters.length}`;
-  els.gameProgressHint.textContent = story.finished
-    ? "可以再玩一次，嘗試解鎖不同結局。"
-    : "每幕只揭露一段線索，選擇後才會出現後續。";
+  setTheme(chapter ? slides[chapter.themeIndex] : slides[0]);
+  if (!chapter) {
+    els.gameProgressText.textContent = "選擇 1 個章節任務";
+    els.gameProgressHint.textContent = "每章都是獨立任務，完成後會產生小結局與觀念回饋。";
+  } else if (run.finished) {
+    els.gameProgressText.textContent = `${chapter.title}｜任務完成`;
+    els.gameProgressHint.textContent = "可以重玩本章，嘗試形成不同環境決策風格。";
+  } else {
+    els.gameProgressText.textContent = `${chapter.title}｜第 ${run.sceneIndex + 1} / ${chapter.moments.length} 幕`;
+    els.gameProgressHint.textContent = "每幕做出一次選擇，系統會累積任務筆記與決策傾向。";
+  }
 
-  renderStoryChapters(scene);
+  renderStoryChapters();
   renderEndingGallery();
-  renderStoryStage(scene);
+  renderStoryStage();
   renderMemoryFragments();
 }
 
-function renderStoryChapters(scene) {
-  els.storyChapterList.innerHTML = storyGame.chapters
-    .map((chapter, index) => {
-      const reached = getStoryState().history.some((entry) => storyGame.scenes[entry.sceneId]?.chapter === index) || scene.chapter === index;
-      const active = scene.chapter === index && !getStoryState().finished;
+function renderStoryChapters() {
+  const activeChapterId = getStoryState().activeChapterId;
+  els.storyChapterList.innerHTML = chapterOrder
+    .map((chapterId, index) => {
+      const chapter = chapterGames[chapterId];
+      const run = getStoryState().runs[chapterId];
+      const active = activeChapterId === chapterId;
+      const reached = Boolean(run);
+      const status = run?.finished ? "已完成" : reached ? `第 ${run.sceneIndex + 1} 幕` : "未開始";
       return `
-        <article class="chapter-item${active ? " active" : ""}${reached ? " reached" : ""}">
-          <span>第 ${index + 1} 章</span>
-          <strong>${chapter}</strong>
-        </article>
+        <button class="chapter-item${active ? " active" : ""}${reached ? " reached" : ""}" type="button" data-chapter="${chapterId}">
+          <span>任務 ${index + 1}｜${status}</span>
+          <strong>${chapter.title}</strong>
+          <small>${chapter.subtitle}</small>
+        </button>
       `;
     })
     .join("");
 }
 
 function renderEndingGallery() {
-  els.endingGallery.innerHTML = Object.entries(storyGame.endings)
+  const activeChapter = getActiveChapter();
+  if (!activeChapter) {
+    els.endingGallery.innerHTML = chapterOrder
+      .map((chapterId) => {
+        const chapter = chapterGames[chapterId];
+        const count = (state.storyEndings[chapterId] || []).length;
+        return `
+          <article class="ending-item${count ? " unlocked" : ""}">
+            <span>${count ? `已解鎖 ${count} / ${Object.keys(chapter.endings).length}` : "尚未完成"}</span>
+            <strong>${chapter.title}</strong>
+          </article>
+        `;
+      })
+      .join("");
+    return;
+  }
+
+  const unlockedIds = state.storyEndings[activeChapter.id] || [];
+  els.endingGallery.innerHTML = Object.entries(activeChapter.endings)
     .map(([endingId, ending]) => {
-      const unlocked = state.storyEndings.has(endingId);
+      const unlocked = unlockedIds.includes(endingId);
       return `
         <article class="ending-item${unlocked ? " unlocked" : ""}">
           <span>${unlocked ? "已解鎖" : "未解鎖"}</span>
@@ -1547,28 +2549,57 @@ function renderEndingGallery() {
     .join("");
 }
 
-function renderStoryStage(scene) {
-  const story = getStoryState();
-  els.storyKicker.textContent = story.finished ? "結局生成" : `第 ${scene.chapter + 1} 章｜${storyGame.chapters[scene.chapter]}`;
-  els.storyTitle.textContent = scene.title;
-  els.storyText.textContent = scene.text;
-  els.storyClue.textContent = scene.clue;
-  els.storyResult.classList.toggle("is-hidden", !story.pendingChoice);
-  els.storyResult.textContent = story.pendingChoice?.result || "";
-  els.storyContinue.classList.toggle("is-hidden", !story.pendingChoice || story.finished);
-  els.storyChoices.classList.toggle("is-hidden", Boolean(story.pendingChoice) || story.finished);
-  els.storyEnding.classList.toggle("is-hidden", !story.finished);
+function renderStoryStage() {
+  const chapter = getActiveChapter();
+  const run = getChapterRun();
+  const scene = currentStoryScene();
 
-  if (story.finished) {
-    const ending = storyGame.endings[story.endingId];
+  if (!chapter || !run || !scene) {
+    els.storyKicker.textContent = "任務入口";
+    els.storyTitle.textContent = "地球記憶艙：五道危機任務";
+    els.storyText.textContent = "請選擇一個章節開始。每章都像一個短篇環境決策測驗，約 6 次選擇後會產生小結局，並指出你的理解亮點與可能迷思。";
+    els.storyClue.textContent = "玩法提醒：沒有分數，也不會顯示答對答錯。你的選擇會形成一種環境守護風格。";
+    els.storyResult.classList.add("is-hidden");
+    els.storyContinue.classList.add("is-hidden");
+    els.storyEnding.classList.add("is-hidden");
+    els.storyEnding.innerHTML = "";
+    els.storyChoices.classList.remove("is-hidden");
+    els.storyChoices.innerHTML = chapterOrder
+      .map((chapterId, index) => {
+        const chapterItem = chapterGames[chapterId];
+        return `
+          <button class="story-choice chapter-start-choice" type="button" data-chapter-start="${chapterId}">
+            <span>任務 ${index + 1}</span>
+            <strong>${chapterItem.title}</strong>
+            <small>${chapterItem.mission}</small>
+          </button>
+        `;
+      })
+      .join("");
+    return;
+  }
+
+  els.storyKicker.textContent = run.finished ? "章節小結局" : `任務｜${chapter.subtitle}`;
+  els.storyTitle.textContent = scene.title;
+  els.storyText.textContent = run.history.length === 0 ? `${chapter.intro} ${scene.text}` : scene.text;
+  els.storyClue.textContent = scene.clue;
+  els.storyResult.classList.toggle("is-hidden", !run.pendingChoice);
+  els.storyResult.textContent = run.pendingChoice?.result || "";
+  els.storyContinue.classList.toggle("is-hidden", !run.pendingChoice || run.finished);
+  els.storyChoices.classList.toggle("is-hidden", Boolean(run.pendingChoice) || run.finished);
+  els.storyEnding.classList.toggle("is-hidden", !run.finished);
+
+  if (run.finished) {
+    const ending = chapter.endings[run.endingId];
     els.storyChoices.innerHTML = "";
     els.storyEnding.innerHTML = `
-      <span>本輪結局</span>
+      <span>${chapter.subtitle}｜小結局</span>
       <h3>${ending.title}</h3>
       <p>${ending.summary}</p>
-      <article><strong>${ending.strength}</strong><strong>${ending.blindSpot}</strong></article>
+      <article><strong>${ending.strength}</strong><strong>${ending.guide}</strong><strong>${chapter.review}</strong></article>
       <div class="ending-actions">
-        <button class="primary-button" type="button" data-story-restart>再玩一次，嘗試不同路線</button>
+        <button class="primary-button" type="button" data-story-restart>重玩本章，嘗試不同路線</button>
+        <button class="ghost-button" type="button" data-story-menu>回任務選單</button>
         <button class="ghost-button" type="button" data-story-panorama>回知識全景</button>
       </div>
     `;
@@ -1586,55 +2617,79 @@ function renderStoryStage(scene) {
 }
 
 function renderMemoryFragments() {
-  const story = getStoryState();
-  if (!story.fragments.length) {
-    els.memoryFragments.innerHTML = `<article class="memory-empty">尚未取得記憶碎片。做出第一個選擇後，系統會記錄你看見的環境線索。</article>`;
+  const chapter = getActiveChapter();
+  const run = getChapterRun();
+  if (!chapter || !run) {
+    els.memoryFragments.innerHTML = `<article class="memory-empty">尚未選擇任務。開始任務後，這裡會累積你的線索筆記。</article>`;
     return;
   }
-  els.memoryFragments.innerHTML = story.fragments
+  if (!run.fragments.length) {
+    els.memoryFragments.innerHTML = `<article class="memory-empty">尚未取得任務筆記。做出第一個選擇後，系統會記錄你看見的環境線索。</article>`;
+    return;
+  }
+  els.memoryFragments.innerHTML = run.fragments
     .map((fragment, index) => `<article class="memory-fragment"><span>${index + 1}</span><p>${fragment}</p></article>`)
     .join("");
 }
 
 function chooseStoryOption(index) {
-  const story = getStoryState();
-  if (story.pendingChoice || story.finished) return;
+  const chapter = getActiveChapter();
+  const run = getChapterRun();
+  if (!chapter || !run || run.pendingChoice || run.finished) return;
   const scene = currentStoryScene();
   const choice = scene.choices[index];
   applyStoryEffects(choice);
-  story.pendingChoice = {
-    result: choice.result,
-    next: choice.next
+  run.pendingChoice = {
+    result: choice.result
   };
-  story.history.push({
-    sceneId: story.sceneId,
-    choice: choice.label
+  run.history.push({
+    sceneIndex: run.sceneIndex,
+    sceneTitle: scene.title,
+    choice: choice.label,
+    result: choice.result
   });
   saveStoryProgress();
   renderGame();
 }
 
 function continueStory() {
-  const story = getStoryState();
-  if (!story.pendingChoice) return;
-  const nextScene = story.pendingChoice.next;
-  story.pendingChoice = null;
+  const chapter = getActiveChapter();
+  const run = getChapterRun();
+  if (!chapter || !run || !run.pendingChoice) return;
+  run.pendingChoice = null;
 
-  if (nextScene === "ending") {
-    story.finished = true;
-    story.endingId = chooseEndingId(story.scores);
-    state.storyEndings.add(story.endingId);
+  if (run.sceneIndex >= chapter.moments.length - 1) {
+    run.finished = true;
+    run.endingId = chooseEndingId(run.scores, chapter);
+    state.storyEndings[chapter.id] = state.storyEndings[chapter.id] || [];
+    if (!state.storyEndings[chapter.id].includes(run.endingId)) {
+      state.storyEndings[chapter.id].push(run.endingId);
+    }
   } else {
-    story.sceneId = nextScene;
+    run.sceneIndex += 1;
   }
 
   saveStoryProgress();
   renderGame();
 }
 
+function restartActiveChapter() {
+  const chapter = getActiveChapter();
+  if (!chapter) return;
+  getStoryState().runs[chapter.id] = createChapterRun(chapter.id);
+  saveStoryProgress();
+  renderGame();
+}
+
+function returnToChapterMenu() {
+  getStoryState().activeChapterId = null;
+  saveStoryProgress();
+  renderGame();
+}
+
 function resetStoryGame(clearGallery = true) {
   state.story = createStoryState();
-  if (clearGallery) state.storyEndings.clear();
+  if (clearGallery) state.storyEndings = {};
   saveStoryProgress();
   renderGame();
 }
@@ -1671,6 +2726,12 @@ document.querySelector("#resetGame").addEventListener("click", () => {
   resetStoryGame(true);
 });
 
+els.storyChapterList.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-chapter]");
+  if (!button) return;
+  activateChapter(button.dataset.chapter);
+});
+
 document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", () => switchTab(tab.dataset.tab));
 });
@@ -1693,6 +2754,11 @@ els.showPanorama.addEventListener("click", () => switchMode("panorama"));
 els.showGame.addEventListener("click", () => switchMode("game"));
 
 els.storyChoices.addEventListener("click", (event) => {
+  const chapterButton = event.target.closest("[data-chapter-start]");
+  if (chapterButton) {
+    activateChapter(chapterButton.dataset.chapterStart);
+    return;
+  }
   const button = event.target.closest("[data-story-choice]");
   if (!button) return;
   chooseStoryOption(Number(button.dataset.storyChoice));
@@ -1702,7 +2768,10 @@ els.storyContinue.addEventListener("click", continueStory);
 
 els.storyEnding.addEventListener("click", (event) => {
   if (event.target.closest("[data-story-restart]")) {
-    resetStoryGame(false);
+    restartActiveChapter();
+  }
+  if (event.target.closest("[data-story-menu]")) {
+    returnToChapterMenu();
   }
   if (event.target.closest("[data-story-panorama]")) {
     switchMode("panorama");

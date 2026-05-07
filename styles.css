@@ -1396,6 +1396,18 @@ button {
   border: 1px solid rgba(73, 112, 65, 0.15);
 }
 
+.chapter-item {
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.chapter-item:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 34%, white);
+}
+
 .chapter-item span,
 .ending-item span {
   display: inline-flex;
@@ -1410,6 +1422,14 @@ button {
   display: block;
   color: var(--ink);
   line-height: 1.3;
+}
+
+.chapter-item small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .chapter-item.reached {
@@ -1526,6 +1546,26 @@ button {
   line-height: 1.45;
 }
 
+.story-choice span {
+  display: inline-flex;
+  margin-bottom: 6px;
+  color: var(--accent-deep);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.story-choice small {
+  display: block;
+  margin-top: 7px;
+  color: #405640;
+  font-weight: 780;
+  line-height: 1.45;
+}
+
+.chapter-start-choice {
+  min-height: 112px;
+}
+
 .story-ending {
   padding: 20px;
   border-radius: 24px;
@@ -1573,7 +1613,7 @@ button {
 
 .ending-actions {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.42fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -1764,6 +1804,18 @@ button {
     max-width: 100%;
     min-width: 0;
     position: static;
+  }
+
+  .story-stage {
+    order: 1;
+  }
+
+  .story-side {
+    order: 2;
+  }
+
+  .memory-panel {
+    order: 3;
   }
 
   .ending-actions {

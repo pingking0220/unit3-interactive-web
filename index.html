@@ -104,20 +104,20 @@
     <main class="game-screen is-hidden" id="gameScreen" aria-label="分支敘事文字遊戲">
       <section class="story-hero">
         <div>
-          <span class="game-eyebrow">分支敘事模式</span>
-          <h2>地球記憶艙：最後五分鐘</h2>
-          <p>艙門即將關閉，系統只會逐步揭露線索。每一次選擇都會留下記憶碎片，並把故事推向不同結局。</p>
+          <span class="game-eyebrow">環境決策任務</span>
+          <h2>地球記憶艙：五道危機任務</h2>
+          <p>每個章節都是獨立任務。你會連續做出環境選擇，系統不給分數，而是產生小結局，回饋你的守護風格與可能迷思。</p>
         </div>
         <div class="game-progress-card">
-          <strong id="gameProgressText">目前章節 1 / 5</strong>
-          <span id="gameProgressHint">先閱讀劇情提醒，再選擇下一步行動。</span>
-          <button class="ghost-button" id="resetGame" type="button">重置遊戲與結局圖鑑</button>
+          <strong id="gameProgressText">選擇 1 個章節任務</strong>
+          <span id="gameProgressHint">每章約 6 次選擇，完成後產生小結局與觀念導引。</span>
+          <button class="ghost-button" id="resetGame" type="button">重置任務與結局圖鑑</button>
         </div>
       </section>
 
       <section class="story-layout">
         <aside class="story-side" aria-label="章節與結局圖鑑">
-          <h2>章節進度</h2>
+          <h2>章節任務</h2>
           <nav class="chapter-list" id="storyChapterList"></nav>
 
           <section class="ending-gallery">
@@ -142,8 +142,8 @@
         </section>
 
         <aside class="memory-panel" aria-label="記憶碎片">
-          <h2>記憶碎片</h2>
-          <p>你的選擇會逐步留下線索。它們不代表分數，而是這次旅程看見的環境面向。</p>
+          <h2>任務筆記</h2>
+          <p>你的選擇會逐步留下線索。它們不代表分數，而是這次任務看見的環境面向。</p>
           <div class="memory-list" id="memoryFragments"></div>
         </aside>
       </section>
