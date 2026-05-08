@@ -329,6 +329,22 @@ button.danger {
   background: #ecfaf2;
 }
 
+.evidence-main {
+  color: #205f45;
+}
+
+.evidence-main::marker {
+  content: "✓ ";
+}
+
+.evidence-context {
+  color: var(--muted);
+}
+
+.evidence-context::marker {
+  content: "• ";
+}
+
 .evidence-lock {
   border-left: 5px solid var(--accent);
   background: #fff8e9;
