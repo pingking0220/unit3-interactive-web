@@ -5,52 +5,8 @@ let missionQuestions = [];
 let questionIndex = 0;
 let currentOptions = [];
 let selectedMulti = new Set();
-let keywordReadBonus = false;
 let missionCorrect = 0;
 let currentCard = null;
-let currentEvidenceQuestion = null;
-let selectedKeywords = new Set();
-
-const evidenceAliases = {
-  "地形": ["高山", "平原", "河流", "海岸", "山地", "丘陵", "盆地", "台地", "地理"],
-  "海拔": ["高海拔", "低海拔", "高度", "高山", "山區"],
-  "氣候": ["溫度", "雨量", "寒冷", "潮濕", "乾旱", "熱浪", "洪水"],
-  "棲地": ["住所", "生活空間", "生存空間", "水域", "濕地", "森林", "海岸"],
-  "地理隔離": ["隔離", "族群", "分化", "交流"],
-  "遺傳多樣性": ["遺傳", "族群差異", "同種"],
-  "自然分布": ["分布", "特定地區", "原生"],
-  "特定地區": ["只分布", "限於", "臺灣"],
-  "瀕臨絕種": ["絕種", "稀有", "族群"],
-  "棲地保護": ["保護棲地", "生活環境", "減少干擾"],
-  "保持距離": ["距離", "觀察", "不干擾"],
-  "不餵食": ["餵食", "零食", "食物"],
-  "外來種": ["引進", "國外", "其他地區", "不是本地"],
-  "入侵種": ["入侵", "影響原有生態", "排擠", "危害"],
-  "大量繁衍": ["繁衍", "成群", "擴散", "快速"],
-  "福壽螺": ["粉紅色卵塊", "稻田", "水田"],
-  "嫩莖": ["嫩葉", "幼苗", "農作物"],
-  "農業損失": ["農損", "農田", "作物"],
-  "源頭預防": ["預防", "源頭", "不要引進"],
-  "監測通報": ["監測", "通報", "早期"],
-  "水汙染": ["河川", "廢水", "水質", "魚群死亡", "異味"],
-  "空氣汙染": ["AQI", "黑煙", "咳嗽", "呼吸", "廢氣"],
-  "工廠排放": ["工廠", "煙囪", "排放"],
-  "交通廢氣": ["車輛", "交通", "汽機車"],
-  "棲地破壞": ["開發", "砍樹", "道路", "切割"],
-  "路殺": ["道路", "穿越", "車輛"],
-  "全球暖化": ["暖化", "升溫", "氣候變遷"],
-  "溫室效應": ["溫室", "保溫", "大氣"],
-  "溫室氣體": ["二氧化碳", "甲烷", "排放"],
-  "珊瑚白化": ["白化", "珊瑚", "海水升溫"],
-  "碳足跡": ["碳排", "排放", "生命週期"],
-  "水足跡": ["用水", "水資源", "產品製造"],
-  "節能": ["省電", "用電", "能源"],
-  "減碳": ["低碳", "排放", "淨零"],
-  "重複使用": ["再使用", "一次性", "減量"],
-  "淨零": ["淨零碳排", "減排", "碳匯"],
-  "減少排放": ["減排", "低碳", "溫室氣體"],
-  "森林吸碳": ["碳匯", "植林", "復林", "吸收"]
-};
 
 const $ = (id) => document.getElementById(id);
 
@@ -68,11 +24,6 @@ function bindMissionEvents() {
     const optionButton = event.target.closest("[data-option-index]");
     if (optionButton) {
       selectOption(Number(optionButton.dataset.optionIndex), optionButton);
-    }
-
-    const keyword = event.target.closest("[data-keyword]");
-    if (keyword) {
-      toggleKeyword(keyword);
     }
   });
 }
@@ -126,10 +77,7 @@ function quickStart() {
 
 function startMission(zoneCode) {
   currentZoneCode = zoneCode;
-  keywordReadBonus = false;
-  selectedKeywords = new Set();
   currentCard = null;
-  currentEvidenceQuestion = null;
   missionCorrect = 0;
 
   const cases = CASES.filter((caseItem) => caseItem.zone === zoneCode);
@@ -171,134 +119,23 @@ function renderMissionIntro() {
     <h2>${escapeHtml(currentCase.title)}</h2>
     <p>${escapeHtml(currentCase.intro)}</p>
     <p><b>任務目標：</b>${escapeHtml(currentCase.missionGoal)}</p>
-    <p class="tiny">規則：先讀資料卡，再找關鍵字。答錯會進入錯題修復，答對會提升熟練度。</p>
+    <p class="tiny">規則：先閱讀資料卡，再根據題目情境判斷。答錯會進入錯題修復，答對會提升熟練度。</p>
   `;
 
   const card = CARDS.find((item) => item.name === currentCase.relatedCards[0]) || CARDS[0];
-  renderCardBox(card, null);
+  renderCardBox(card);
   unlockCard(card.name);
   saveProgress(progress);
   renderStats();
 }
 
-function renderCardBox(card, question) {
+function renderCardBox(card) {
   currentCard = card;
-  currentEvidenceQuestion = question;
-  selectedKeywords = new Set();
-  keywordReadBonus = false;
-  const needed = getEvidenceNeeded(question, card);
   $("cardContent").innerHTML = `
     ${renderVisualCard(card)}
     ${renderCardReading(card)}
-    <p class="muted"><b>閱讀取證：</b>${question ? `請找出本題需要的 ${needed} 個主證據，找對後才會開啟作答。` : "進入題目後，請依題幹找出真正相關的主證據。"}</p>
-    <div class="keyword-list">
-      ${card.keywords.map((keyword) => `<button class="keyword" type="button" data-keyword="${escapeHtml(keyword)}">${escapeHtml(keyword)}</button>`).join("")}
-    </div>
-    <div id="keywordEvidence" class="evidence-box">
-      <p class="tiny">${question ? "先讀題目，再點選你認為能支持判斷的主證據。" : "請先進入題目，系統會依題幹判斷哪些證據最關鍵。"}</p>
-    </div>
+    <p class="muted">閱讀資料卡後，請回到右側題目判斷最合理的答案。</p>
   `;
-  updateKeywordEvidence();
-}
-
-function toggleKeyword(element) {
-  const keyword = element.dataset.keyword;
-  if (selectedKeywords.has(keyword)) {
-    selectedKeywords.delete(keyword);
-    element.classList.remove("selected");
-  } else {
-    selectedKeywords.add(keyword);
-    element.classList.add("selected");
-  }
-
-  updateKeywordEvidence();
-
-  if (hasRequiredEvidence() && !keywordReadBonus) {
-    keywordReadBonus = true;
-    toast("主證據已找齊：作答選項已解鎖");
-    renderQuestion();
-  } else if (!keywordReadBonus) {
-    const needed = getEvidenceNeeded(currentEvidenceQuestion, currentCard);
-    const current = countRequiredEvidence();
-    toast(`已找到 ${current}/${needed} 個主證據`);
-  }
-}
-
-function updateKeywordEvidence() {
-  const evidence = $("keywordEvidence");
-  if (!evidence || !currentCard) return;
-
-  const requiredKeywords = getQuestionEvidenceKeywords(currentEvidenceQuestion, currentCard);
-  const needed = getEvidenceNeeded(currentEvidenceQuestion, currentCard);
-  const requiredCount = countRequiredEvidence();
-  const insights = currentCard.keywordInsights || [];
-  const selectedInsights = insights.filter((item) => selectedKeywords.has(item.keyword));
-  if (!selectedInsights.length) {
-    evidence.innerHTML = `<p class="tiny">${currentEvidenceQuestion ? "先讀題目，再點選你認為能支持判斷的主證據。" : "請先進入題目，系統會依題幹判斷哪些證據最關鍵。"}</p>`;
-    return;
-  }
-
-  evidence.innerHTML = `
-    <h4>已取得的證據</h4>
-    <ul>
-      ${selectedInsights.map((item) => {
-        const isRequired = requiredKeywords.includes(item.keyword);
-        const label = isRequired ? "主證據" : "背景線索";
-        return `<li class="${isRequired ? "evidence-main" : "evidence-context"}"><b>${escapeHtml(item.keyword)}｜${label}：</b>${escapeHtml(item.insight)}</li>`;
-      }).join("")}
-    </ul>
-    ${requiredCount >= needed ? `<div class="bridge"><b>推理連結：</b>${escapeHtml(getEvidenceBridge(currentEvidenceQuestion, currentCard))}</div>` : `<p class="tiny">目前找到 ${requiredCount}/${needed} 個主證據。背景線索可以幫助理解，但不能單獨解鎖作答。</p>`}
-  `;
-}
-
-function getEvidenceNeeded(question, card) {
-  if (!question || !card?.keywords?.length) return 2;
-  return Math.min(2, getQuestionEvidenceKeywords(question, card).length || card.keywords.length);
-}
-
-function hasRequiredEvidence() {
-  const needed = getEvidenceNeeded(currentEvidenceQuestion, currentCard);
-  return countRequiredEvidence() >= needed;
-}
-
-function countRequiredEvidence() {
-  const requiredKeywords = getQuestionEvidenceKeywords(currentEvidenceQuestion, currentCard);
-  return [...selectedKeywords].filter((keyword) => requiredKeywords.includes(keyword)).length;
-}
-
-function getQuestionEvidenceKeywords(question, card) {
-  if (!question || !card?.keywords?.length) return [];
-  const questionText = [
-    question.question,
-    question.concept,
-    question.explanation,
-    Array.isArray(question.answer) ? question.answer.join(" ") : question.answer,
-    ...(question.options || [])
-  ].join(" ");
-
-  const scored = card.keywords.map((keyword, index) => {
-    const aliases = evidenceAliases[keyword] || [];
-    let score = questionText.includes(keyword) ? 4 : 0;
-    aliases.forEach((alias) => {
-      if (questionText.includes(alias)) score += 2;
-    });
-    if ((card.questionHint || "").includes(keyword)) score += 1;
-    if ((card.keyIdea || "").includes(keyword)) score += 1;
-    return { keyword, score, index };
-  });
-
-  const positive = scored
-    .filter((item) => item.score > 0)
-    .sort((left, right) => right.score - left.score || left.index - right.index)
-    .map((item) => item.keyword);
-
-  return positive.length ? positive.slice(0, Math.min(3, positive.length)) : card.keywords.slice(0, Math.min(2, card.keywords.length));
-}
-
-function getEvidenceBridge(question, card) {
-  if (!question) return card.readingBridge || card.questionHint || card.summary;
-  const required = getQuestionEvidenceKeywords(question, card).slice(0, getEvidenceNeeded(question, card));
-  return `本題可用「${required.join("、")}」支持判斷：${question.explanation}`;
 }
 
 function renderQuestion() {
@@ -308,31 +145,28 @@ function renderQuestion() {
   }
 
   const question = missionQuestions[questionIndex];
-  if (!currentEvidenceQuestion || currentEvidenceQuestion.id !== question.id) {
+  if (!currentCard || currentCard.name !== question.card) {
     const card = CARDS.find((item) => item.name === question.card) || CARDS[0];
-    renderCardBox(card, question);
+    renderCardBox(card);
   }
 
   selectedMulti = new Set();
   currentOptions = question.type === "truefalse" ? ["正確", "錯誤"] : shuffleArray(question.options || []);
   const questionType = question.type === "multi" ? "多重線索判斷" : question.type === "truefalse" ? "真偽判斷" : "單一關鍵判斷";
-  const evidenceReady = keywordReadBonus || !currentCard;
-  const needed = getEvidenceNeeded(question, currentCard);
-  const currentEvidenceCount = countRequiredEvidence();
 
   $("quizContent").innerHTML = `
     <p class="tagline">第 ${questionIndex + 1}/${missionQuestions.length} 題｜${escapeHtml(question.stageLabel || questionType)}</p>
     <h2>${escapeHtml(question.question)}</h2>
     <p class="muted">概念：${escapeHtml(question.concept)}｜能力：${escapeHtml(question.cognitiveSkill || questionType)}｜推薦資料卡：${escapeHtml(question.card)}</p>
-    ${evidenceReady ? '<p class="tiny evidence-ready">主證據已找齊，可以根據資料卡線索作答。</p>' : `<p class="tiny evidence-lock">請先在左側資料卡找出本題主證據：${currentEvidenceCount}/${needed}。</p>`}
+    <p class="tiny reading-ready">請先閱讀左側資料卡，再選擇最合理的答案。</p>
     <div class="option-list">
       ${currentOptions.map((option, index) => `
-        <button class="option" type="button" data-option-index="${index}" ${evidenceReady ? "" : "disabled"}>
+        <button class="option" type="button" data-option-index="${index}">
           ${String.fromCharCode(65 + index)}. ${escapeHtml(String(option))}
         </button>
       `).join("")}
     </div>
-    ${question.type === "multi" ? `<button type="button" onclick="submitMultiAnswer()" ${evidenceReady ? "" : "disabled"}>送出多重線索判斷</button>` : ""}
+    ${question.type === "multi" ? '<button type="button" onclick="submitMultiAnswer()">送出多重線索判斷</button>' : ""}
     <div id="feedbackBox"></div>
   `;
 }
@@ -381,7 +215,6 @@ function showFeedback(question, isCorrect) {
       <div class="feedback ok">
         <h3>修復成功！熟練度 +${gain}</h3>
         <p>${escapeHtml(question.explanation)}</p>
-        <p class="tiny">你已先完成閱讀取證，這次加分來自概念判斷本身，不再額外灌分。</p>
         <button type="button" onclick="nextQuestion()">下一題</button>
       </div>
     `;
@@ -410,9 +243,6 @@ function showFeedback(question, isCorrect) {
 
 function nextQuestion() {
   questionIndex += 1;
-  keywordReadBonus = false;
-  selectedKeywords = new Set();
-  currentEvidenceQuestion = null;
   renderQuestion();
 }
 
@@ -480,7 +310,7 @@ function renderCardReading(card, expanded = false) {
           <h4>常見迷思</h4>
           <p>${escapeHtml(card.commonMistake || "只背名詞，沒有連結原因與結果。")}</p>
           <h4>行動提醒</h4>
-          <p>${escapeHtml(card.action || "回到資料卡，用關鍵字整理成一句因果句。")}</p>
+          <p>${escapeHtml(card.action || "回到資料卡，用重點整理成一句因果句。")}</p>
         </div>
       </div>
       <details ${expanded ? "open" : ""}>
@@ -526,10 +356,8 @@ function reviewQuestion(id) {
   missionQuestions = [question];
   questionIndex = 0;
   missionCorrect = 0;
-  keywordReadBonus = false;
-  currentEvidenceQuestion = null;
   $("caseContent").innerHTML = `<h2>錯題修復</h2><p>${escapeHtml(question.concept)}</p>`;
-  renderCardBox(CARDS.find((card) => card.name === question.card) || CARDS[0], question);
+  renderCardBox(CARDS.find((card) => card.name === question.card) || CARDS[0]);
   renderQuestion();
   showView("missionView");
 }
