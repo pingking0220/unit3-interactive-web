@@ -18,7 +18,13 @@ const QUESTIONS = [
     "explanation": "環境多樣會形成不同棲地，讓不同生物有適合生存的條件。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜臺灣環境多元"
   },
   {
     "id": "BIO-002",
@@ -38,7 +44,13 @@ const QUESTIONS = [
     "explanation": "同類生物不同族群的差異可用來理解遺傳多樣性。",
     "card": "山椒魚卡",
     "monster": "多樣性混淆怪",
-    "case": "山椒魚進階挑戰"
+    "case": "山椒魚進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜山椒魚與遺傳多樣性"
   },
   {
     "id": "END-001",
@@ -58,7 +70,13 @@ const QUESTIONS = [
     "explanation": "特有種重點是自然分布於特定地區。",
     "card": "特有種概念卡",
     "monster": "特殊生物怪",
-    "case": "特有種概念基礎調查"
+    "case": "特有種概念基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種定義"
   },
   {
     "id": "END-002",
@@ -78,7 +96,13 @@ const QUESTIONS = [
     "explanation": "正確觀察應避免干擾野生動物。",
     "card": "野外觀察守則卡",
     "monster": "餵食怪",
-    "case": "野外觀察守則危機任務"
+    "case": "野外觀察守則危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜戶外觀察守則"
   },
   {
     "id": "INV-001",
@@ -98,7 +122,13 @@ const QUESTIONS = [
     "explanation": "外來種不一定都是入侵種。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "外來入侵種概念基礎調查"
+    "case": "外來入侵種概念基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜外來入侵種定義"
   },
   {
     "id": "INV-002",
@@ -118,7 +148,13 @@ const QUESTIONS = [
     "explanation": "福壽螺會造成農業損失。",
     "card": "福壽螺卡",
     "monster": "農田入侵怪",
-    "case": "福壽螺危機任務"
+    "case": "福壽螺危機任務",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜福壽螺危害"
   },
   {
     "id": "INV-003",
@@ -133,7 +169,13 @@ const QUESTIONS = [
     "explanation": "小花蔓澤蘭會覆蓋其他植物並阻擋光線。",
     "card": "小花蔓澤蘭卡",
     "monster": "無害藤蔓怪",
-    "case": "小花蔓澤蘭進階挑戰"
+    "case": "小花蔓澤蘭進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜小花蔓澤蘭危害"
   },
   {
     "id": "POL-001",
@@ -153,7 +195,13 @@ const QUESTIONS = [
     "explanation": "水汙染會影響水中生物。",
     "card": "水汙染來源卡",
     "monster": "汙染怪",
-    "case": "水汙染來源基礎調查"
+    "case": "水汙染來源基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜水汙染危害"
   },
   {
     "id": "POL-002",
@@ -173,7 +221,13 @@ const QUESTIONS = [
     "explanation": "空氣品質不佳時應減少戶外劇烈活動。",
     "card": "AQI 行動卡",
     "monster": "空汙怪",
-    "case": "AQI 行動進階挑戰"
+    "case": "AQI 行動進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜空氣品質行動"
   },
   {
     "id": "HAB-001",
@@ -188,7 +242,13 @@ const QUESTIONS = [
     "explanation": "森林能幫助水土保持。",
     "card": "山坡地開發卡",
     "monster": "土石流怪",
-    "case": "山坡地開發基礎調查"
+    "case": "山坡地開發基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜山坡地開發與土石流"
   },
   {
     "id": "HAB-002",
@@ -208,7 +268,13 @@ const QUESTIONS = [
     "explanation": "道路可能造成棲地破碎化。",
     "card": "棲地破碎化卡",
     "monster": "棲地破壞怪",
-    "case": "棲地破碎化危機任務"
+    "case": "棲地破碎化危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地切割"
   },
   {
     "id": "CLI-001",
@@ -228,7 +294,13 @@ const QUESTIONS = [
     "explanation": "暖化會導致冰層融化與海平面上升。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "極端氣候基礎調查"
+    "case": "極端氣候基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜全球暖化影響"
   },
   {
     "id": "CLI-002",
@@ -243,7 +315,13 @@ const QUESTIONS = [
     "explanation": "海水溫度升高可能造成珊瑚白化。",
     "card": "珊瑚白化卡",
     "monster": "珊瑚白化怪",
-    "case": "珊瑚白化危機任務"
+    "case": "珊瑚白化危機任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜珊瑚白化"
   },
   {
     "id": "ACT-001",
@@ -258,7 +336,13 @@ const QUESTIONS = [
     "explanation": "碳足跡數值越小，通常代表排放越少。",
     "card": "碳足跡卡",
     "monster": "碳足跡怪",
-    "case": "碳足跡基礎調查"
+    "case": "碳足跡基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜碳足跡判讀"
   },
   {
     "id": "ACT-002",
@@ -273,7 +357,13 @@ const QUESTIONS = [
     "explanation": "水足跡包含直接與間接消耗的水資源。",
     "card": "水足跡卡",
     "monster": "水足跡怪",
-    "case": "水足跡危機任務"
+    "case": "水足跡危機任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜水足跡定義"
   },
   {
     "id": "ACT-003",
@@ -293,7 +383,13 @@ const QUESTIONS = [
     "explanation": "分類回收可降低垃圾量。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "綠色消費進階挑戰"
+    "case": "綠色消費進階挑戰",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜垃圾減量"
   },
   {
     "id": "BOSS-001",
@@ -313,7 +409,13 @@ const QUESTIONS = [
     "explanation": "人類開發與外來動物可能造成原生物種滅絕。",
     "card": "渡渡鳥案例卡",
     "monster": "渡渡鳥警報怪",
-    "case": "渡渡鳥案例基礎調查"
+    "case": "渡渡鳥案例基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜渡渡鳥滅絕原因"
   },
   {
     "id": "BOSS-002",
@@ -333,7 +435,13 @@ const QUESTIONS = [
     "explanation": "不要餵食與收好食物可降低搶食。",
     "card": "臺灣獼猴案例卡",
     "monster": "餵食怪",
-    "case": "臺灣獼猴案例危機任務"
+    "case": "臺灣獼猴案例危機任務",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜避免獼猴搶食"
   },
   {
     "id": "BIO-101",
@@ -353,7 +461,13 @@ const QUESTIONS = [
     "explanation": "臺灣環境多元有助於生物多樣性。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜環境多樣"
   },
   {
     "id": "BIO-102",
@@ -373,7 +487,13 @@ const QUESTIONS = [
     "explanation": "不同海拔環境會影響生物分布。",
     "card": "海拔生態卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜海拔與生物分布"
   },
   {
     "id": "BIO-103",
@@ -388,7 +508,13 @@ const QUESTIONS = [
     "explanation": "臺灣環境多元有助於生物多樣性。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜環境多樣"
   },
   {
     "id": "BIO-104",
@@ -408,7 +534,13 @@ const QUESTIONS = [
     "explanation": "不同海拔環境會影響生物分布。",
     "card": "海拔生態卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜海拔與生物分布"
   },
   {
     "id": "BIO-105",
@@ -428,7 +560,13 @@ const QUESTIONS = [
     "explanation": "臺灣環境多元有助於生物多樣性。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜環境多樣"
   },
   {
     "id": "BIO-106",
@@ -443,7 +581,13 @@ const QUESTIONS = [
     "explanation": "不同海拔環境會影響生物分布。",
     "card": "海拔生態卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜海拔與生物分布"
   },
   {
     "id": "BIO-107",
@@ -463,7 +607,13 @@ const QUESTIONS = [
     "explanation": "臺灣環境多元有助於生物多樣性。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜環境多樣"
   },
   {
     "id": "BIO-108",
@@ -483,7 +633,13 @@ const QUESTIONS = [
     "explanation": "不同海拔環境會影響生物分布。",
     "card": "海拔生態卡",
     "monster": "多樣性混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜海拔與生物分布"
   },
   {
     "id": "END-101",
@@ -503,7 +659,13 @@ const QUESTIONS = [
     "explanation": "保育類需要保護與棲地維護。",
     "card": "保育類概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育行動"
   },
   {
     "id": "END-102",
@@ -523,7 +685,13 @@ const QUESTIONS = [
     "explanation": "判斷特有種要看自然分布地區。",
     "card": "特有種概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種判斷"
   },
   {
     "id": "END-103",
@@ -538,7 +706,13 @@ const QUESTIONS = [
     "explanation": "保育類需要保護與棲地維護。",
     "card": "保育類概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育行動"
   },
   {
     "id": "END-104",
@@ -558,7 +732,13 @@ const QUESTIONS = [
     "explanation": "判斷特有種要看自然分布地區。",
     "card": "特有種概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種判斷"
   },
   {
     "id": "END-105",
@@ -578,7 +758,13 @@ const QUESTIONS = [
     "explanation": "保育類需要保護與棲地維護。",
     "card": "保育類概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育行動"
   },
   {
     "id": "END-106",
@@ -593,7 +779,13 @@ const QUESTIONS = [
     "explanation": "判斷特有種要看自然分布地區。",
     "card": "特有種概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種判斷"
   },
   {
     "id": "END-107",
@@ -613,7 +805,13 @@ const QUESTIONS = [
     "explanation": "保育類需要保護與棲地維護。",
     "card": "保育類概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育行動"
   },
   {
     "id": "END-108",
@@ -633,7 +831,13 @@ const QUESTIONS = [
     "explanation": "判斷特有種要看自然分布地區。",
     "card": "特有種概念卡",
     "monster": "保育類混淆怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種判斷"
   },
   {
     "id": "INV-101",
@@ -653,7 +857,13 @@ const QUESTIONS = [
     "explanation": "不任意棄養或放生能預防入侵種。",
     "card": "防治外來入侵種卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜不任意放生"
   },
   {
     "id": "INV-102",
@@ -673,7 +883,13 @@ const QUESTIONS = [
     "explanation": "外來入侵種會大量繁衍並影響生態。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種判斷"
   },
   {
     "id": "INV-103",
@@ -688,7 +904,13 @@ const QUESTIONS = [
     "explanation": "不任意棄養或放生能預防入侵種。",
     "card": "防治外來入侵種卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜不任意放生"
   },
   {
     "id": "INV-104",
@@ -708,7 +930,13 @@ const QUESTIONS = [
     "explanation": "外來入侵種會大量繁衍並影響生態。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種判斷"
   },
   {
     "id": "INV-105",
@@ -728,7 +956,13 @@ const QUESTIONS = [
     "explanation": "不任意棄養或放生能預防入侵種。",
     "card": "防治外來入侵種卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜不任意放生"
   },
   {
     "id": "INV-106",
@@ -743,7 +977,13 @@ const QUESTIONS = [
     "explanation": "外來入侵種會大量繁衍並影響生態。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種判斷"
   },
   {
     "id": "INV-107",
@@ -763,7 +1003,13 @@ const QUESTIONS = [
     "explanation": "不任意棄養或放生能預防入侵種。",
     "card": "防治外來入侵種卡",
     "monster": "外來種怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜不任意放生"
   },
   {
     "id": "POL-101",
@@ -783,7 +1029,13 @@ const QUESTIONS = [
     "explanation": "空氣品質不佳時要減少戶外劇烈活動。",
     "card": "AQI 行動卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜健康行動"
   },
   {
     "id": "POL-102",
@@ -803,7 +1055,13 @@ const QUESTIONS = [
     "explanation": "污染來源包含廢水、廢氣與垃圾。",
     "card": "水汙染來源卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜污染來源"
   },
   {
     "id": "POL-103",
@@ -818,7 +1076,13 @@ const QUESTIONS = [
     "explanation": "空氣品質不佳時要減少戶外劇烈活動。",
     "card": "AQI 行動卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜健康行動"
   },
   {
     "id": "POL-104",
@@ -838,7 +1102,13 @@ const QUESTIONS = [
     "explanation": "污染來源包含廢水、廢氣與垃圾。",
     "card": "水汙染來源卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜污染來源"
   },
   {
     "id": "POL-105",
@@ -858,7 +1128,13 @@ const QUESTIONS = [
     "explanation": "空氣品質不佳時要減少戶外劇烈活動。",
     "card": "AQI 行動卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜健康行動"
   },
   {
     "id": "POL-106",
@@ -873,7 +1149,13 @@ const QUESTIONS = [
     "explanation": "污染來源包含廢水、廢氣與垃圾。",
     "card": "水汙染來源卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜污染來源"
   },
   {
     "id": "POL-107",
@@ -893,7 +1175,13 @@ const QUESTIONS = [
     "explanation": "空氣品質不佳時要減少戶外劇烈活動。",
     "card": "AQI 行動卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜健康行動"
   },
   {
     "id": "POL-108",
@@ -913,7 +1201,13 @@ const QUESTIONS = [
     "explanation": "污染來源包含廢水、廢氣與垃圾。",
     "card": "水汙染來源卡",
     "monster": "汙染怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜污染來源"
   },
   {
     "id": "HAB-101",
@@ -933,7 +1227,13 @@ const QUESTIONS = [
     "explanation": "避免餵食並保留棲地能減少衝突。",
     "card": "人獸衝突卡",
     "monster": "棲地破壞怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜共存策略"
   },
   {
     "id": "HAB-102",
@@ -953,7 +1253,13 @@ const QUESTIONS = [
     "explanation": "道路或開發可能切割棲地。",
     "card": "棲地破碎化卡",
     "monster": "棲地破壞怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地保護"
   },
   {
     "id": "HAB-103",
@@ -968,7 +1274,13 @@ const QUESTIONS = [
     "explanation": "避免餵食並保留棲地能減少衝突。",
     "card": "人獸衝突卡",
     "monster": "棲地破壞怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜共存策略"
   },
   {
     "id": "HAB-104",
@@ -988,7 +1300,13 @@ const QUESTIONS = [
     "explanation": "道路或開發可能切割棲地。",
     "card": "棲地破碎化卡",
     "monster": "棲地破壞怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地保護"
   },
   {
     "id": "HAB-105",
@@ -1008,7 +1326,13 @@ const QUESTIONS = [
     "explanation": "避免餵食並保留棲地能減少衝突。",
     "card": "人獸衝突卡",
     "monster": "棲地破壞怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜共存策略"
   },
   {
     "id": "HAB-106",
@@ -1023,7 +1347,13 @@ const QUESTIONS = [
     "explanation": "道路或開發可能切割棲地。",
     "card": "棲地破碎化卡",
     "monster": "棲地破壞怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地保護"
   },
   {
     "id": "CLI-101",
@@ -1043,7 +1373,13 @@ const QUESTIONS = [
     "explanation": "二氧化碳與甲烷是常見溫室氣體。",
     "card": "溫室效應卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜溫室氣體"
   },
   {
     "id": "CLI-102",
@@ -1063,7 +1399,13 @@ const QUESTIONS = [
     "explanation": "全球暖化可能增加極端氣候。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜暖化影響"
   },
   {
     "id": "CLI-103",
@@ -1078,7 +1420,13 @@ const QUESTIONS = [
     "explanation": "二氧化碳與甲烷是常見溫室氣體。",
     "card": "溫室效應卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜溫室氣體"
   },
   {
     "id": "CLI-104",
@@ -1098,7 +1446,13 @@ const QUESTIONS = [
     "explanation": "全球暖化可能增加極端氣候。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜暖化影響"
   },
   {
     "id": "CLI-105",
@@ -1118,7 +1472,13 @@ const QUESTIONS = [
     "explanation": "二氧化碳與甲烷是常見溫室氣體。",
     "card": "溫室效應卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜溫室氣體"
   },
   {
     "id": "CLI-106",
@@ -1133,7 +1493,13 @@ const QUESTIONS = [
     "explanation": "全球暖化可能增加極端氣候。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜暖化影響"
   },
   {
     "id": "CLI-107",
@@ -1153,7 +1519,13 @@ const QUESTIONS = [
     "explanation": "二氧化碳與甲烷是常見溫室氣體。",
     "card": "溫室效應卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜溫室氣體"
   },
   {
     "id": "CLI-108",
@@ -1173,7 +1545,13 @@ const QUESTIONS = [
     "explanation": "全球暖化可能增加極端氣候。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜暖化影響"
   },
   {
     "id": "ACT-101",
@@ -1193,7 +1571,13 @@ const QUESTIONS = [
     "explanation": "走路、關燈與搭大眾運輸能節能減碳。",
     "card": "節能減碳行動卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能減碳"
   },
   {
     "id": "ACT-102",
@@ -1213,7 +1597,13 @@ const QUESTIONS = [
     "explanation": "減量、重複使用與回收是環保行動。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜環保行動"
   },
   {
     "id": "ACT-103",
@@ -1228,7 +1618,13 @@ const QUESTIONS = [
     "explanation": "走路、關燈與搭大眾運輸能節能減碳。",
     "card": "節能減碳行動卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能減碳"
   },
   {
     "id": "ACT-104",
@@ -1248,7 +1644,13 @@ const QUESTIONS = [
     "explanation": "減量、重複使用與回收是環保行動。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜環保行動"
   },
   {
     "id": "ACT-105",
@@ -1268,7 +1670,13 @@ const QUESTIONS = [
     "explanation": "走路、關燈與搭大眾運輸能節能減碳。",
     "card": "節能減碳行動卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能減碳"
   },
   {
     "id": "ACT-106",
@@ -1283,7 +1691,13 @@ const QUESTIONS = [
     "explanation": "減量、重複使用與回收是環保行動。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜環保行動"
   },
   {
     "id": "ACT-107",
@@ -1303,7 +1717,13 @@ const QUESTIONS = [
     "explanation": "走路、關燈與搭大眾運輸能節能減碳。",
     "card": "節能減碳行動卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能減碳"
   },
   {
     "id": "ACT-108",
@@ -1323,7 +1743,13 @@ const QUESTIONS = [
     "explanation": "減量、重複使用與回收是環保行動。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜環保行動"
   },
   {
     "id": "ACT-109",
@@ -1338,7 +1764,13 @@ const QUESTIONS = [
     "explanation": "走路、關燈與搭大眾運輸能節能減碳。",
     "card": "節能減碳行動卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能減碳"
   },
   {
     "id": "ACT-110",
@@ -1358,7 +1790,13 @@ const QUESTIONS = [
     "explanation": "減量、重複使用與回收是環保行動。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜環保行動"
   },
   {
     "id": "ACT-111",
@@ -1378,7 +1816,13 @@ const QUESTIONS = [
     "explanation": "走路、關燈與搭大眾運輸能節能減碳。",
     "card": "節能減碳行動卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能減碳"
   },
   {
     "id": "ACT-112",
@@ -1393,7 +1837,13 @@ const QUESTIONS = [
     "explanation": "減量、重複使用與回收是環保行動。",
     "card": "綠色消費卡",
     "monster": "永續行動怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜環保行動"
   },
   {
     "id": "BOSS-101",
@@ -1413,7 +1863,13 @@ const QUESTIONS = [
     "explanation": "餵食野生動物可能造成衝突。",
     "card": "臺灣獼猴案例卡",
     "monster": "綜合推理怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜人獸衝突"
   },
   {
     "id": "BOSS-102",
@@ -1433,7 +1889,13 @@ const QUESTIONS = [
     "explanation": "案例題要找原因與結果。",
     "card": "渡渡鳥案例卡",
     "monster": "綜合推理怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜案例推理"
   },
   {
     "id": "BOSS-103",
@@ -1448,7 +1910,13 @@ const QUESTIONS = [
     "explanation": "餵食野生動物可能造成衝突。",
     "card": "臺灣獼猴案例卡",
     "monster": "綜合推理怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜人獸衝突"
   },
   {
     "id": "BOSS-104",
@@ -1468,7 +1936,13 @@ const QUESTIONS = [
     "explanation": "案例題要找原因與結果。",
     "card": "渡渡鳥案例卡",
     "monster": "綜合推理怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜案例推理"
   },
   {
     "id": "BOSS-105",
@@ -1488,7 +1962,13 @@ const QUESTIONS = [
     "explanation": "餵食野生動物可能造成衝突。",
     "card": "臺灣獼猴案例卡",
     "monster": "綜合推理怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜人獸衝突"
   },
   {
     "id": "BOSS-106",
@@ -1503,7 +1983,13 @@ const QUESTIONS = [
     "explanation": "案例題要找原因與結果。",
     "card": "渡渡鳥案例卡",
     "monster": "綜合推理怪",
-    "case": "臺灣生物多樣性基礎調查"
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜案例推理"
   },
   {
     "id": "BIO-011",
@@ -1523,7 +2009,13 @@ const QUESTIONS = [
     "explanation": "海拔會影響氣候和棲地，因此不同高度會有不同生物分布。",
     "card": "海拔生態卡",
     "monster": "海拔混淆怪",
-    "case": "海拔生態配對任務"
+    "case": "海拔生態配對任務",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜棲地與生物分布"
   },
   {
     "id": "BIO-012",
@@ -1543,7 +2035,13 @@ const QUESTIONS = [
     "explanation": "不同種類的生物越多，越能表現物種多樣性。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "山林生物調查"
+    "case": "山林生物調查",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜物種多樣性"
   },
   {
     "id": "BIO-013",
@@ -1563,7 +2061,13 @@ const QUESTIONS = [
     "explanation": "不同環境系統的多樣，屬於生態系多樣性。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "山林生物調查"
+    "case": "山林生物調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜生態系多樣性"
   },
   {
     "id": "BIO-014",
@@ -1578,7 +2082,13 @@ const QUESTIONS = [
     "explanation": "同種生物內部的差異，可用來理解遺傳多樣性。",
     "card": "山椒魚卡",
     "monster": "多樣性混淆怪",
-    "case": "山椒魚溪流調查"
+    "case": "山椒魚溪流調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜遺傳多樣性應用"
   },
   {
     "id": "BIO-015",
@@ -1598,7 +2108,13 @@ const QUESTIONS = [
     "explanation": "多樣性高的生態系通常較能面對環境變動。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "山林生物調查"
+    "case": "山林生物調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜生物多樣性價值"
   },
   {
     "id": "BIO-016",
@@ -1623,7 +2139,13 @@ const QUESTIONS = [
     "explanation": "高山植物需要適應低溫、強風等環境壓力。",
     "card": "玉山圓柏卡",
     "monster": "高山適應怪",
-    "case": "高山強風任務"
+    "case": "高山強風任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜高山植物適應"
   },
   {
     "id": "BIO-017",
@@ -1638,7 +2160,13 @@ const QUESTIONS = [
     "explanation": "臺灣地形與海拔變化大，能形成多樣棲地。",
     "card": "臺灣生物多樣性卡",
     "monster": "多樣性混淆怪",
-    "case": "山林生物調查"
+    "case": "山林生物調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜臺灣環境多元"
   },
   {
     "id": "BIO-018",
@@ -1658,7 +2186,13 @@ const QUESTIONS = [
     "explanation": "寒冷、強風是高山環境常見條件。",
     "card": "海拔生態卡",
     "monster": "海拔混淆怪",
-    "case": "高山強風任務"
+    "case": "高山強風任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜海拔生態判斷"
   },
   {
     "id": "BIO-019",
@@ -1678,7 +2212,13 @@ const QUESTIONS = [
     "explanation": "山椒魚需要特定潮溼、低溫的棲地條件。",
     "card": "山椒魚卡",
     "monster": "多樣性混淆怪",
-    "case": "山椒魚溪流調查"
+    "case": "山椒魚溪流調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜山椒魚棲地"
   },
   {
     "id": "BIO-020",
@@ -1693,7 +2233,13 @@ const QUESTIONS = [
     "explanation": "不同生物有不同適應條件，不一定能生活在所有環境。",
     "card": "海拔生態卡",
     "monster": "海拔混淆怪",
-    "case": "海拔生態配對任務"
+    "case": "海拔生態配對任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜生物分布迷思"
   },
   {
     "id": "END-011",
@@ -1713,7 +2259,13 @@ const QUESTIONS = [
     "explanation": "特有種判斷重點是自然分布範圍。",
     "card": "特有種概念卡",
     "monster": "特殊生物怪",
-    "case": "特有種資料庫修復"
+    "case": "特有種資料庫修復",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種判斷"
   },
   {
     "id": "END-012",
@@ -1728,7 +2280,13 @@ const QUESTIONS = [
     "explanation": "特有種重點是分布地區，不是外表特別。",
     "card": "特有種概念卡",
     "monster": "特殊生物怪",
-    "case": "特有種資料庫修復"
+    "case": "特有種資料庫修復",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種迷思"
   },
   {
     "id": "END-013",
@@ -1748,7 +2306,13 @@ const QUESTIONS = [
     "explanation": "保育類通常是需要特別保護的野生生物。",
     "card": "保育類概念卡",
     "monster": "保育類混淆怪",
-    "case": "保育類資料庫修復"
+    "case": "保育類資料庫修復",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育類保護原因"
   },
   {
     "id": "END-014",
@@ -1774,7 +2338,13 @@ const QUESTIONS = [
     "explanation": "野外觀察要避免干擾野生動物與牠們的棲地。",
     "card": "野外觀察守則卡",
     "monster": "餵食怪",
-    "case": "戶外觀察任務"
+    "case": "戶外觀察任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育行動"
   },
   {
     "id": "END-015",
@@ -1794,7 +2364,13 @@ const QUESTIONS = [
     "explanation": "餵食會讓野生動物習慣依賴人類食物。",
     "card": "野外觀察守則卡",
     "monster": "餵食怪",
-    "case": "戶外觀察任務"
+    "case": "戶外觀察任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜餵食野生動物影響"
   },
   {
     "id": "END-016",
@@ -1809,7 +2385,13 @@ const QUESTIONS = [
     "explanation": "棲地是生物生存的重要條件。",
     "card": "保育類概念卡",
     "monster": "棲地忽視怪",
-    "case": "臺灣百合守護任務"
+    "case": "臺灣百合守護任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜棲地與保育"
   },
   {
     "id": "END-017",
@@ -1829,7 +2411,13 @@ const QUESTIONS = [
     "explanation": "保育類與外來入侵種的管理方向不同。",
     "card": "保育類概念卡",
     "monster": "保育類混淆怪",
-    "case": "保育類資料庫修復"
+    "case": "保育類資料庫修復",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育與入侵區分"
   },
   {
     "id": "END-018",
@@ -1849,7 +2437,13 @@ const QUESTIONS = [
     "explanation": "不任意採摘可避免影響族群繁衍。",
     "card": "臺灣百合卡",
     "monster": "棲地忽視怪",
-    "case": "臺灣百合守護任務"
+    "case": "臺灣百合守護任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜臺灣百合保護"
   },
   {
     "id": "END-019",
@@ -1864,7 +2458,13 @@ const QUESTIONS = [
     "explanation": "特有種與保育類是不同概念，可能重疊但不完全相同。",
     "card": "特有種概念卡",
     "monster": "保育類混淆怪",
-    "case": "特有種資料庫修復"
+    "case": "特有種資料庫修復",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種與保育類"
   },
   {
     "id": "END-020",
@@ -1884,7 +2484,13 @@ const QUESTIONS = [
     "explanation": "生態觀察應盡量不干擾生物與環境。",
     "card": "野外觀察守則卡",
     "monster": "餵食怪",
-    "case": "戶外觀察任務"
+    "case": "戶外觀察任務",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜自然觀察倫理"
   },
   {
     "id": "INV-011",
@@ -1910,7 +2516,13 @@ const QUESTIONS = [
     "explanation": "棄養、放生、夾帶都可能使外來生物進入自然環境。",
     "card": "防治外來入侵種卡",
     "monster": "放生怪",
-    "case": "放生迷思破解"
+    "case": "放生迷思破解",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜外來入侵種傳播途徑"
   },
   {
     "id": "INV-012",
@@ -1930,7 +2542,13 @@ const QUESTIONS = [
     "explanation": "外來入侵種會爭奪資源，影響原有生態。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "入侵種警報"
+    "case": "入侵種警報",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種競爭"
   },
   {
     "id": "INV-013",
@@ -1945,7 +2563,13 @@ const QUESTIONS = [
     "explanation": "任意移動可能造成新地區入侵問題，應依專業與法規處理。",
     "card": "防治外來入侵種卡",
     "monster": "放生怪",
-    "case": "放生迷思破解"
+    "case": "放生迷思破解",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜防治入侵種"
   },
   {
     "id": "INV-014",
@@ -1965,7 +2589,13 @@ const QUESTIONS = [
     "explanation": "粉紅色卵塊與農作物嫩葉被啃食是福壽螺危害線索。",
     "card": "福壽螺卡",
     "monster": "農田入侵怪",
-    "case": "稻田裡的粉紅卵塊"
+    "case": "稻田裡的粉紅卵塊",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜福壽螺情境"
   },
   {
     "id": "INV-015",
@@ -1985,7 +2615,13 @@ const QUESTIONS = [
     "explanation": "小花蔓澤蘭覆蓋植物會阻擋光線。",
     "card": "小花蔓澤蘭卡",
     "monster": "無害藤蔓怪",
-    "case": "森林被藤蔓覆蓋"
+    "case": "森林被藤蔓覆蓋",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜小花蔓澤蘭情境"
   },
   {
     "id": "INV-016",
@@ -2000,7 +2636,13 @@ const QUESTIONS = [
     "explanation": "這些都是常見外來入侵種案例。",
     "card": "外來入侵種概念卡",
     "monster": "入侵種辨識怪",
-    "case": "入侵種圖鑑修復"
+    "case": "入侵種圖鑑修復",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種辨識"
   },
   {
     "id": "INV-017",
@@ -2015,7 +2657,13 @@ const QUESTIONS = [
     "explanation": "外來入侵種可能影響植物、動物與農業。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "入侵種警報"
+    "case": "入侵種警報",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種迷思"
   },
   {
     "id": "INV-018",
@@ -2035,7 +2683,13 @@ const QUESTIONS = [
     "explanation": "任意棄養可能造成外來入侵種問題。",
     "card": "防治外來入侵種卡",
     "monster": "放生怪",
-    "case": "放生迷思破解"
+    "case": "放生迷思破解",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜寵物棄養"
   },
   {
     "id": "INV-019",
@@ -2055,7 +2709,13 @@ const QUESTIONS = [
     "explanation": "外來入侵種防治應依專業資訊與法規處理。",
     "card": "防治外來入侵種卡",
     "monster": "放生怪",
-    "case": "放生迷思破解"
+    "case": "放生迷思破解",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜外來入侵種防治態度"
   },
   {
     "id": "INV-020",
@@ -2070,7 +2730,13 @@ const QUESTIONS = [
     "explanation": "例如福壽螺危害作物，可能造成農業損失。",
     "card": "外來入侵種概念卡",
     "monster": "外來種怪",
-    "case": "入侵種警報"
+    "case": "入侵種警報",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜外來入侵種與經濟"
   },
   {
     "id": "POL-011",
@@ -2090,7 +2756,13 @@ const QUESTIONS = [
     "explanation": "廢油進入水體會增加污染負擔。",
     "card": "水汙染來源卡",
     "monster": "汙水怪",
-    "case": "河川泡沫警報"
+    "case": "河川泡沫警報",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜家庭汙水"
   },
   {
     "id": "POL-012",
@@ -2105,7 +2777,13 @@ const QUESTIONS = [
     "explanation": "畜牧汙水是水汙染來源之一。",
     "card": "水汙染來源卡",
     "monster": "汙水怪",
-    "case": "河川泡沫警報"
+    "case": "河川泡沫警報",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜畜牧汙水"
   },
   {
     "id": "POL-013",
@@ -2125,7 +2803,13 @@ const QUESTIONS = [
     "explanation": "水質受到污染可能危害水中生物。",
     "card": "水汙染來源卡",
     "monster": "汙水怪",
-    "case": "河川泡沫警報"
+    "case": "河川泡沫警報",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜水污染與生物"
   },
   {
     "id": "POL-014",
@@ -2150,7 +2834,13 @@ const QUESTIONS = [
     "explanation": "汙水處理、減少廢油與垃圾進入水體，都能降低水汙染。",
     "card": "水汙染防治卡",
     "monster": "汙水處理怪",
-    "case": "河川淨化任務"
+    "case": "河川淨化任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜水汙染防治"
   },
   {
     "id": "POL-015",
@@ -2170,7 +2860,13 @@ const QUESTIONS = [
     "explanation": "空氣品質不佳時應降低戶外活動強度。",
     "card": "AQI 行動卡",
     "monster": "空汙怪",
-    "case": "空氣品質紅燈"
+    "case": "空氣品質紅燈",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜空氣汙染行動"
   },
   {
     "id": "POL-016",
@@ -2196,7 +2892,13 @@ const QUESTIONS = [
     "explanation": "車輛廢氣、工廠廢氣、焚燒與粉塵都是常見空汙來源。",
     "card": "空氣汙染來源卡",
     "monster": "空汙怪",
-    "case": "灰色天空任務"
+    "case": "灰色天空任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜空氣汙染來源判斷"
   },
   {
     "id": "POL-017",
@@ -2211,7 +2913,13 @@ const QUESTIONS = [
     "explanation": "空氣汙染可能影響呼吸道與健康。",
     "card": "空氣汙染來源卡",
     "monster": "空汙怪",
-    "case": "灰色天空任務"
+    "case": "灰色天空任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜空氣污染與健康"
   },
   {
     "id": "POL-018",
@@ -2231,7 +2939,13 @@ const QUESTIONS = [
     "explanation": "遇到環境異常應記錄並尋求可靠管道處理。",
     "card": "水汙染防治卡",
     "monster": "汙水處理怪",
-    "case": "河川淨化任務"
+    "case": "河川淨化任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜水汙染觀察"
   },
   {
     "id": "POL-019",
@@ -2251,7 +2965,13 @@ const QUESTIONS = [
     "explanation": "粉塵會影響空氣品質。",
     "card": "空氣汙染來源卡",
     "monster": "空汙怪",
-    "case": "灰色天空任務"
+    "case": "灰色天空任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜污染分類"
   },
   {
     "id": "POL-020",
@@ -2266,7 +2986,13 @@ const QUESTIONS = [
     "explanation": "生活行動也能減少污染來源。",
     "card": "水汙染防治卡",
     "monster": "汙水處理怪",
-    "case": "河川淨化任務"
+    "case": "河川淨化任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜汙染防治態度"
   },
   {
     "id": "HAB-009",
@@ -2286,7 +3012,13 @@ const QUESTIONS = [
     "explanation": "動物通道可降低跨越道路造成的風險。",
     "card": "棲地破碎化卡",
     "monster": "路殺忽視怪",
-    "case": "棲地斷裂危機"
+    "case": "棲地斷裂危機",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜道路與棲地"
   },
   {
     "id": "HAB-010",
@@ -2301,7 +3033,13 @@ const QUESTIONS = [
     "explanation": "棲地提供生物生活所需條件。",
     "card": "棲地破碎化卡",
     "monster": "開發怪",
-    "case": "棲地斷裂危機"
+    "case": "棲地斷裂危機",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地破壞後果"
   },
   {
     "id": "HAB-011",
@@ -2321,7 +3059,13 @@ const QUESTIONS = [
     "explanation": "開發前應考量生態影響並減少破壞。",
     "card": "棲地破碎化卡",
     "monster": "開發怪",
-    "case": "海岸飯店開發案"
+    "case": "海岸飯店開發案",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜開發評估"
   },
   {
     "id": "HAB-012",
@@ -2346,7 +3090,13 @@ const QUESTIONS = [
     "explanation": "保留植被與水土保持可降低沖刷與土石流風險。",
     "card": "山坡地開發卡",
     "monster": "土石流怪",
-    "case": "山坡地豪雨危機"
+    "case": "山坡地豪雨危機",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜山坡地保護"
   },
   {
     "id": "HAB-013",
@@ -2366,7 +3116,13 @@ const QUESTIONS = [
     "explanation": "生物多樣性提供人類許多生活所需。",
     "card": "生物多樣性價值卡",
     "monster": "多樣性忽視怪",
-    "case": "生活資源調查"
+    "case": "生活資源調查",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜生物多樣性價值"
   },
   {
     "id": "HAB-014",
@@ -2381,7 +3137,13 @@ const QUESTIONS = [
     "explanation": "不餵食可避免野生動物依賴人類食物。",
     "card": "人獸衝突卡",
     "monster": "餵食怪",
-    "case": "人獸衝突調查"
+    "case": "人獸衝突調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜人獸衝突預防"
   },
   {
     "id": "HAB-015",
@@ -2401,7 +3163,13 @@ const QUESTIONS = [
     "explanation": "棲地連結可減少破碎化造成的影響。",
     "card": "棲地破碎化卡",
     "monster": "開發怪",
-    "case": "棲地斷裂危機"
+    "case": "棲地斷裂危機",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地連結"
   },
   {
     "id": "HAB-016",
@@ -2416,7 +3184,13 @@ const QUESTIONS = [
     "explanation": "海岸道路與飯店開發可能破壞棲地。",
     "card": "棲地破碎化卡",
     "monster": "開發怪",
-    "case": "海岸飯店開發案"
+    "case": "海岸飯店開發案",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜海岸棲地"
   },
   {
     "id": "HAB-017",
@@ -2436,7 +3210,13 @@ const QUESTIONS = [
     "explanation": "大量砍伐與開發會直接改變棲地。",
     "card": "棲地破碎化卡",
     "monster": "開發怪",
-    "case": "棲地斷裂危機"
+    "case": "棲地斷裂危機",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜人類活動與棲地"
   },
   {
     "id": "HAB-018",
@@ -2461,7 +3241,13 @@ const QUESTIONS = [
     "explanation": "保留棲地、不餵食、降低道路切割，都有助於共存。",
     "card": "人獸衝突卡",
     "monster": "開發怪",
-    "case": "人獸衝突調查"
+    "case": "人獸衝突調查",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜共存觀念"
   },
   {
     "id": "CLI-011",
@@ -2481,7 +3267,13 @@ const QUESTIONS = [
     "explanation": "溫室氣體增加會使地球保留更多熱能。",
     "card": "溫室效應卡",
     "monster": "溫室氣體混淆怪",
-    "case": "溫室氣體辨識"
+    "case": "溫室氣體辨識",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜溫室效應基本概念"
   },
   {
     "id": "CLI-012",
@@ -2501,7 +3293,13 @@ const QUESTIONS = [
     "explanation": "燃燒化石燃料會增加二氧化碳排放。",
     "card": "溫室效應卡",
     "monster": "溫室氣體混淆怪",
-    "case": "溫室氣體辨識"
+    "case": "溫室氣體辨識",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜二氧化碳來源"
   },
   {
     "id": "CLI-013",
@@ -2527,7 +3325,13 @@ const QUESTIONS = [
     "explanation": "暖化可能造成多種極端氣候與冰層融化。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "暖化警報中心"
+    "case": "暖化警報中心",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜極端氣候判斷"
   },
   {
     "id": "CLI-014",
@@ -2542,7 +3346,13 @@ const QUESTIONS = [
     "explanation": "冰層融化與海平面上升是全球暖化的重要影響之一。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "暖化警報中心"
+    "case": "暖化警報中心",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜海平面上升"
   },
   {
     "id": "CLI-015",
@@ -2562,7 +3372,13 @@ const QUESTIONS = [
     "explanation": "海水溫度升高可能造成珊瑚共生藻離開或死亡。",
     "card": "珊瑚白化卡",
     "monster": "珊瑚白化怪",
-    "case": "珊瑚白化警報"
+    "case": "珊瑚白化警報",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜珊瑚與海溫"
   },
   {
     "id": "CLI-016",
@@ -2577,7 +3393,13 @@ const QUESTIONS = [
     "explanation": "氣候變化會影響植物生長與農業。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "暖化警報中心"
+    "case": "暖化警報中心",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜氣候變遷與農業"
   },
   {
     "id": "CLI-017",
@@ -2597,7 +3419,13 @@ const QUESTIONS = [
     "explanation": "節能與低碳交通能降低排放。",
     "card": "溫室效應卡",
     "monster": "高耗能怪",
-    "case": "暖化警報中心"
+    "case": "暖化警報中心",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜減緩暖化行動"
   },
   {
     "id": "CLI-018",
@@ -2617,7 +3445,13 @@ const QUESTIONS = [
     "explanation": "氣候改變會影響生物棲地與生存條件。",
     "card": "極端氣候卡",
     "monster": "暖化無害怪",
-    "case": "暖化警報中心"
+    "case": "暖化警報中心",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜暖化與生物棲地"
   },
   {
     "id": "CLI-019",
@@ -2632,7 +3466,13 @@ const QUESTIONS = [
     "explanation": "巴黎協定是重要的國際氣候協定。",
     "card": "氣候協定卡",
     "monster": "暖化無害怪",
-    "case": "巴黎協定任務"
+    "case": "巴黎協定任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜巴黎協定理解"
   },
   {
     "id": "CLI-020",
@@ -2657,7 +3497,13 @@ const QUESTIONS = [
     "explanation": "二氧化碳、甲烷等是常見溫室氣體。",
     "card": "溫室效應卡",
     "monster": "溫室氣體混淆怪",
-    "case": "溫室氣體辨識"
+    "case": "溫室氣體辨識",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜溫室氣體判斷"
   },
   {
     "id": "ACT-016",
@@ -2677,7 +3523,13 @@ const QUESTIONS = [
     "explanation": "低碳交通可減少能源消耗與碳排放。",
     "card": "碳足跡卡",
     "monster": "碳足跡怪",
-    "case": "低碳交通任務"
+    "case": "低碳交通任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜碳足跡生活判斷"
   },
   {
     "id": "ACT-017",
@@ -2692,7 +3544,13 @@ const QUESTIONS = [
     "explanation": "碳足跡數值越小通常代表排放越少。",
     "card": "碳足跡卡",
     "monster": "碳足跡怪",
-    "case": "碳標籤判讀任務"
+    "case": "碳標籤判讀任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜碳標籤比較"
   },
   {
     "id": "ACT-018",
@@ -2712,7 +3570,13 @@ const QUESTIONS = [
     "explanation": "水足跡反映直接與間接的水資源消耗。",
     "card": "水足跡卡",
     "monster": "水足跡怪",
-    "case": "水足跡分類任務"
+    "case": "水足跡分類任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜水足跡生活應用"
   },
   {
     "id": "ACT-019",
@@ -2738,7 +3602,13 @@ const QUESTIONS = [
     "explanation": "綠色消費包含減量、環保選購與重複使用。",
     "card": "綠色消費卡",
     "monster": "一次性用品怪",
-    "case": "班級垃圾減量任務"
+    "case": "班級垃圾減量任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜綠色消費選擇"
   },
   {
     "id": "ACT-020",
@@ -2753,7 +3623,13 @@ const QUESTIONS = [
     "explanation": "分類回收可降低垃圾量與資源浪費。",
     "card": "綠色消費卡",
     "monster": "回收混淆怪",
-    "case": "班級垃圾減量任務"
+    "case": "班級垃圾減量任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜回收分類"
   },
   {
     "id": "ACT-021",
@@ -2773,7 +3649,13 @@ const QUESTIONS = [
     "explanation": "隨手關燈能減少能源浪費。",
     "card": "節能減碳行動卡",
     "monster": "高耗能怪",
-    "case": "低碳交通任務"
+    "case": "低碳交通任務",
+    "stage": "basic",
+    "stageLabel": "基礎概念題",
+    "cognitiveSkill": "辨認概念",
+    "designPurpose": "確認學生能辨認單一核心概念與定義。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜節能行動"
   },
   {
     "id": "ACT-022",
@@ -2793,7 +3675,13 @@ const QUESTIONS = [
     "explanation": "重複使用餐具可減少一次性廢棄物。",
     "card": "綠色消費卡",
     "monster": "一次性用品怪",
-    "case": "低廢棄午餐任務"
+    "case": "低廢棄午餐任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜一次性用品減量"
   },
   {
     "id": "ACT-023",
@@ -2813,7 +3701,13 @@ const QUESTIONS = [
     "explanation": "淨零重點是排放與移除之間的平衡。",
     "card": "淨零碳排卡",
     "monster": "碳足跡怪",
-    "case": "碳標籤判讀任務"
+    "case": "碳標籤判讀任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜淨零碳排理解"
   },
   {
     "id": "ACT-024",
@@ -2839,7 +3733,13 @@ const QUESTIONS = [
     "explanation": "可記錄的環保行動應和節能、減塑、交通或垃圾減量有關。",
     "card": "綠色消費卡",
     "monster": "回收混淆怪",
-    "case": "班級垃圾減量任務"
+    "case": "班級垃圾減量任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜永續行動設計"
   },
   {
     "id": "ACT-025",
@@ -2854,7 +3754,13 @@ const QUESTIONS = [
     "explanation": "水足跡包含直接與間接消耗的水資源。",
     "card": "水足跡卡",
     "monster": "水足跡怪",
-    "case": "水足跡分類任務"
+    "case": "水足跡分類任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜水足跡迷思"
   },
   {
     "id": "BOSS-009",
@@ -2874,7 +3780,13 @@ const QUESTIONS = [
     "explanation": "渡渡鳥案例涉及人類開發、外來動物與棲地競爭。",
     "card": "渡渡鳥案例卡",
     "monster": "渡渡鳥警報怪",
-    "case": "消失的渡渡鳥"
+    "case": "消失的渡渡鳥",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜跨主題案例分析"
   },
   {
     "id": "BOSS-010",
@@ -2900,7 +3812,13 @@ const QUESTIONS = [
     "explanation": "渡渡鳥危機不是單一原因，而是多種人類活動與外來動物影響。",
     "card": "渡渡鳥案例卡",
     "monster": "渡渡鳥警報怪",
-    "case": "消失的渡渡鳥"
+    "case": "消失的渡渡鳥",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜人類活動連鎖影響"
   },
   {
     "id": "BOSS-011",
@@ -2920,7 +3838,13 @@ const QUESTIONS = [
     "explanation": "長期餵食會改變野生動物行為。",
     "card": "臺灣獼猴案例卡",
     "monster": "餵食怪",
-    "case": "臺灣獼猴搶食事件"
+    "case": "臺灣獼猴搶食事件",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜獼猴人獸衝突"
   },
   {
     "id": "BOSS-012",
@@ -2946,7 +3870,13 @@ const QUESTIONS = [
     "explanation": "永續活動應減塑、分類、節能並鼓勵重複使用。",
     "card": "綠色消費卡",
     "monster": "園遊會浪費怪",
-    "case": "永續園遊會"
+    "case": "永續園遊會",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜永續園遊會設計"
   },
   {
     "id": "BOSS-013",
@@ -2966,7 +3896,13 @@ const QUESTIONS = [
     "explanation": "環境案例可從原本狀態、改變因素與結果分析。",
     "card": "渡渡鳥案例卡",
     "monster": "渡渡鳥警報怪",
-    "case": "消失的渡渡鳥"
+    "case": "消失的渡渡鳥",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜案例閱讀策略"
   },
   {
     "id": "BOSS-014",
@@ -2986,7 +3922,13 @@ const QUESTIONS = [
     "explanation": "完整方案應同時包含節能、低碳、減塑與回收。",
     "card": "綠色消費卡",
     "monster": "園遊會浪費怪",
-    "case": "永續園遊會"
+    "case": "永續園遊會",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜跨概念環境行動"
   },
   {
     "id": "BOSS-015",
@@ -3001,7 +3943,13 @@ const QUESTIONS = [
     "explanation": "外來動物可能和原生動物競爭資源，造成族群下降。",
     "card": "渡渡鳥案例卡",
     "monster": "渡渡鳥警報怪",
-    "case": "消失的渡渡鳥"
+    "case": "消失的渡渡鳥",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜外來種與棲地破壞整合"
   },
   {
     "id": "BOSS-016",
@@ -3027,7 +3975,13 @@ const QUESTIONS = [
     "explanation": "戶外活動要避免改變野生動物行為。",
     "card": "臺灣獼猴案例卡",
     "monster": "餵食怪",
-    "case": "臺灣獼猴搶食事件"
+    "case": "臺灣獼猴搶食事件",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜戶外活動守則整合"
   },
   {
     "id": "BOSS-017",
@@ -3047,7 +4001,13 @@ const QUESTIONS = [
     "explanation": "活動設計應考慮垃圾、能源與環境負擔。",
     "card": "綠色消費卡",
     "monster": "園遊會浪費怪",
-    "case": "永續園遊會"
+    "case": "永續園遊會",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜綜合判斷"
   },
   {
     "id": "BOSS-018",
@@ -3067,6 +4027,953 @@ const QUESTIONS = [
     "explanation": "棲地破壞會影響生物生存並可能造成族群下降。",
     "card": "渡渡鳥案例卡",
     "monster": "渡渡鳥警報怪",
-    "case": "消失的渡渡鳥"
+    "case": "消失的渡渡鳥",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜生態危機因果"
+  },
+  {
+    "id": "BIO-201",
+    "zone": "BIO",
+    "topic": "臺灣生物多樣性",
+    "concept": "環境階梯與棲地",
+    "level": 2,
+    "type": "single",
+    "question": "調查員從海岸走到高山，發現植物種類一路改變。哪一個推論最合理？",
+    "options": [
+      "海拔、溫度與濕度改變，會讓不同生物適合不同棲地",
+      "只要離海越遠，所有生物都會自然變多",
+      "高山和海岸的差異只和人類喜不喜歡有關",
+      "生物分布主要由動物是否可愛決定"
+    ],
+    "answer": "海拔、溫度與濕度改變，會讓不同生物適合不同棲地",
+    "explanation": "臺灣地形與海拔變化會造成環境條件差異，進而影響生物分布。",
+    "card": "海拔生態卡",
+    "monster": "海拔混淆怪",
+    "case": "海拔生態危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜環境階梯與棲地"
+  },
+  {
+    "id": "BIO-202",
+    "zone": "BIO",
+    "topic": "臺灣生物多樣性",
+    "concept": "生物多樣性三層次",
+    "level": 3,
+    "type": "multi",
+    "question": "要完整說明臺灣生物多樣性，哪些線索可以一起使用？",
+    "options": [
+      "不同棲地形成生態系多樣性",
+      "不同物種形成物種多樣性",
+      "同種山椒魚族群差異可說明遺傳多樣性",
+      "只統計校園寵物數量就足夠"
+    ],
+    "answer": [
+      "不同棲地形成生態系多樣性",
+      "不同物種形成物種多樣性",
+      "同種山椒魚族群差異可說明遺傳多樣性"
+    ],
+    "explanation": "生物多樣性可從遺傳、物種與生態系三個層次理解。",
+    "card": "臺灣生物多樣性卡",
+    "monster": "多樣性混淆怪",
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜生物多樣性三層次"
+  },
+  {
+    "id": "BIO-203",
+    "zone": "BIO",
+    "topic": "臺灣生物多樣性",
+    "concept": "面積與多樣性迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "臺灣面積不大，所以不可能有豐富生物多樣性。",
+    "options": [],
+    "answer": false,
+    "explanation": "面積不是唯一因素；臺灣地形、海拔與氣候差異大，能形成多樣棲地。",
+    "card": "臺灣生物多樣性卡",
+    "monster": "多樣性混淆怪",
+    "case": "臺灣生物多樣性基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜面積與多樣性迷思"
+  },
+  {
+    "id": "BIO-204",
+    "zone": "BIO",
+    "topic": "臺灣生物多樣性",
+    "concept": "山椒魚棲地推理",
+    "level": 2,
+    "type": "single",
+    "question": "如果某山區道路工程會讓潮濕森林被切開，調查員最應該關注哪個影響？",
+    "options": [
+      "山椒魚族群可能更難交流，棲地也可能變小",
+      "山椒魚會立刻適應任何乾燥空地",
+      "道路越多一定讓高山生物更安全",
+      "只要附近還有樹，族群交流就完全不受影響"
+    ],
+    "answer": "山椒魚族群可能更難交流，棲地也可能變小",
+    "explanation": "山椒魚受棲地與地形限制，棲地改變或切割可能影響族群交流。",
+    "card": "山椒魚卡",
+    "monster": "高山適應怪",
+    "case": "山椒魚進階挑戰",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：生物種類與生存環境都具有多樣性。",
+    "masteryNode": "臺灣生物多樣性｜山椒魚棲地推理"
+  },
+  {
+    "id": "END-201",
+    "zone": "END",
+    "topic": "特有種與保育類",
+    "concept": "特有種與保育類區分",
+    "level": 2,
+    "type": "single",
+    "question": "某種鳥只自然分布在臺灣，但目前族群穩定。下列判斷何者最合理？",
+    "options": [
+      "牠可以是臺灣特有種，但是否為保育類還要看族群與保育狀況",
+      "只要是特有種就一定瀕臨絕種",
+      "只要族群穩定就不是野生生物",
+      "只要會飛就不需要保護棲地"
+    ],
+    "answer": "牠可以是臺灣特有種，但是否為保育類還要看族群與保育狀況",
+    "explanation": "特有種看自然分布範圍，保育類看是否需要保育，兩者不是同一件事。",
+    "card": "特有種概念卡",
+    "monster": "特殊生物怪",
+    "case": "特有種概念基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜特有種與保育類區分"
+  },
+  {
+    "id": "END-202",
+    "zone": "END",
+    "topic": "特有種與保育類",
+    "concept": "野外觀察倫理",
+    "level": 2,
+    "type": "multi",
+    "question": "戶外觀察保育類動物時，哪些做法較符合保育原則？",
+    "options": [
+      "保持距離，用望遠鏡或相機記錄",
+      "不餵食、不追逐、不捕捉",
+      "記錄地點、時間與行為，回報給老師",
+      "為了拍清楚把動物拿起來"
+    ],
+    "answer": [
+      "保持距離，用望遠鏡或相機記錄",
+      "不餵食、不追逐、不捕捉",
+      "記錄地點、時間與行為，回報給老師"
+    ],
+    "explanation": "野外觀察重點是低干擾與正確紀錄，不是靠近或捕捉。",
+    "card": "野外觀察守則卡",
+    "monster": "餵食怪",
+    "case": "野外觀察守則進階挑戰",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜野外觀察倫理"
+  },
+  {
+    "id": "END-203",
+    "zone": "END",
+    "topic": "特有種與保育類",
+    "concept": "植物保育迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "保育只和動物有關，植物如果很多就不需要保護棲地。",
+    "options": [],
+    "answer": false,
+    "explanation": "植物也是生物多樣性的一部分，採集、踩踏與棲地破壞都可能造成影響。",
+    "card": "臺灣百合卡",
+    "monster": "棲地忽視怪",
+    "case": "保育類概念危機任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜植物保育迷思"
+  },
+  {
+    "id": "END-204",
+    "zone": "END",
+    "topic": "特有種與保育類",
+    "concept": "保育行動判斷",
+    "level": 2,
+    "type": "single",
+    "question": "學校附近發現疑似受傷的保育類野鳥，最合適的處理方式是什麼？",
+    "options": [
+      "保持距離，請老師協助通報專業救傷單位",
+      "立刻帶回教室餵餅乾和牛奶",
+      "讓學生輪流抱牠拍照留下紀念",
+      "放到操場讓牠自己想辦法飛走"
+    ],
+    "answer": "保持距離，請老師協助通報專業救傷單位",
+    "explanation": "保育行動要降低干擾並交由專業處理。",
+    "card": "保育類概念卡",
+    "monster": "保育類混淆怪",
+    "case": "保育類概念危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INd-III-6：從臺灣自然環境認識特有種與保育類。",
+    "masteryNode": "特有種與保育類｜保育行動判斷"
+  },
+  {
+    "id": "INV-201",
+    "zone": "INV",
+    "topic": "外來入侵種",
+    "concept": "入侵種判斷條件",
+    "level": 2,
+    "type": "single",
+    "question": "班上整理池塘資料，發現某外來水生植物快速覆蓋水面，使原本水草減少。最合理的判斷是？",
+    "options": [
+      "牠可能已形成外來入侵種，因為大量繁衍並影響原有生態",
+      "只要是植物就一定對環境有幫助",
+      "外來生物只要漂亮就不會造成問題",
+      "池塘面積小，所以不需要處理"
+    ],
+    "answer": "牠可能已形成外來入侵種，因為大量繁衍並影響原有生態",
+    "explanation": "外來入侵種的重點是繁衍成群並影響原有生態。",
+    "card": "外來入侵種概念卡",
+    "monster": "入侵種辨識怪",
+    "case": "外來入侵種概念基礎調查",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種判斷條件"
+  },
+  {
+    "id": "INV-202",
+    "zone": "INV",
+    "topic": "外來入侵種",
+    "concept": "源頭管理",
+    "level": 2,
+    "type": "multi",
+    "question": "為了降低外來入侵種風險，哪些做法屬於源頭管理？",
+    "options": [
+      "不任意野放寵物",
+      "不從國外夾帶動植物或種子",
+      "購買與飼養前確認來源與規定",
+      "把不想養的寵物放到公園"
+    ],
+    "answer": [
+      "不任意野放寵物",
+      "不從國外夾帶動植物或種子",
+      "購買與飼養前確認來源與規定"
+    ],
+    "explanation": "源頭管理可降低外來種進入與擴散的機會。",
+    "card": "防治外來入侵種卡",
+    "monster": "放生怪",
+    "case": "防治外來入侵種進階挑戰",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜源頭管理"
+  },
+  {
+    "id": "INV-203",
+    "zone": "INV",
+    "topic": "外來入侵種",
+    "concept": "外來種迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "所有外來種都一定是外來入侵種，所以只要不是本地生物就一定要清除。",
+    "options": [],
+    "answer": false,
+    "explanation": "外來種不一定都是入侵種；需看是否大量繁衍並造成影響。",
+    "card": "外來入侵種概念卡",
+    "monster": "外來種怪",
+    "case": "外來入侵種概念基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜外來種迷思"
+  },
+  {
+    "id": "INV-204",
+    "zone": "INV",
+    "topic": "外來入侵種",
+    "concept": "入侵種危害比較",
+    "level": 2,
+    "type": "single",
+    "question": "農田出現粉紅色卵塊，幼苗也被啃食。這個案例最可能需要查哪張資料卡？",
+    "options": [
+      "福壽螺卡",
+      "AQI 行動卡",
+      "溫室效應卡",
+      "碳足跡卡"
+    ],
+    "answer": "福壽螺卡",
+    "explanation": "粉紅色卵塊、稻田與幼苗受害是福壽螺常見線索。",
+    "card": "福壽螺卡",
+    "monster": "農田入侵怪",
+    "case": "福壽螺危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INe-III-12、INg-III-2：環境會影響生物分布，不當引進外來物種可能破壞生態並造成經濟損失。",
+    "masteryNode": "外來入侵種｜入侵種危害比較"
+  },
+  {
+    "id": "POL-201",
+    "zone": "POL",
+    "topic": "水汙染與空氣汙染",
+    "concept": "汙染來源判斷",
+    "level": 2,
+    "type": "single",
+    "question": "河川下游突然出現魚群死亡與異味，調查員第一步最應該做什麼？",
+    "options": [
+      "追查上游可能排放來源，並記錄水色、氣味與死亡位置",
+      "只把死魚撈掉，其他不用處理",
+      "先判斷一定是全球暖化造成，不需查汙染源",
+      "把河水沖到更下游就好"
+    ],
+    "answer": "追查上游可能排放來源，並記錄水色、氣味與死亡位置",
+    "explanation": "水汙染會隨水流擴散，調查要找來源並記錄證據。",
+    "card": "水汙染來源卡",
+    "monster": "汙水怪",
+    "case": "水汙染來源基礎調查",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜汙染來源判斷"
+  },
+  {
+    "id": "POL-202",
+    "zone": "POL",
+    "topic": "水汙染與空氣汙染",
+    "concept": "空汙健康行動",
+    "level": 2,
+    "type": "multi",
+    "question": "當 AQI 顯示空氣品質不良時，哪些行動較合適？",
+    "options": [
+      "減少戶外劇烈運動",
+      "留意呼吸道敏感者的健康狀況",
+      "必要時配戴口罩或改在室內活動",
+      "因為看不到灰塵，所以照常長跑"
+    ],
+    "answer": [
+      "減少戶外劇烈運動",
+      "留意呼吸道敏感者的健康狀況",
+      "必要時配戴口罩或改在室內活動"
+    ],
+    "explanation": "AQI 可協助判斷空氣品質並調整活動。",
+    "card": "AQI 行動卡",
+    "monster": "空汙怪",
+    "case": "AQI 行動危機任務",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜空汙健康行動"
+  },
+  {
+    "id": "POL-203",
+    "zone": "POL",
+    "topic": "水汙染與空氣汙染",
+    "concept": "水汙染防治迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "把家庭汙水直接排到河川，因為水會流走，所以不算造成水汙染。",
+    "options": [],
+    "answer": false,
+    "explanation": "汙染物會隨水流擴散，仍可能影響水域生物與用水安全。",
+    "card": "水汙染防治卡",
+    "monster": "汙水處理怪",
+    "case": "水汙染防治進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜水汙染防治迷思"
+  },
+  {
+    "id": "POL-204",
+    "zone": "POL",
+    "topic": "水汙染與空氣汙染",
+    "concept": "空汙與水汙區分",
+    "level": 2,
+    "type": "single",
+    "question": "工廠煙囪排出大量黑煙，附近學生容易咳嗽。這個案例主要應先查哪個概念？",
+    "options": [
+      "空氣汙染來源與健康防護",
+      "水足跡與衣物製造用水",
+      "山椒魚遺傳多樣性",
+      "臺灣百合是否為原生植物"
+    ],
+    "answer": "空氣汙染來源與健康防護",
+    "explanation": "黑煙與呼吸症狀是空氣汙染與健康防護的線索。",
+    "card": "空氣汙染來源卡",
+    "monster": "空汙怪",
+    "case": "空氣汙染來源危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：人類活動會與其他生物互相影響，也可能加劇生態與環境衝擊。",
+    "masteryNode": "水汙染與空氣汙染｜空汙與水汙區分"
+  },
+  {
+    "id": "HAB-201",
+    "zone": "HAB",
+    "topic": "棲地破壞與人類開發",
+    "concept": "棲地破碎化影響",
+    "level": 2,
+    "type": "single",
+    "question": "新道路把森林切成兩塊後，某些動物比較少穿越原本活動範圍。最合理的解釋是？",
+    "options": [
+      "棲地連通性變差，移動、覓食與繁殖可能受影響",
+      "道路會自動增加所有動物的食物",
+      "只要森林還在兩旁，生物完全不受影響",
+      "動物不穿越道路代表牠們不需要棲地"
+    ],
+    "answer": "棲地連通性變差，移動、覓食與繁殖可能受影響",
+    "explanation": "棲地破碎化會降低連通性並影響生物活動。",
+    "card": "棲地破碎化卡",
+    "monster": "路殺忽視怪",
+    "case": "棲地破碎化危機任務",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜棲地破碎化影響"
+  },
+  {
+    "id": "HAB-202",
+    "zone": "HAB",
+    "topic": "棲地破壞與人類開發",
+    "concept": "山坡地開發整合",
+    "level": 3,
+    "type": "multi",
+    "question": "評估山坡地開發時，哪些項目應列入環境風險？",
+    "options": [
+      "植被是否被移除",
+      "豪雨時土壤是否更容易崩塌",
+      "野生動物棲地是否被切割",
+      "建築顏色是否比較流行"
+    ],
+    "answer": [
+      "植被是否被移除",
+      "豪雨時土壤是否更容易崩塌",
+      "野生動物棲地是否被切割"
+    ],
+    "explanation": "山坡地開發需考慮植被、土壤穩定與棲地影響。",
+    "card": "山坡地開發卡",
+    "monster": "土石流怪",
+    "case": "山坡地開發基礎調查",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜山坡地開發整合"
+  },
+  {
+    "id": "HAB-203",
+    "zone": "HAB",
+    "topic": "棲地破壞與人類開發",
+    "concept": "人獸衝突迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "野生動物靠近人類活動區，一定完全是動物變壞，和人類餵食或棲地開發無關。",
+    "options": [],
+    "answer": false,
+    "explanation": "人獸衝突常和餵食、垃圾、農作物吸引或棲地重疊有關。",
+    "card": "人獸衝突卡",
+    "monster": "開發怪",
+    "case": "人獸衝突進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜人獸衝突迷思"
+  },
+  {
+    "id": "HAB-204",
+    "zone": "HAB",
+    "topic": "棲地破壞與人類開發",
+    "concept": "生物多樣性價值應用",
+    "level": 2,
+    "type": "single",
+    "question": "社區討論是否保留一片小濕地。哪個理由最符合生物多樣性價值？",
+    "options": [
+      "濕地可提供生物棲地，也可能維持生態穩定與人類生活品質",
+      "濕地只要不能蓋房子就完全沒有價值",
+      "只有大型動物的棲地才值得保留",
+      "只要附近有公園，就不需要其他棲地"
+    ],
+    "answer": "濕地可提供生物棲地，也可能維持生態穩定與人類生活品質",
+    "explanation": "生物多樣性與棲地保護對生態系穩定和人類生活都有價值。",
+    "card": "生物多樣性價值卡",
+    "monster": "多樣性忽視怪",
+    "case": "生物多樣性價值進階挑戰",
+    "stage": "application",
+    "stageLabel": "情境應用題",
+    "cognitiveSkill": "情境推理",
+    "designPurpose": "把課本概念放進生活或調查情境，檢查能否用線索做判斷。",
+    "sourceBasis": "INg-III-2、INg-III-4：環境開發會改變棲地，影響生物生存空間。",
+    "masteryNode": "棲地破壞與人類開發｜生物多樣性價值應用"
+  },
+  {
+    "id": "CLI-201",
+    "zone": "CLI",
+    "topic": "全球暖化與溫室效應",
+    "concept": "正常與異常溫室效應",
+    "level": 2,
+    "type": "single",
+    "question": "同學說「溫室效應都很壞，最好完全消失」。哪個回應最正確？",
+    "options": [
+      "正常溫室效應讓地球適合生命，問題是人類活動使它異常加劇",
+      "溫室效應只和塑膠溫室有關",
+      "溫室效應消失後地球一定更適合生物",
+      "只要今天很冷，就代表沒有溫室效應"
+    ],
+    "answer": "正常溫室效應讓地球適合生命，問題是人類活動使它異常加劇",
+    "explanation": "正常溫室效應有保溫功能，異常加劇才會導致全球暖化問題。",
+    "card": "溫室效應卡",
+    "monster": "溫室氣體混淆怪",
+    "case": "溫室效應進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜正常與異常溫室效應"
+  },
+  {
+    "id": "CLI-202",
+    "zone": "CLI",
+    "topic": "全球暖化與溫室效應",
+    "concept": "氣候衝擊整合",
+    "level": 3,
+    "type": "multi",
+    "question": "全球暖化可能造成哪些生態或生活影響？",
+    "options": [
+      "熱浪、洪水或乾旱風險增加",
+      "海水升溫可能造成珊瑚白化",
+      "生物分布和棲地可能改變",
+      "所有地區每天都會同時變成高溫"
+    ],
+    "answer": [
+      "熱浪、洪水或乾旱風險增加",
+      "海水升溫可能造成珊瑚白化",
+      "生物分布和棲地可能改變"
+    ],
+    "explanation": "全球暖化會提高極端氣候與生態衝擊風險，但不是每天每地都一樣變熱。",
+    "card": "極端氣候卡",
+    "monster": "暖化無害怪",
+    "case": "極端氣候基礎調查",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜氣候衝擊整合"
+  },
+  {
+    "id": "CLI-203",
+    "zone": "CLI",
+    "topic": "全球暖化與溫室效應",
+    "concept": "珊瑚白化迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "珊瑚白化只是顏色變淡，不會影響珊瑚礁中的其他生物。",
+    "options": [],
+    "answer": false,
+    "explanation": "珊瑚礁是許多海洋生物棲地，白化可能影響整個生態系。",
+    "card": "珊瑚白化卡",
+    "monster": "珊瑚白化怪",
+    "case": "珊瑚白化危機任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜珊瑚白化迷思"
+  },
+  {
+    "id": "CLI-204",
+    "zone": "CLI",
+    "topic": "全球暖化與溫室效應",
+    "concept": "氣候協定判斷",
+    "level": 2,
+    "type": "single",
+    "question": "為什麼全球暖化需要國際合作，而不是只靠某一個城市自己努力？",
+    "options": [
+      "溫室氣體與氣候影響會跨越國界，需要共同減量與調適",
+      "因為只有大城市會排放二氧化碳",
+      "因為海洋和空氣都不會流動",
+      "因為學生的生活行動完全沒有意義"
+    ],
+    "answer": "溫室氣體與氣候影響會跨越國界，需要共同減量與調適",
+    "explanation": "氣候變遷是全球性問題，需要國際合作，也需要地方與個人行動。",
+    "card": "氣候協定卡",
+    "monster": "高耗能怪",
+    "case": "氣候協定進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-3、INg-III-4：生物多樣性對人類重要，氣候變遷會影響生物生存。",
+    "masteryNode": "全球暖化與溫室效應｜氣候協定判斷"
+  },
+  {
+    "id": "ACT-201",
+    "zone": "ACT",
+    "topic": "碳足跡、水足跡與環保行動",
+    "concept": "碳足跡生命週期",
+    "level": 2,
+    "type": "single",
+    "question": "比較兩件衣服的碳足跡時，哪個想法最完整？",
+    "options": [
+      "要看原料、製造、運送、使用和丟棄等生命週期排放",
+      "只看衣服穿起來熱不熱就好",
+      "只要價格便宜，碳足跡一定最低",
+      "衣服不會冒煙，所以沒有碳足跡"
+    ],
+    "answer": "要看原料、製造、運送、使用和丟棄等生命週期排放",
+    "explanation": "碳足跡包含直接與間接排放，需看產品生命週期。",
+    "card": "碳足跡卡",
+    "monster": "碳足跡怪",
+    "case": "碳足跡基礎調查",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜碳足跡生命週期"
+  },
+  {
+    "id": "ACT-202",
+    "zone": "ACT",
+    "topic": "碳足跡、水足跡與環保行動",
+    "concept": "綠色行動整合",
+    "level": 3,
+    "type": "multi",
+    "question": "班級要辦低環境負擔園遊會，哪些做法較合適？",
+    "options": [
+      "自備餐具與水壺，減少一次性用品",
+      "優先選擇在地、少包裝食材",
+      "活動後分類回收並檢討浪費情況",
+      "為了熱鬧大量購買用完即丟裝飾"
+    ],
+    "answer": [
+      "自備餐具與水壺，減少一次性用品",
+      "優先選擇在地、少包裝食材",
+      "活動後分類回收並檢討浪費情況"
+    ],
+    "explanation": "綠色行動要從減量、選擇、使用與回收一起思考。",
+    "card": "綠色消費卡",
+    "monster": "園遊會浪費怪",
+    "case": "綠色消費進階挑戰",
+    "stage": "integration",
+    "stageLabel": "多選整合題",
+    "cognitiveSkill": "整合判斷",
+    "designPurpose": "需要同時整合兩個以上線索或行動原則。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜綠色行動整合"
+  },
+  {
+    "id": "ACT-203",
+    "zone": "ACT",
+    "topic": "碳足跡、水足跡與環保行動",
+    "concept": "水足跡迷思",
+    "level": 2,
+    "type": "truefalse",
+    "question": "水足跡只計算家中水龍頭流出的水，產品製造過程用水不需要考慮。",
+    "options": [],
+    "answer": false,
+    "explanation": "水足跡包含直接與間接用水，產品製造與食物生產也可能消耗水資源。",
+    "card": "水足跡卡",
+    "monster": "水足跡怪",
+    "case": "水足跡危機任務",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜水足跡迷思"
+  },
+  {
+    "id": "ACT-204",
+    "zone": "ACT",
+    "topic": "碳足跡、水足跡與環保行動",
+    "concept": "淨零碳排判斷",
+    "level": 2,
+    "type": "single",
+    "question": "哪一個說法最接近「淨零碳排」的意思？",
+    "options": [
+      "先盡量減少排放，再用碳匯或技術平衡剩餘排放",
+      "從今天起所有人完全不能呼吸",
+      "只要多買東西並標榜環保就能淨零",
+      "把垃圾丟到看不見的地方就算減碳"
+    ],
+    "answer": "先盡量減少排放，再用碳匯或技術平衡剩餘排放",
+    "explanation": "淨零不是完全沒有排放，而是減排後平衡剩餘排放。",
+    "card": "淨零碳排卡",
+    "monster": "永續行動怪",
+    "case": "淨零碳排進階挑戰",
+    "stage": "misconception",
+    "stageLabel": "迷思修正題",
+    "cognitiveSkill": "修正迷思",
+    "designPurpose": "針對常見錯誤想法設計，要求學生修正直覺判斷。",
+    "sourceBasis": "INg-III-5、INg-III-6、INg-III-7：能源使用、碳足跡、水足跡與人類行為改變，和地球永續發展相關。",
+    "masteryNode": "碳足跡、水足跡與環保行動｜淨零碳排判斷"
+  },
+  {
+    "id": "BOSS-201",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "藻礁開發權衡",
+    "level": 3,
+    "type": "single",
+    "question": "桃園藻礁形成時間很長，也是許多海洋生物棲地。若要討論海岸開發，最需要先做什麼？",
+    "options": [
+      "整理藻礁生態功能、形成時間、保育價值與開發影響，再比較方案",
+      "只看工程是否最快完工",
+      "只要有經濟利益就不必討論生態",
+      "因為藻礁在海裡，所以和生物多樣性無關"
+    ],
+    "answer": "整理藻礁生態功能、形成時間、保育價值與開發影響，再比較方案",
+    "explanation": "藻礁案例需要整合生物棲地、長期形成與人類開發影響。",
+    "card": "生物多樣性價值卡",
+    "monster": "綜合推理怪",
+    "case": "藻礁閱讀任務",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜藻礁開發權衡"
+  },
+  {
+    "id": "BOSS-202",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "外來種與棲地整合",
+    "level": 3,
+    "type": "multi",
+    "question": "某濕地同時出現外來植物覆蓋、水質變差與原生魚減少。調查報告應包含哪些方向？",
+    "options": [
+      "確認外來植物是否大量繁衍並遮蔽原生植物",
+      "檢查上游或周邊可能的水汙染來源",
+      "評估原生魚棲地是否被改變",
+      "只拍漂亮照片，不需要資料"
+    ],
+    "answer": [
+      "確認外來植物是否大量繁衍並遮蔽原生植物",
+      "檢查上游或周邊可能的水汙染來源",
+      "評估原生魚棲地是否被改變"
+    ],
+    "explanation": "複合環境問題需要同時追蹤入侵種、水汙染與棲地改變。",
+    "card": "外來入侵種概念卡",
+    "monster": "綜合推理怪",
+    "case": "濕地複合危機",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜外來種與棲地整合"
+  },
+  {
+    "id": "BOSS-203",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "氣候與生物多樣性",
+    "level": 3,
+    "type": "single",
+    "question": "如果高山氣溫上升，使某些耐寒植物分布範圍縮小，這最能連結哪兩個概念？",
+    "options": [
+      "氣候變遷會影響生物分布與生物多樣性",
+      "水足跡只和洗手時間有關",
+      "外來種一定能解決暖化",
+      "保育類只需要餵食就能恢復"
+    ],
+    "answer": "氣候變遷會影響生物分布與生物多樣性",
+    "explanation": "氣候變遷可能改變棲地條件，進而影響生物分布。",
+    "card": "玉山圓柏卡",
+    "monster": "綜合推理怪",
+    "case": "高山氣候危機",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜氣候與生物多樣性"
+  },
+  {
+    "id": "BOSS-204",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "永續方案評估",
+    "level": 3,
+    "type": "multi",
+    "question": "要設計校園永續方案，哪些做法能同時呼應減碳與資源珍惜？",
+    "options": [
+      "節約用電並檢查冷氣設定",
+      "減少一次性用品並重複使用物品",
+      "珍惜食物以降低背後水足跡與浪費",
+      "為了方便每天大量使用免洗餐具"
+    ],
+    "answer": [
+      "節約用電並檢查冷氣設定",
+      "減少一次性用品並重複使用物品",
+      "珍惜食物以降低背後水足跡與浪費"
+    ],
+    "explanation": "永續行動需要整合節能、減量、重複使用與水足跡概念。",
+    "card": "節能減碳行動卡",
+    "monster": "園遊會浪費怪",
+    "case": "校園永續行動",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜永續方案評估"
+  },
+  {
+    "id": "BOSS-205",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "人獸衝突與保育",
+    "level": 3,
+    "type": "single",
+    "question": "遊客餵食獼猴後，獼猴更常靠近步道搶食。最合理的改善策略是？",
+    "options": [
+      "禁止餵食、加強食物收納與宣導，並維持人與野生動物距離",
+      "把所有獼猴抓走，棲地問題就會消失",
+      "繼續餵食，讓牠們習慣人類比較安全",
+      "把垃圾留在步道旁讓獼猴自行取食"
+    ],
+    "answer": "禁止餵食、加強食物收納與宣導，並維持人與野生動物距離",
+    "explanation": "人獸衝突常和人類餵食與食物誘因有關，需降低干擾。",
+    "card": "臺灣獼猴案例卡",
+    "monster": "餵食怪",
+    "case": "獼猴衝突任務",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜人獸衝突與保育"
+  },
+  {
+    "id": "BOSS-206",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "汙染與健康判斷",
+    "level": 3,
+    "type": "single",
+    "question": "社區同時有河川異味與空氣品質不良。學生要做探究報告，哪個做法最符合科學態度？",
+    "options": [
+      "分別蒐集水汙染與空氣汙染資料，記錄來源、時間與影響，再提出改善建議",
+      "先選一個自己討厭的工廠當唯一原因",
+      "只問同學感覺，不需要查證",
+      "把兩種汙染都歸因於特有種太多"
+    ],
+    "answer": "分別蒐集水汙染與空氣汙染資料，記錄來源、時間與影響，再提出改善建議",
+    "explanation": "環境探究要重視證據與資料品質，不宜只憑直覺下結論。",
+    "card": "水汙染來源卡",
+    "monster": "汙染怪",
+    "case": "社區污染調查",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜汙染與健康判斷"
+  },
+  {
+    "id": "BOSS-207",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "淨零與生物多樣性",
+    "level": 3,
+    "type": "single",
+    "question": "城市規畫一座新公園，想同時減碳與保護生物多樣性。哪個方案較完整？",
+    "options": [
+      "種植適合當地的多樣植物、保留棲地連通，並用節能設施降低排放",
+      "只鋪大片水泥方便活動，不需要植物",
+      "只放外來觀賞植物，越新奇越好",
+      "完全不讓學生進入公園，才算保護自然"
+    ],
+    "answer": "種植適合當地的多樣植物、保留棲地連通，並用節能設施降低排放",
+    "explanation": "永續規畫可同時考量碳排、棲地與本土生物多樣性。",
+    "card": "淨零碳排卡",
+    "monster": "綜合推理怪",
+    "case": "城市永續規畫",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜淨零與生物多樣性"
+  },
+  {
+    "id": "BOSS-208",
+    "zone": "BOSS",
+    "topic": "綜合閱讀情境",
+    "concept": "概念整合修復",
+    "level": 3,
+    "type": "multi",
+    "question": "面對「我們只有一個地球」的綜合任務，哪些說法能形成較完整的行動觀念？",
+    "options": [
+      "先理解環境問題的原因與影響，再選擇行動",
+      "保護生物多樣性和人類生活品質有關",
+      "減碳、節水、保護棲地都可以從生活與政策一起努力",
+      "只要考前背答案，環境問題就會自己消失"
+    ],
+    "answer": [
+      "先理解環境問題的原因與影響，再選擇行動",
+      "保護生物多樣性和人類生活品質有關",
+      "減碳、節水、保護棲地都可以從生活與政策一起努力"
+    ],
+    "explanation": "本單元重點是用證據理解環境問題，並落實友善環境行動。",
+    "card": "生物多樣性價值卡",
+    "monster": "綜合推理怪",
+    "case": "地球守護者總任務",
+    "stage": "boss",
+    "stageLabel": "Boss 跨概念題",
+    "cognitiveSkill": "跨概念決策",
+    "designPurpose": "跨章節統整，檢查學生是否能在複雜情境中建立因果關係。",
+    "sourceBasis": "單元統整：臺灣生態、人類活動、氣候變遷與永續行動的跨概念判斷。",
+    "masteryNode": "綜合閱讀情境｜概念整合修復"
   }
 ];

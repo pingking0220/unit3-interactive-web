@@ -7,6 +7,8 @@ let currentOptions = [];
 let selectedMulti = new Set();
 let keywordReadBonus = false;
 let missionCorrect = 0;
+let currentCard = null;
+let selectedKeywords = new Set();
 
 const $ = (id) => document.getElementById(id);
 
@@ -83,6 +85,8 @@ function quickStart() {
 function startMission(zoneCode) {
   currentZoneCode = zoneCode;
   keywordReadBonus = false;
+  selectedKeywords = new Set();
+  currentCard = null;
   missionCorrect = 0;
 
   const cases = CASES.filter((caseItem) => caseItem.zone === zoneCode);
@@ -135,27 +139,59 @@ function renderMissionIntro() {
 }
 
 function renderCardBox(card) {
+  currentCard = card;
+  selectedKeywords = new Set();
+  keywordReadBonus = false;
   $("cardContent").innerHTML = `
-    <h3>資料卡｜${escapeHtml(card.name)}</h3>
-    <p>${escapeHtml(card.summary)}</p>
-    <details>
-      <summary>完整資料</summary>
-      <p>${escapeHtml(card.detail)}</p>
-    </details>
-    <p class="muted">點選至少 2 個關鍵字，可獲得本次任務的閱讀加成。</p>
+    ${renderVisualCard(card)}
+    ${renderCardReading(card)}
+    <p class="muted"><b>閱讀取證：</b>點選至少 2 個關鍵證據，系統會揭露推理線索並開啟作答。</p>
     <div class="keyword-list">
-      ${card.keywords.map((keyword) => `<button class="keyword" type="button" data-keyword>${escapeHtml(keyword)}</button>`).join("")}
+      ${card.keywords.map((keyword) => `<button class="keyword" type="button" data-keyword="${escapeHtml(keyword)}">${escapeHtml(keyword)}</button>`).join("")}
+    </div>
+    <div id="keywordEvidence" class="evidence-box">
+      <p class="tiny">先選 2 個你覺得最重要的關鍵字。每個關鍵字都有一段「為什麼重要」的提示。</p>
     </div>
   `;
 }
 
 function toggleKeyword(element) {
-  element.classList.toggle("selected");
-
-  if (document.querySelectorAll(".keyword.selected").length >= 2 && !keywordReadBonus) {
-    keywordReadBonus = true;
-    toast("已啟動閱讀加成：答對會額外提升熟練度");
+  const keyword = element.dataset.keyword;
+  if (selectedKeywords.has(keyword)) {
+    selectedKeywords.delete(keyword);
+    element.classList.remove("selected");
+  } else {
+    selectedKeywords.add(keyword);
+    element.classList.add("selected");
   }
+
+  updateKeywordEvidence();
+
+  if (selectedKeywords.size >= 2 && !keywordReadBonus) {
+    keywordReadBonus = true;
+    toast("閱讀取證完成：已解鎖作答選項");
+    renderQuestion();
+  }
+}
+
+function updateKeywordEvidence() {
+  const evidence = $("keywordEvidence");
+  if (!evidence || !currentCard) return;
+
+  const insights = currentCard.keywordInsights || [];
+  const selectedInsights = insights.filter((item) => selectedKeywords.has(item.keyword));
+  if (!selectedInsights.length) {
+    evidence.innerHTML = '<p class="tiny">先選 2 個你覺得最重要的關鍵字。每個關鍵字都有一段「為什麼重要」的提示。</p>';
+    return;
+  }
+
+  evidence.innerHTML = `
+    <h4>已取得的證據</h4>
+    <ul>
+      ${selectedInsights.map((item) => `<li><b>${escapeHtml(item.keyword)}：</b>${escapeHtml(item.insight)}</li>`).join("")}
+    </ul>
+    ${selectedKeywords.size >= 2 ? `<div class="bridge"><b>推理連結：</b>${escapeHtml(currentCard.readingBridge || currentCard.questionHint || currentCard.summary)}</div>` : '<p class="tiny">再選 1 個關鍵字，就能開啟作答。</p>'}
+  `;
 }
 
 function renderQuestion() {
@@ -168,19 +204,21 @@ function renderQuestion() {
   selectedMulti = new Set();
   currentOptions = question.type === "truefalse" ? ["正確", "錯誤"] : shuffleArray(question.options || []);
   const questionType = question.type === "multi" ? "多重線索判斷" : question.type === "truefalse" ? "真偽判斷" : "單一關鍵判斷";
+  const evidenceReady = keywordReadBonus || !currentCard;
 
   $("quizContent").innerHTML = `
-    <p class="tagline">第 ${questionIndex + 1}/${missionQuestions.length} 題｜${questionType}</p>
+    <p class="tagline">第 ${questionIndex + 1}/${missionQuestions.length} 題｜${escapeHtml(question.stageLabel || questionType)}</p>
     <h2>${escapeHtml(question.question)}</h2>
-    <p class="muted">概念：${escapeHtml(question.concept)}｜Lv.${question.level}｜推薦資料卡：${escapeHtml(question.card)}</p>
+    <p class="muted">概念：${escapeHtml(question.concept)}｜能力：${escapeHtml(question.cognitiveSkill || questionType)}｜推薦資料卡：${escapeHtml(question.card)}</p>
+    ${evidenceReady ? '<p class="tiny evidence-ready">閱讀取證完成，可以根據資料卡線索作答。</p>' : '<p class="tiny evidence-lock">請先在左側資料卡點選 2 個關鍵證據，再進行判斷。</p>'}
     <div class="option-list">
       ${currentOptions.map((option, index) => `
-        <button class="option" type="button" data-option-index="${index}">
+        <button class="option" type="button" data-option-index="${index}" ${evidenceReady ? "" : "disabled"}>
           ${String.fromCharCode(65 + index)}. ${escapeHtml(String(option))}
         </button>
       `).join("")}
     </div>
-    ${question.type === "multi" ? '<button type="button" onclick="submitMultiAnswer()">送出多重線索判斷</button>' : ""}
+    ${question.type === "multi" ? `<button type="button" onclick="submitMultiAnswer()" ${evidenceReady ? "" : "disabled"}>送出多重線索判斷</button>` : ""}
     <div id="feedbackBox"></div>
   `;
 }
@@ -218,7 +256,7 @@ function showFeedback(question, isCorrect) {
 
   const monster = MONSTERS.find((item) => item.name === question.monster);
   if (isCorrect) {
-    const gain = (question.level === 1 ? 4 : question.level === 2 ? 6 : 8) + (keywordReadBonus ? 2 : 0);
+    const gain = question.level === 1 ? 4 : question.level === 2 ? 6 : 8;
     missionCorrect += 1;
     addMastery(question.zone, gain);
     progress.energy += 10;
@@ -229,6 +267,7 @@ function showFeedback(question, isCorrect) {
       <div class="feedback ok">
         <h3>修復成功！熟練度 +${gain}</h3>
         <p>${escapeHtml(question.explanation)}</p>
+        <p class="tiny">你已先完成閱讀取證，這次加分來自概念判斷本身，不再額外灌分。</p>
         <button type="button" onclick="nextQuestion()">下一題</button>
       </div>
     `;
@@ -288,12 +327,52 @@ function renderCards() {
     const unlocked = progress.unlockedCards.includes(card.name);
     return `
       <article class="row-card ${unlocked ? "" : "dim"}">
-        <h3>${unlocked ? "資料卡" : "尚未解鎖"}｜${escapeHtml(card.name)}</h3>
-        <p>${unlocked ? escapeHtml(card.summary) : "完成相關案件後解鎖。"}</p>
-        ${unlocked ? `<details><summary>完整內容</summary><p>${escapeHtml(card.detail)}</p></details>` : ""}
+        ${unlocked ? renderVisualCard(card) : `<h3>尚未解鎖｜${escapeHtml(card.name)}</h3><p>完成相關案件後解鎖。</p>`}
+        ${unlocked ? renderCardReading(card, true) : ""}
       </article>
     `;
   }).join("");
+}
+
+function renderVisualCard(card) {
+  const visual = card.visual || {};
+  const chips = visual.chips || card.keywords || [];
+  return `
+    <div class="visual-card palette-${escapeHtml(visual.palette || "forest")}">
+      <div class="visual-icon">${escapeHtml(visual.icon || "📌")}</div>
+      <div>
+        <p class="tiny">圖片小卡｜${escapeHtml(card.topic || "核心概念")}</p>
+        <h3>${escapeHtml(card.name)}</h3>
+        <p>${escapeHtml(visual.scene || card.summary)}</p>
+        <div class="mini-chips">${chips.map((chip) => `<span>${escapeHtml(chip)}</span>`).join("")}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCardReading(card, expanded = false) {
+  return `
+    <div class="card-reading">
+      <p><b>核心觀念：</b>${escapeHtml(card.keyIdea || card.summary)}</p>
+      <div class="reading-grid">
+        <div>
+          <h4>觀察線索</h4>
+          <ul>${(card.lookFor || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </div>
+        <div>
+          <h4>常見迷思</h4>
+          <p>${escapeHtml(card.commonMistake || "只背名詞，沒有連結原因與結果。")}</p>
+          <h4>行動提醒</h4>
+          <p>${escapeHtml(card.action || "回到資料卡，用關鍵字整理成一句因果句。")}</p>
+        </div>
+      </div>
+      <details ${expanded ? "open" : ""}>
+        <summary>答題提示與課本依據</summary>
+        <p><b>答題提示：</b>${escapeHtml(card.questionHint || card.summary)}</p>
+        <p><b>課程依據：</b>${escapeHtml(card.sourceBasis || "第 3 單元：我們只有一個地球。")}</p>
+      </details>
+    </div>
+  `;
 }
 
 function renderWrongList() {
