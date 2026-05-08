@@ -16,14 +16,21 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "臺灣環境多元",
-      "環境多樣"
+      "環境多樣",
+      "物種多樣性",
+      "生態系多樣性",
+      "生物多樣性價值"
     ],
     "relatedQuestions": [
       "BIO-001",
       "BIO-101",
       "BIO-103",
       "BIO-105",
-      "BIO-107"
+      "BIO-107",
+      "BIO-012",
+      "BIO-013",
+      "BIO-015",
+      "BIO-017"
     ]
   },
   {
@@ -41,13 +48,19 @@ const CARDS = [
       "玉山繡線菊"
     ],
     "relatedConcepts": [
-      "海拔與生物分布"
+      "海拔與生物分布",
+      "棲地與生物分布",
+      "海拔生態判斷",
+      "生物分布迷思"
     ],
     "relatedQuestions": [
       "BIO-102",
       "BIO-104",
       "BIO-106",
-      "BIO-108"
+      "BIO-108",
+      "BIO-011",
+      "BIO-018",
+      "BIO-020"
     ]
   },
   {
@@ -64,10 +77,14 @@ const CARDS = [
       "遺傳多樣性"
     ],
     "relatedConcepts": [
-      "山椒魚與遺傳多樣性"
+      "山椒魚與遺傳多樣性",
+      "遺傳多樣性應用",
+      "山椒魚棲地"
     ],
     "relatedQuestions": [
-      "BIO-002"
+      "BIO-002",
+      "BIO-014",
+      "BIO-019"
     ]
   },
   {
@@ -85,14 +102,19 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "特有種定義",
-      "特有種判斷"
+      "特有種判斷",
+      "特有種迷思",
+      "特有種與保育類"
     ],
     "relatedQuestions": [
       "END-001",
       "END-102",
       "END-104",
       "END-106",
-      "END-108"
+      "END-108",
+      "END-011",
+      "END-012",
+      "END-019"
     ]
   },
   {
@@ -109,13 +131,19 @@ const CARDS = [
       "棲地保護"
     ],
     "relatedConcepts": [
-      "保育行動"
+      "保育行動",
+      "保育類保護原因",
+      "棲地與保育",
+      "保育與入侵區分"
     ],
     "relatedQuestions": [
       "END-101",
       "END-103",
       "END-105",
-      "END-107"
+      "END-107",
+      "END-013",
+      "END-016",
+      "END-017"
     ]
   },
   {
@@ -132,10 +160,16 @@ const CARDS = [
       "不干擾"
     ],
     "relatedConcepts": [
-      "戶外觀察守則"
+      "戶外觀察守則",
+      "保育行動",
+      "餵食野生動物影響",
+      "自然觀察倫理"
     ],
     "relatedQuestions": [
-      "END-002"
+      "END-002",
+      "END-014",
+      "END-015",
+      "END-020"
     ]
   },
   {
@@ -153,13 +187,21 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "外來入侵種定義",
-      "入侵種判斷"
+      "入侵種判斷",
+      "入侵種競爭",
+      "入侵種辨識",
+      "入侵種迷思",
+      "外來入侵種與經濟"
     ],
     "relatedQuestions": [
       "INV-001",
       "INV-102",
       "INV-104",
-      "INV-106"
+      "INV-106",
+      "INV-012",
+      "INV-016",
+      "INV-017",
+      "INV-020"
     ]
   },
   {
@@ -176,10 +218,12 @@ const CARDS = [
       "農業損失"
     ],
     "relatedConcepts": [
-      "福壽螺危害"
+      "福壽螺危害",
+      "福壽螺情境"
     ],
     "relatedQuestions": [
-      "INV-002"
+      "INV-002",
+      "INV-014"
     ]
   },
   {
@@ -196,10 +240,12 @@ const CARDS = [
       "阻擋光線"
     ],
     "relatedConcepts": [
-      "小花蔓澤蘭危害"
+      "小花蔓澤蘭危害",
+      "小花蔓澤蘭情境"
     ],
     "relatedQuestions": [
-      "INV-003"
+      "INV-003",
+      "INV-015"
     ]
   },
   {
@@ -217,14 +263,20 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "水汙染危害",
-      "污染來源"
+      "污染來源",
+      "家庭汙水",
+      "畜牧汙水",
+      "水污染與生物"
     ],
     "relatedQuestions": [
       "POL-001",
       "POL-102",
       "POL-104",
       "POL-106",
-      "POL-108"
+      "POL-108",
+      "POL-011",
+      "POL-012",
+      "POL-013"
     ]
   },
   {
@@ -240,8 +292,16 @@ const CARDS = [
       "河川",
       "防治"
     ],
-    "relatedConcepts": [],
-    "relatedQuestions": []
+    "relatedConcepts": [
+      "水汙染防治",
+      "水汙染觀察",
+      "汙染防治態度"
+    ],
+    "relatedQuestions": [
+      "POL-014",
+      "POL-018",
+      "POL-020"
+    ]
   },
   {
     "id": "CARD-POL-003",
@@ -258,14 +318,16 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "空氣品質行動",
-      "健康行動"
+      "健康行動",
+      "空氣汙染行動"
     ],
     "relatedQuestions": [
       "POL-002",
       "POL-101",
       "POL-103",
       "POL-105",
-      "POL-107"
+      "POL-107",
+      "POL-015"
     ]
   },
   {
@@ -282,10 +344,12 @@ const CARDS = [
       "土石流"
     ],
     "relatedConcepts": [
-      "山坡地開發與土石流"
+      "山坡地開發與土石流",
+      "山坡地保護"
     ],
     "relatedQuestions": [
-      "HAB-001"
+      "HAB-001",
+      "HAB-012"
     ]
   },
   {
@@ -303,13 +367,25 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "棲地切割",
-      "棲地保護"
+      "棲地保護",
+      "道路與棲地",
+      "棲地破壞後果",
+      "開發評估",
+      "棲地連結",
+      "海岸棲地",
+      "人類活動與棲地"
     ],
     "relatedQuestions": [
       "HAB-002",
       "HAB-102",
       "HAB-104",
-      "HAB-106"
+      "HAB-106",
+      "HAB-009",
+      "HAB-010",
+      "HAB-011",
+      "HAB-015",
+      "HAB-016",
+      "HAB-017"
     ]
   },
   {
@@ -326,12 +402,16 @@ const CARDS = [
       "棲地"
     ],
     "relatedConcepts": [
-      "共存策略"
+      "共存策略",
+      "人獸衝突預防",
+      "共存觀念"
     ],
     "relatedQuestions": [
       "HAB-101",
       "HAB-103",
-      "HAB-105"
+      "HAB-105",
+      "HAB-014",
+      "HAB-018"
     ]
   },
   {
@@ -349,14 +429,22 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "全球暖化影響",
-      "暖化影響"
+      "暖化影響",
+      "極端氣候判斷",
+      "海平面上升",
+      "氣候變遷與農業",
+      "暖化與生物棲地"
     ],
     "relatedQuestions": [
       "CLI-001",
       "CLI-102",
       "CLI-104",
       "CLI-106",
-      "CLI-108"
+      "CLI-108",
+      "CLI-013",
+      "CLI-014",
+      "CLI-016",
+      "CLI-018"
     ]
   },
   {
@@ -373,10 +461,12 @@ const CARDS = [
       "白化"
     ],
     "relatedConcepts": [
-      "珊瑚白化"
+      "珊瑚白化",
+      "珊瑚與海溫"
     ],
     "relatedQuestions": [
-      "CLI-002"
+      "CLI-002",
+      "CLI-015"
     ]
   },
   {
@@ -393,13 +483,21 @@ const CARDS = [
       "溫室氣體"
     ],
     "relatedConcepts": [
-      "溫室氣體"
+      "溫室氣體",
+      "溫室效應基本概念",
+      "二氧化碳來源",
+      "減緩暖化行動",
+      "溫室氣體判斷"
     ],
     "relatedQuestions": [
       "CLI-101",
       "CLI-103",
       "CLI-105",
-      "CLI-107"
+      "CLI-107",
+      "CLI-011",
+      "CLI-012",
+      "CLI-017",
+      "CLI-020"
     ]
   },
   {
@@ -416,10 +514,14 @@ const CARDS = [
       "碳排放"
     ],
     "relatedConcepts": [
-      "碳足跡判讀"
+      "碳足跡判讀",
+      "碳足跡生活判斷",
+      "碳標籤比較"
     ],
     "relatedQuestions": [
-      "ACT-001"
+      "ACT-001",
+      "ACT-016",
+      "ACT-017"
     ]
   },
   {
@@ -436,10 +538,14 @@ const CARDS = [
       "灰色"
     ],
     "relatedConcepts": [
-      "水足跡定義"
+      "水足跡定義",
+      "水足跡生活應用",
+      "水足跡迷思"
     ],
     "relatedQuestions": [
-      "ACT-002"
+      "ACT-002",
+      "ACT-018",
+      "ACT-025"
     ]
   },
   {
@@ -457,7 +563,14 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "垃圾減量",
-      "環保行動"
+      "環保行動",
+      "綠色消費選擇",
+      "回收分類",
+      "一次性用品減量",
+      "永續行動設計",
+      "永續園遊會設計",
+      "跨概念環境行動",
+      "綜合判斷"
     ],
     "relatedQuestions": [
       "ACT-003",
@@ -466,7 +579,14 @@ const CARDS = [
       "ACT-106",
       "ACT-108",
       "ACT-110",
-      "ACT-112"
+      "ACT-112",
+      "ACT-019",
+      "ACT-020",
+      "ACT-022",
+      "ACT-024",
+      "BOSS-012",
+      "BOSS-014",
+      "BOSS-017"
     ]
   },
   {
@@ -484,13 +604,23 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "渡渡鳥滅絕原因",
-      "案例推理"
+      "案例推理",
+      "跨主題案例分析",
+      "人類活動連鎖影響",
+      "案例閱讀策略",
+      "外來種與棲地破壞整合",
+      "生態危機因果"
     ],
     "relatedQuestions": [
       "BOSS-001",
       "BOSS-102",
       "BOSS-104",
-      "BOSS-106"
+      "BOSS-106",
+      "BOSS-009",
+      "BOSS-010",
+      "BOSS-013",
+      "BOSS-015",
+      "BOSS-018"
     ]
   },
   {
@@ -508,17 +638,21 @@ const CARDS = [
     ],
     "relatedConcepts": [
       "避免獼猴搶食",
-      "人獸衝突"
+      "人獸衝突",
+      "獼猴人獸衝突",
+      "戶外活動守則整合"
     ],
     "relatedQuestions": [
       "BOSS-002",
       "BOSS-101",
       "BOSS-103",
-      "BOSS-105"
+      "BOSS-105",
+      "BOSS-011",
+      "BOSS-016"
     ]
   },
   {
-    "id": "CARD-INV-004",
+    "id": "CARD-AUTO-防治外來入侵種卡",
     "name": "防治外來入侵種卡",
     "zone": "INV",
     "topic": "外來入侵種",
@@ -539,11 +673,15 @@ const CARDS = [
       "INV-101",
       "INV-103",
       "INV-105",
-      "INV-107"
+      "INV-107",
+      "INV-011",
+      "INV-013",
+      "INV-018",
+      "INV-019"
     ]
   },
   {
-    "id": "CARD-ACT-004",
+    "id": "CARD-AUTO-節能減碳行動卡",
     "name": "節能減碳行動卡",
     "zone": "ACT",
     "topic": "碳足跡、水足跡與環保行動",
@@ -566,7 +704,142 @@ const CARDS = [
       "ACT-105",
       "ACT-107",
       "ACT-109",
-      "ACT-111"
+      "ACT-111",
+      "ACT-021"
+    ]
+  },
+  {
+    "id": "CARD-AUTO-玉山圓柏卡",
+    "name": "玉山圓柏卡",
+    "zone": "BIO",
+    "topic": "臺灣生物多樣性",
+    "level": 2,
+    "summary": "玉山圓柏適應高海拔寒冷、強風與日照強的環境，是理解海拔生態差異的代表植物。",
+    "detail": "高山植物需要面對低溫、強風、土壤薄與生長季短等限制。玉山圓柏等高山植物的分布，能幫助我們理解海拔、氣候與生物適應之間的關係。",
+    "keywords": [
+      "玉山圓柏",
+      "高海拔",
+      "寒冷",
+      "強風"
+    ],
+    "relatedConcepts": [
+      "海拔生態判斷",
+      "高山植物適應"
+    ],
+    "relatedQuestions": [
+      "BIO-016"
+    ]
+  },
+  {
+    "id": "CARD-AUTO-臺灣百合卡",
+    "name": "臺灣百合卡",
+    "zone": "END",
+    "topic": "特有種與保育類",
+    "level": 2,
+    "summary": "臺灣百合是臺灣原生植物，野外族群可能受到棲地破壞與過度採集影響。",
+    "detail": "認識特有種與原生種時，不能只看外表是否美麗，也要注意野外棲地、族群數量與人類採集壓力。保育行動應避免任意採集野生植物。",
+    "keywords": [
+      "臺灣百合",
+      "原生植物",
+      "棲地破壞",
+      "避免採集"
+    ],
+    "relatedConcepts": [
+      "特有種與保育",
+      "棲地保護"
+    ],
+    "relatedQuestions": [
+      "END-018"
+    ]
+  },
+  {
+    "id": "CARD-AUTO-空氣汙染來源卡",
+    "name": "空氣汙染來源卡",
+    "zone": "POL",
+    "topic": "水汙染與空氣汙染",
+    "level": 2,
+    "summary": "空氣汙染可能來自工廠、交通工具、燃燒燃料與露天燃燒，會影響健康與環境。",
+    "detail": "空氣汙染不只看得到煙才算污染。汽機車廢氣、工廠排放、燃燒煤炭石油與露天燃燒都可能增加污染物，並影響呼吸健康、農作物與酸雨形成。",
+    "keywords": [
+      "工廠排放",
+      "交通廢氣",
+      "燃燒燃料",
+      "酸雨"
+    ],
+    "relatedConcepts": [
+      "空氣汙染來源",
+      "污染影響"
+    ],
+    "relatedQuestions": [
+      "POL-016",
+      "POL-017",
+      "POL-019"
+    ]
+  },
+  {
+    "id": "CARD-AUTO-生物多樣性價值卡",
+    "name": "生物多樣性價值卡",
+    "zone": "HAB",
+    "topic": "棲地破壞與人類開發",
+    "level": 2,
+    "summary": "生物多樣性提供食物、藥物、材料、調節環境與文化教育等價值。",
+    "detail": "生物多樣性不只是物種數量多，也包含生物和棲地形成的穩定網絡。人類的食物、藥物、建材、衣物原料與環境調節，都和生物多樣性有關。",
+    "keywords": [
+      "食物",
+      "藥物",
+      "材料",
+      "環境調節"
+    ],
+    "relatedConcepts": [
+      "生物多樣性價值",
+      "人類與自然關係"
+    ],
+    "relatedQuestions": [
+      "HAB-013"
+    ]
+  },
+  {
+    "id": "CARD-AUTO-氣候協定卡",
+    "name": "氣候協定卡",
+    "zone": "CLI",
+    "topic": "全球暖化與溫室效應",
+    "level": 2,
+    "summary": "巴黎協定提醒各國共同減少溫室氣體排放，努力控制全球升溫。",
+    "detail": "全球暖化需要跨國合作。巴黎協定的精神是讓各國共同減少溫室氣體排放，努力把升溫控制在較低範圍，同時也要進行氣候調適。",
+    "keywords": [
+      "巴黎協定",
+      "減少排放",
+      "升溫控制",
+      "氣候調適"
+    ],
+    "relatedConcepts": [
+      "巴黎協定",
+      "全球合作"
+    ],
+    "relatedQuestions": [
+      "CLI-019"
+    ]
+  },
+  {
+    "id": "CARD-AUTO-淨零碳排卡",
+    "name": "淨零碳排卡",
+    "zone": "ACT",
+    "topic": "碳足跡、水足跡與環保行動",
+    "level": 2,
+    "summary": "淨零碳排是讓排放量盡量降低，剩餘排放再用吸收或抵換方式平衡。",
+    "detail": "淨零碳排不是完全不排放，而是先減少能源與生活中的碳排放，再透過森林吸碳、技術或其他方式抵換剩餘排放，使總量趨近於零。",
+    "keywords": [
+      "淨零",
+      "減少排放",
+      "森林吸碳",
+      "抵換"
+    ],
+    "relatedConcepts": [
+      "淨零碳排",
+      "減量與抵換"
+    ],
+    "relatedQuestions": [
+      "ACT-023"
     ]
   }
 ];
