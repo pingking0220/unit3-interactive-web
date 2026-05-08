@@ -101,13 +101,25 @@
       </aside>
     </main>
 
-    <main class="game-screen is-hidden" id="gameScreen" aria-label="分支敘事文字遊戲">
+    <main class="game-screen is-hidden" id="gameScreen" aria-label="任務型閱讀闖關遊戲">
       <section class="story-hero">
         <div>
-          <span class="game-eyebrow">環境決策任務</span>
-          <h2>地球記憶艙：五道危機任務</h2>
-          <p>每個章節都是獨立任務。請先閱讀知識全景圖，再依照線索做出判斷；錯誤選擇可能讓任務中止，完成後會得到分數、等第與觀念回饋。</p>
+          <span class="game-eyebrow">任務型閱讀 RPG</span>
+          <h2>地球守護者：生態調查局</h2>
+          <p>接案件、讀資料卡、找關鍵字、破解迷思怪物。答錯不扣分，而是進入錯題修復；學生可以反覆練習，直到概念熟練度提升。</p>
         </div>
+        <div class="game-progress-card">
+          <strong>閱讀線索，破解迷思，修復地球</strong>
+          <span>新版包含 8 個任務區、24 件案件、23 張資料卡、18 隻迷思怪物與 81 題題庫。</span>
+          <a class="primary-button launch-game-link" href="earth_guardian_game/index.html" target="_blank" rel="noopener">另開完整遊戲</a>
+        </div>
+      </section>
+
+      <section class="guardian-frame-section" aria-label="地球守護者遊戲">
+        <iframe class="guardian-game-frame" src="earth_guardian_game/index.html" title="地球守護者：生態調查局"></iframe>
+      </section>
+
+      <section class="legacy-story-shell is-hidden" aria-hidden="true">
         <div class="game-progress-card">
           <strong id="gameProgressText">選擇 1 個章節任務</strong>
           <span id="gameProgressHint">每章約 6 次選擇，答對才能穩定推進；若任務失敗，請回全景圖查證後再挑戰。</span>
@@ -115,7 +127,7 @@
         </div>
       </section>
 
-      <section class="story-layout">
+      <section class="story-layout legacy-story-shell is-hidden" aria-hidden="true">
         <aside class="story-side" aria-label="章節與通關紀錄">
           <h2>章節任務</h2>
           <nav class="chapter-list" id="storyChapterList"></nav>

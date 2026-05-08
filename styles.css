@@ -337,6 +337,12 @@ button {
   box-shadow: 0 12px 24px rgba(33, 84, 45, 0.2);
 }
 
+.launch-game-link {
+  display: inline-grid;
+  place-items: center;
+  text-decoration: none;
+}
+
 .viewer-panel {
   padding: 14px;
   display: grid;
@@ -1333,6 +1339,23 @@ button {
 
 .story-hero > * {
   position: relative;
+}
+
+.guardian-frame-section {
+  margin-top: 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, rgba(85, 119, 65, 0.18));
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 46px rgba(43, 79, 49, 0.11);
+}
+
+.guardian-game-frame {
+  width: 100%;
+  min-height: 1180px;
+  display: block;
+  border: 0;
+  background: #f4fbf7;
 }
 
 .story-hero h2 {
